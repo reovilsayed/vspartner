@@ -2,7 +2,6 @@ import React from 'react'
 
 function Home() {
   return (
-    <div>
         <div class="dashboard_content">
                     <div class="dashboard_content_inner">
                         <div class="box_model">
@@ -148,7 +147,6 @@ function Home() {
                         </div>
                     </div>
                 </div>
-    </div>
   )
 }
 
