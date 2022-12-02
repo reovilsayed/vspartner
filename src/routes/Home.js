@@ -1,4 +1,6 @@
 import React from 'react'
+import EarningChart from '../components/EarningChart'
+import SubmissionChart from '../components/SubmissionChart'
 
 function Home() {
   return (
@@ -23,8 +25,10 @@ function Home() {
                                     </div>
                                     <div class="dash_body">
                                         <div id="chart0" class="chart chart0">
+                                        <EarningChart/>
                                         </div>
                                     </div>
+                      
                                 </div>
                                 <div class="rt_box">
                                     <div class="hide_md">
@@ -72,11 +76,15 @@ function Home() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="chart-title__heading">
-                                            <div id="chart1" class="chart chart1">
+                                        <div class="chart-title__heading" >
+                                        <div class="chart chart1">
+                                        <SubmissionChart/>
+                                        <h3 class="chart-title" >My Submissions</h3>
                                             </div>
-                                            <h3 class="chart-title">My Submissions</h3>
+                                        
+              
                                         </div>
+                                        
                                     </div>
                                 </div>
                                 <div class="rt_box">

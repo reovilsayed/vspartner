@@ -2,7 +2,8 @@ import React from 'react'
 
 function MyVideos() {
   return (
-    <div class="dashboard_content">
+    <>
+        <div class="dashboard_content">
                     <div class="dashboard_content_inner">
                         <div class="head_row">
                             <div class="tab_row">
@@ -87,7 +88,7 @@ function MyVideos() {
                                                     </td>
                                                     <td><div class="skeleton_v1">Rabbit on fence</div></td>
                                                     <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><div href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</div></a>
+                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
                                                     <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
                                                     <td><span class="tg grn skeleton_v1">Approved</span></td>
@@ -164,7 +165,7 @@ function MyVideos() {
                                                                 data-bs-custom-class="white" data-tip=""
                                                                 data-bs-toggle="tooltip"
                                                                 title="Hello from speech bubble!"><img
-                                                                    src="images/q.svg" alt=""></i></span></td>
+                                                                    src="images/q.svg" alt=""/></i></span></td>
                                                     <td>
                                                         <div class="skeleton_v1">
                                                             <a href="#" class="view_ico_btn" data-bs-toggle="modal"
@@ -288,7 +289,7 @@ function MyVideos() {
                                                                 data-bs-custom-class="white" data-tip=""
                                                                 data-bs-toggle="tooltip"
                                                                 title="Hello from speech bubble!"><img
-                                                                    src="images/q.svg" alt=""></i></span></td>
+                                                                    src="images/q.svg" alt=""/></i></span></td>
                                                     <td>
                                                         <div class="skeleton_v1">
                                                         <a href="#" class="view_ico_btn" data-bs-toggle="modal"
@@ -382,7 +383,7 @@ function MyVideos() {
                                                                 data-bs-custom-class="white" data-tip=""
                                                                 data-bs-toggle="tooltip"
                                                                 title="Hello from speech bubble!"><img
-                                                                    src="images/q.svg" alt=""></i></span></td>
+                                                                    src="images/q.svg" alt=""/></i></span></td>
                                                     <td>
                                                         <div class="skeleton_v1">
                                                             <a href="#" class="view_ico_btn" data-bs-toggle="modal"
@@ -429,7 +430,7 @@ function MyVideos() {
                                                     </td>
                                                     <td><div class="skeleton_v1">Rabbit on fence</div></td>
                                                     <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><div href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</div></a>
+                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
                                                     <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
                                                     <td><span class="tg grn skeleton_v1">Approved</span></td>
@@ -506,7 +507,7 @@ function MyVideos() {
                                                                 data-bs-custom-class="white" data-tip=""
                                                                 data-bs-toggle="tooltip"
                                                                 title="Hello from speech bubble!"><img
-                                                                    src="images/q.svg" alt=""></i></span></td>
+                                                                    src="images/q.svg" alt=""/></i></span></td>
                                                     <td>
                                                         <div class="skeleton_v1">
                                                             <a href="#" class="view_ico_btn" data-bs-toggle="modal"
@@ -630,7 +631,7 @@ function MyVideos() {
                                                                 data-bs-custom-class="white" data-tip=""
                                                                 data-bs-toggle="tooltip"
                                                                 title="Hello from speech bubble!"><img
-                                                                    src="images/q.svg" alt=""></i></span></td>
+                                                                    src="images/q.svg" alt=""/></i></span></td>
                                                     <td>
                                                         <div class="skeleton_v1">
                                                         <a href="#" class="view_ico_btn" data-bs-toggle="modal"
@@ -724,7 +725,7 @@ function MyVideos() {
                                                                 data-bs-custom-class="white" data-tip=""
                                                                 data-bs-toggle="tooltip"
                                                                 title="Hello from speech bubble!"><img
-                                                                    src="images/q.svg" alt=""></i></span></td>
+                                                                    src="images/q.svg" alt=""/></i></span></td>
                                                     <td>
                                                         <div class="skeleton_v1">
                                                             <a href="#" class="view_ico_btn" data-bs-toggle="modal"
@@ -771,7 +772,7 @@ function MyVideos() {
                                                     </td>
                                                     <td><div class="skeleton_v1">Rabbit on fence</div></td>
                                                     <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><div href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</div></a>
+                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
                                                     <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
                                                     <td><span class="tg grn skeleton_v1">Approved</span></td>
@@ -848,7 +849,7 @@ function MyVideos() {
                                                                 data-bs-custom-class="white" data-tip=""
                                                                 data-bs-toggle="tooltip"
                                                                 title="Hello from speech bubble!"><img
-                                                                    src="images/q.svg" alt=""></i></span></td>
+                                                                    src="images/q.svg" alt=""/></i></span></td>
                                                     <td>
                                                         <div class="skeleton_v1">
                                                             <a href="#" class="view_ico_btn" data-bs-toggle="modal"
@@ -972,7 +973,7 @@ function MyVideos() {
                                                                 data-bs-custom-class="white" data-tip=""
                                                                 data-bs-toggle="tooltip"
                                                                 title="Hello from speech bubble!"><img
-                                                                    src="images/q.svg" alt=""></i></span></td>
+                                                                    src="images/q.svg" alt=""/></i></span></td>
                                                     <td>
                                                         <div class="skeleton_v1">
                                                         <a href="#" class="view_ico_btn" data-bs-toggle="modal"
@@ -1066,7 +1067,7 @@ function MyVideos() {
                                                                 data-bs-custom-class="white" data-tip=""
                                                                 data-bs-toggle="tooltip"
                                                                 title="Hello from speech bubble!"><img
-                                                                    src="images/q.svg" alt=""></i></span></td>
+                                                                    src="images/q.svg" alt=""/></i></span></td>
                                                     <td>
                                                         <div class="skeleton_v1">
                                                             <a href="#" class="view_ico_btn" data-bs-toggle="modal"
@@ -1212,7 +1213,7 @@ function MyVideos() {
                                                                 <p class="rd">Rejected<img src="images/q.svg" alt=""
                                                                         tabindex="0" data-bs-custom-class="white"
                                                                         data-tip="" data-bs-toggle="tooltip"
-                                                                        title="Hello from speech bubble!"></p>
+                                                                        title="Hello from speech bubble!"/></p>
                                                             </li>
                                                         </ul>
                                                         <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
@@ -1473,7 +1474,7 @@ function MyVideos() {
                                                                 <p class="rd">Rejected <img src="images/q.svg" alt=""
                                                                         tabindex="0" data-bs-custom-class="white"
                                                                         data-tip="" data-bs-toggle="tooltip"
-                                                                        title="Hello from speech bubble!"></p>
+                                                                        title="Hello from speech bubble!"/></p>
                                                             </li>
                                                         </ul>
                                                         <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
@@ -1654,7 +1655,7 @@ function MyVideos() {
                                                                 <p class="rd">Rejected<img src="images/q.svg" alt=""
                                                                         tabindex="0" data-bs-custom-class="white"
                                                                         data-tip="" data-bs-toggle="tooltip"
-                                                                        title="Hello from speech bubble!"></p>
+                                                                        title="Hello from speech bubble!"/></p>
                                                             </li>
                                                         </ul>
                                                         <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
@@ -1915,7 +1916,7 @@ function MyVideos() {
                                                                 <p class="rd">Rejected <img src="images/q.svg" alt=""
                                                                         tabindex="0" data-bs-custom-class="white"
                                                                         data-tip="" data-bs-toggle="tooltip"
-                                                                        title="Hello from speech bubble!"></p>
+                                                                        title="Hello from speech bubble!"/></p>
                                                             </li>
                                                         </ul>
                                                         <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
@@ -2096,7 +2097,7 @@ function MyVideos() {
                                                                 <p class="rd">Rejected<img src="images/q.svg" alt=""
                                                                         tabindex="0" data-bs-custom-class="white"
                                                                         data-tip="" data-bs-toggle="tooltip"
-                                                                        title="Hello from speech bubble!"></p>
+                                                                        title="Hello from speech bubble!"/></p>
                                                             </li>
                                                         </ul>
                                                         <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
@@ -2357,7 +2358,7 @@ function MyVideos() {
                                                                 <p class="rd">Rejected <img src="images/q.svg" alt=""
                                                                         tabindex="0" data-bs-custom-class="white"
                                                                         data-tip="" data-bs-toggle="tooltip"
-                                                                        title="Hello from speech bubble!"></p>
+                                                                        title="Hello from speech bubble!"/></p>
                                                             </li>
                                                         </ul>
                                                         <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
@@ -2464,6 +2465,7 @@ function MyVideos() {
                         </div>
                     </div>
                 </div>
+    </>
   )
 }
 

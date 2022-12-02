@@ -1,4 +1,5 @@
 import React from 'react'
+import Sidebar from './Sidebar'
 
 function DefaultLayout({children}) {
   return (
@@ -94,75 +95,7 @@ function DefaultLayout({children}) {
 <div class="dashboard_body">
         <div class="fluid_container">
             <div class="dashboard_body_inner">
-                <div class="navigation" id="navigation">
-                    <div class="nav_inner">
-                        <ul class="nav_list">
-                            <li class="current-menu-item">
-                                <a href="dashboard.html">
-                                    <i>
-                                        <img src="images/nav1.png" alt="" />
-                                        <img src="images/nav1_hov.png" alt="" />
-                                    </i>
-                                    <span>Dashboard</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="my_video.html">
-                                    <i>
-                                        <img src="images/nav2.png" alt="" />
-                                        <img src="images/nav2_hov.png" alt="" />
-                                    </i>
-                                    <span>My Videos</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="earnings.html">
-                                    <i>
-                                        <img src="images/nav3.png" alt="" />
-                                        <img src="images/nav3_hov.png" alt="" />
-                                    </i>
-                                    <span>My Earnings</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="messages.html">
-                                    <i>
-                                        <img src="images/nav4.png" alt="" />
-                                        <img src="images/nav4_hov.png" alt="" />
-                                    </i>
-                                    <span>My Messages</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="notification.html">
-                                    <i>
-                                        <img src="images/nav5.png" alt="" />
-                                        <img src="images/nav5_hov.png" alt="" />
-                                    </i>
-                                    <span>Notifications</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="setting.html">
-                                    <i>
-                                        <img src="images/nav6.png" alt="" />
-                                        <img src="images/nav6_hov.png" alt="" />
-                                    </i>
-                                    <span>Settings</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i>
-                                        <img src="images/nav7.png" alt="" />
-                                        <img src="images/nav7_hov.png" alt="" />
-                                    </i>
-                                    <span>Logout</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+              <Sidebar/>
 
                 {children}
             </div>
