@@ -15,6 +15,7 @@ import MyEearning from './routes/MyEearning';
 import MyMessages from './routes/MyMessages';
 import Notifications from './routes/Notifications';
 import Setting from './routes/Setting';
+import Login from './routes/Login';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path='/my-messages' element={<DefaultLayout><MyMessages/></DefaultLayout>} />
         <Route path='/notification' element={<DefaultLayout><Notifications/></DefaultLayout>} />
         <Route path='/setting' element={<DefaultLayout><Setting/></DefaultLayout>} />
+        <Route path='/login' element={<Login/>} />
       </Routes>
       </BrowserRouter>
       

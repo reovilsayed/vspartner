@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 function Sidebar() {
   return (
     <>
-       <div class="navigation" id="navigation">
-                    <div class="nav_inner">
-                        <ul class="nav_list">
-                            <li class="current-menu-item">
+       <div className="navigation" id="navigation">
+                    <div className="nav_inner">
+                        <ul className="nav_list">
+                            <li className="current-menu-item">
                                 <Link to={'/'}>
                                     <i>
                                         <img src="images/nav1.png" alt="" />
