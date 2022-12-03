@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Sidebar from './Sidebar'
 
 function DefaultLayout({children}) {
+    const [notification,setNotification]=useState(false)
+    function handaleNotification(e){
+        e.preventDefault()
+        setNotification(!notification);
+    }
   return (
 <>
 <div className="dashboard_header">
@@ -36,11 +41,11 @@ function DefaultLayout({children}) {
                 </div>
 
                 <div className="notification_panel panel_inline">
-                    <a href="#" className="nof_btn" id="nof_btn">
+                    <a href="#" onClick={handaleNotification} className="nof_btn" id="nof_btn">
                         <img src="images/notification.svg" alt="" />
                         <span className="bdg">2</span>
                     </a>
-                    <div className="notification_box">
+                    <div className={notification ?"notification_box active":"notification_box "}>
                         <div className="notification_box_inner">
                             <ul className="notify_list">
                                 <li>

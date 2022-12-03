@@ -8,21 +8,22 @@ function MyMessages() {
   const handleShow = () => setShow(true);
   return (
     <>
-            <div class="dashboard_content dashboard_content_message">
-                    <div class="dashboard_content_inner">
-                        <div class="top_welcome_box">
-                            <div class="lft_element">
+            <div className="dashboard_content dashboard_content_message">
+                    <div className="dashboard_content_inner">
+                        <div className="top_welcome_box">
+                            <div className="lft_element">
                                 <h4>Hello, We are here to help</h4>
                                 <p>Need some help with your transactions or got a question about your submission? Feel
                                     free to inquire now!</p>
                             </div>
-                            <div class="rt_element">
-                                <a href="javascript:void(0)" class="btn-outline btn-outline-blue"  onClick={handleShow}>New Inquiry?</a>
+                            <div className="rt_element">
+                                <a href="#" className="btn-outline btn-outline-blue" data-bs-toggle="modal"
+                                    data-bs-target="#inq_modal">New Inquiry?</a>
                             </div>
                         </div>
 
-                        <div class="message_table">
-                            <table class="msg_tb">
+                        <div className="message_table">
+                            <table className="msg_tb">
                                 <thead>
                                     <tr>
                                         <th>NO.</th>
@@ -41,9 +42,9 @@ function MyMessages() {
                                         <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam enim dui
                                             diam
                                             ac. Orci amet aliquam sodales mauris.</td>
-                                        <td><span class="tg grn">Pending</span></td>
+                                        <td><span className="tg grn">Pending</span></td>
                                         <td>
-                                            <a href="chat_detail.html" class="view_ico_btn">
+                                            <a href="chat_detail.html" className="view_ico_btn">
                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -63,9 +64,9 @@ function MyMessages() {
                                         <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam enim dui
                                             diam
                                             ac. Orci amet aliquam sodales mauris.</td>
-                                        <td><span class="tg grn">Pending</span></td>
+                                        <td><span className="tg grn">Pending</span></td>
                                         <td>
-                                            <a href="chat_detail.html" class="view_ico_btn">
+                                            <a href="chat_detail.html" className="view_ico_btn">
                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -85,9 +86,9 @@ function MyMessages() {
                                         <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam enim dui
                                             diam
                                             ac. Orci amet aliquam sodales mauris.</td>
-                                        <td><span class="tg red">closed</span></td>
+                                        <td><span className="tg red">closed</span></td>
                                         <td>
-                                            <a href="chat_detail.html" class="view_ico_btn">
+                                            <a href="chat_detail.html" className="view_ico_btn">
                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -107,9 +108,9 @@ function MyMessages() {
                                         <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam enim dui
                                             diam
                                             ac. Orci amet aliquam sodales mauris.</td>
-                                        <td><span class="tg grn">Pending</span></td>
+                                        <td><span className="tg grn">Pending</span></td>
                                         <td>
-                                            <a href="chat_detail.html" class="view_ico_btn">
+                                            <a href="chat_detail.html" className="view_ico_btn">
                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -129,9 +130,9 @@ function MyMessages() {
                                         <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam enim dui
                                             diam
                                             ac. Orci amet aliquam sodales mauris.</td>
-                                        <td><span class="tg grn">Pending</span></td>
+                                        <td><span className="tg grn">Pending</span></td>
                                         <td>
-                                            <a href="chat_detail.html" class="view_ico_btn">
+                                            <a href="chat_detail.html" className="view_ico_btn">
                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -151,9 +152,9 @@ function MyMessages() {
                                         <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam enim dui
                                             diam
                                             ac. Orci amet aliquam sodales mauris.</td>
-                                        <td><span class="tg red">closed</span></td>
+                                        <td><span className="tg red">closed</span></td>
                                         <td>
-                                            <a href="chat_detail.html" class="view_ico_btn">
+                                            <a href="chat_detail.html" className="view_ico_btn">
                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -173,9 +174,9 @@ function MyMessages() {
                                         <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam enim dui
                                             diam
                                             ac. Orci amet aliquam sodales mauris.</td>
-                                        <td><span class="tg red">closed</span></td>
+                                        <td><span className="tg red">closed</span></td>
                                         <td>
-                                            <a href="chat_detail.html" class="view_ico_btn">
+                                            <a href="chat_detail.html" className="view_ico_btn">
                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -195,9 +196,9 @@ function MyMessages() {
                                         <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam enim dui
                                             diam
                                             ac. Orci amet aliquam sodales mauris.</td>
-                                        <td><span class="tg grn">Pending</span></td>
+                                        <td><span className="tg grn">Pending</span></td>
                                         <td>
-                                            <a href="chat_detail.html" class="view_ico_btn">
+                                            <a href="chat_detail.html" className="view_ico_btn">
                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -217,9 +218,9 @@ function MyMessages() {
                                         <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam enim dui
                                             diam
                                             ac. Orci amet aliquam sodales mauris.</td>
-                                        <td><span class="tg grn">Pending</span></td>
+                                        <td><span className="tg grn">Pending</span></td>
                                         <td>
-                                            <a href="chat_detail.html" class="view_ico_btn">
+                                            <a href="chat_detail.html" className="view_ico_btn">
                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -239,9 +240,9 @@ function MyMessages() {
                                         <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam enim dui
                                             diam
                                             ac. Orci amet aliquam sodales mauris.</td>
-                                        <td><span class="tg red">closed</span></td>
+                                        <td><span className="tg red">closed</span></td>
                                         <td>
-                                            <a href="chat_detail.html" class="view_ico_btn">
+                                            <a href="chat_detail.html" className="view_ico_btn">
                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -261,9 +262,9 @@ function MyMessages() {
                                         <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam enim dui
                                             diam
                                             ac. Orci amet aliquam sodales mauris.</td>
-                                        <td><span class="tg grn">Pending</span></td>
+                                        <td><span className="tg grn">Pending</span></td>
                                         <td>
-                                            <a href="chat_detail.html" class="view_ico_btn">
+                                            <a href="chat_detail.html" className="view_ico_btn">
                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -283,9 +284,9 @@ function MyMessages() {
                                         <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam enim dui
                                             diam
                                             ac. Orci amet aliquam sodales mauris.</td>
-                                        <td><span class="tg grn">Pending</span></td>
+                                        <td><span className="tg grn">Pending</span></td>
                                         <td>
-                                            <a href="chat_detail.html" class="view_ico_btn">
+                                            <a href="chat_detail.html" className="view_ico_btn">
                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -305,9 +306,9 @@ function MyMessages() {
                                         <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam enim dui
                                             diam
                                             ac. Orci amet aliquam sodales mauris.</td>
-                                        <td><span class="tg red">closed</span></td>
+                                        <td><span className="tg red">closed</span></td>
                                         <td>
-                                            <a href="chat_detail.html" class="view_ico_btn">
+                                            <a href="chat_detail.html" className="view_ico_btn">
                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -327,9 +328,9 @@ function MyMessages() {
                                         <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam enim dui
                                             diam
                                             ac. Orci amet aliquam sodales mauris.</td>
-                                        <td><span class="tg red">closed</span></td>
+                                        <td><span className="tg red">closed</span></td>
                                         <td>
-                                            <a href="chat_detail.html" class="view_ico_btn">
+                                            <a href="chat_detail.html" className="view_ico_btn">
                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -348,36 +349,37 @@ function MyMessages() {
                     </div>
                 </div>
 {/* Modal */}
-                {/* <div class="modal-box msg_xsm modal fade" show={show} onHide={handleClose}>
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="line-header">
+<div className="modal-box msg_xsm modal fade" id="inq_modal" tabIndex="-1" aria-labelledby="inq_modal"
+        aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+                <div className="modal-body">
+                    <div className="line-header">
                         <h5><span>New Inquiry?</span></h5>
-                        <button class="cross" data-bs-dismiss="modal" aria-label="Close"><img
+                        <button className="cross" data-bs-dismiss="modal" aria-label="Close"><img
                                 src="images/circle-cross.svg" alt=""/></button>
                     </div>
-                    <div class="inq_form_box">
+                    <div className="inq_form_box">
                         <form>
-                            <div class="input_group">
+                            <div className="input_group">
                                 <input type="text" placeholder="Enter Subject"/>
                             </div>
-                            <div class="input_group">
+                            <div className="input_group">
                                 <textarea placeholder="Type the note here.........."></textarea>
-                                <div class="file_attachment">
+                                <div className="file_attachment">
                                     <svg width="21" height="21" viewBox="0 0 19 21" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M1 1V6.88462C1 7.57826 1.27555 8.24349 1.76603 8.73397C2.25651 9.22445 2.92174 9.5 3.61538 9.5C4.30903 9.5 4.97426 9.22445 5.46474 8.73397C5.95522 8.24349 6.23077 7.57826 6.23077 6.88462V2.96154C6.23077 2.61472 6.09299 2.2821 5.84775 2.03686C5.60251 1.79162 5.2699 1.65385 4.92308 1.65385C4.57626 1.65385 4.24364 1.79162 3.9984 2.03686C3.75316 2.2821 3.61538 2.61472 3.61538 2.96154V7.53846M8.19231 1.65385H16.6923C17.0391 1.65385 17.3717 1.79162 17.617 2.03686C17.8622 2.2821 18 2.61472 18 2.96154V18.6538C18 19.0007 17.8622 19.3333 17.617 19.5785C17.3717 19.8238 17.0391 19.9615 16.6923 19.9615H3.61538C3.26856 19.9615 2.93595 19.8238 2.69071 19.5785C2.44547 19.3333 2.30769 19.0007 2.30769 18.6538V11.4615M14.7308 6.88462H9.5M14.7308 10.8077H9.5M14.7308 14.7308H5.57692"
-                                            stroke="currentColor" stroke-width="1.5" />
+                                            stroke="currentColor" strokeWidth="1.5" />
                                     </svg>
                                     <input id="inquiry_file" type="file" />
                                 </div>
                             </div>
-                            <div class="uploaded_file_info" id="uploaded_file_info">
-                                <p><span class="file_name"></span><span class="file_size"></span><span class="file_del" id="file_del"><i class="far fa-trash-alt"></i></span></p>
+                            <div className="uploaded_file_info" id="uploaded_file_info">
+                                <p><span className="file_name"></span><span className="file_size"></span><span className="file_del" id="file_del"><i className="far fa-trash-alt"></i></span></p>
                             </div>
-                            <div class="input_group">
+                            <div className="input_group">
                                 <input type="submit" value="Send Now" />
                             </div>
                         </form>
@@ -385,7 +387,7 @@ function MyMessages() {
                 </div>
             </div>
         </div>
-    </div> */}
+    </div>
 
     </>
   )

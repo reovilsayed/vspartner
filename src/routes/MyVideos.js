@@ -3,38 +3,38 @@ import React from 'react'
 function MyVideos() {
   return (
     <>
-        <div class="dashboard_content">
-                    <div class="dashboard_content_inner">
-                        <div class="head_row">
-                            <div class="tab_row">
-                                <ul class="nav_tab nav_tab_selecton" data-tab-target="tabgroup1">
-                                    <li><a href="#" class="active" id="nav_tab_selecton_all">All Videos</a></li>
+        <div className="dashboard_content">
+                    <div className="dashboard_content_inner">
+                        <div className="head_row">
+                            <div className="tab_row">
+                                <ul className="nav_tab nav_tab_selecton" data-tab-target="tabgroup1">
+                                    <li><a href="#" className="active" id="nav_tab_selecton_all">All Videos</a></li>
                                     <li><a href="#" id="nav_tab_selecton_appr">Approved</a></li>
                                     <li><a href="#" id="nav_tab_selecton_rej">Rejected</a></li>
                                 </ul>
                             </div>
-                            <div class="filter_row">
-                                <div class="srch_inner">
+                            <div className="filter_row">
+                                <div className="srch_inner">
                                     <input type="text" placeholder="Search Here......" />
-                                    <span class="srch_btn"><img src="images/search.svg" alt="" /></span>
+                                    <span className="srch_btn"><img src="images/search.svg" alt="" /></span>
                                 </div>
-                                <div class="calendar_wrapper dsh_cld">
-                                    <input type="text" class="calender_range_value" id="calender_range_value"/>
-                                    <div class="calender_range" id="calender_range_toggle">
-                                        <input type="text" class="d-none" value="2022/10/10" id="calender_range"/>
-                                        <div class="range_btn">
-                                            <div class="range_btn_col">
-                                                <button class="btn-outline btn-outline-red" id="range_clear">Clear</button>
+                                <div className="calendar_wrapper dsh_cld">
+                                    <input type="text" className="calender_range_value" id="calender_range_value"/>
+                                    <div className="calender_range" id="calender_range_toggle">
+                                        <input type="text" className="d-none"  id="calender_range"/>
+                                        <div className="range_btn">
+                                            <div className="range_btn_col">
+                                                <button className="btn-outline btn-outline-red" id="range_clear">Clear</button>
                                             </div>
-                                            <div class="range_btn_col">
-                                                <button class="btn-outline btn-outline-blue fill" id="apply_range">Apply</button>
+                                            <div className="range_btn_col">
+                                                <button className="btn-outline btn-outline-blue fill" id="apply_range">Apply</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="view_control">
-                                    <span class="list_toggle_btn active" id="list_view">
+                                <div className="view_control">
+                                    <span className="list_toggle_btn active" id="list_view">
                                         <svg width="34" height="31" viewBox="0 0 34 31" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -48,7 +48,7 @@ function MyVideos() {
                                                 fill="currentColor" />
                                         </svg>
                                     </span>
-                                    <span class="grid_toggle_btn" id="grid_view">
+                                    <span className="grid_toggle_btn" id="grid_view">
                                         <svg width="29" height="29" viewBox="0 0 29 29" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -61,11 +61,11 @@ function MyVideos() {
                         </div>
 
 
-                        <div class="view_box list_view_box active_view">
-                            <div class="all_tab_panel" data-tab-parent="tabgroup1">
-                                <div class="tab_panel active">
-                                    <div class="panel_inner panel_inner_scrollable">
-                                        <table class="list_table all">
+                        <div className="view_box list_view_box active_view">
+                            <div className="all_tab_panel" data-tab-parent="tabgroup1">
+                                <div className="tab_panel active">
+                                    <div className="panel_inner panel_inner_scrollable">
+                                        <table className="list_table all">
                                             <thead>
                                                 <tr>
                                                     <th>NO.</th>
@@ -80,21 +80,21 @@ function MyVideos() {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">01</div></td>
+                                                    <td><div className="skeleton_v1">01</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video1.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg grn skeleton_v1">Approved</span></td>
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg grn skeleton_v1">Approved</span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                            <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                            <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                                 data-bs-target="#video_modal">
                                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                     xmlns="http://www.w3.org/2000/svg">
@@ -110,24 +110,24 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">02</div></td>
+                                                    <td><div className="skeleton_v1">02</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video2.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
+                                                        <div className="skeleton_v1">
                                                             <a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a>
                                                         </div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg grn skeleton_v1">Approved</span></td>
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg grn skeleton_v1">Approved</span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                            <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                            <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -144,31 +144,31 @@ function MyVideos() {
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <div class="skeleton_v1">
+                                                        <div className="skeleton_v1">
                                                         03
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video3.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
+                                                        <div className="skeleton_v1">
                                                             <a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a>
                                                         </div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg red skeleton_v1">Rejected<i tabindex="0"
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg red skeleton_v1">Rejected<i tabIndex="0"
                                                                 data-bs-custom-class="white" data-tip=""
                                                                 data-bs-toggle="tooltip"
                                                                 title="Hello from speech bubble!"><img
                                                                     src="images/q.svg" alt=""/></i></span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                            <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                            <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -184,21 +184,21 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">04</div></td>
+                                                    <td><div className="skeleton_v1">04</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video4.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg grn skeleton_v1">Approved</span></td>
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg grn skeleton_v1">Approved</span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                            <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                            <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -214,21 +214,21 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">05</div></td>
+                                                    <td><div className="skeleton_v1">05</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video5.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg grn skeleton_v1">Approved</span></td>
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg grn skeleton_v1">Approved</span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                            <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                            <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                                 data-bs-target="#video_modal">
                                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                     xmlns="http://www.w3.org/2000/svg">
@@ -244,21 +244,21 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">06</div></td>
+                                                    <td><div className="skeleton_v1">06</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video6.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg grn skeleton_v1">Approved</span></td>
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg grn skeleton_v1">Approved</span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                        <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                        <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -274,25 +274,25 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">07</div></td>
+                                                    <td><div className="skeleton_v1">07</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video4.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg red skeleton_v1">Rejected<i tabindex="0"
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg red skeleton_v1">Rejected<i tabIndex="0"
                                                                 data-bs-custom-class="white" data-tip=""
                                                                 data-bs-toggle="tooltip"
                                                                 title="Hello from speech bubble!"><img
                                                                     src="images/q.svg" alt=""/></i></span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                        <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                        <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -308,21 +308,21 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">08</div></td>
+                                                    <td><div className="skeleton_v1">08</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video1.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg grn skeleton_v1">Approved</span></td>
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg grn skeleton_v1">Approved</span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                        <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                        <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -338,21 +338,21 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">09</div></td>
+                                                    <td><div className="skeleton_v1">09</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video2.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg grn skeleton_v1">Approved</span></td>
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg grn skeleton_v1">Approved</span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                            <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                            <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                                 data-bs-target="#video_modal">
                                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                     xmlns="http://www.w3.org/2000/svg">
@@ -368,25 +368,25 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">10</div></td>
+                                                    <td><div className="skeleton_v1">10</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video3.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg red skeleton_v1">Rejected<i tabindex="0"
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg red skeleton_v1">Rejected<i tabIndex="0"
                                                                 data-bs-custom-class="white" data-tip=""
                                                                 data-bs-toggle="tooltip"
                                                                 title="Hello from speech bubble!"><img
                                                                     src="images/q.svg" alt=""/></i></span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                            <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                            <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                                 data-bs-target="#video_modal">
                                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                     xmlns="http://www.w3.org/2000/svg">
@@ -405,9 +405,9 @@ function MyVideos() {
                                         </table>
                                     </div>
                                 </div>
-                                <div class="tab_panel">
-                                    <div class="panel_inner">
-                                        <table class="list_table appr">
+                                <div className="tab_panel">
+                                    <div className="panel_inner">
+                                        <table className="list_table appr">
                                             <thead>
                                                 <tr>
                                                     <th>NO.</th>
@@ -422,21 +422,21 @@ function MyVideos() {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">01</div></td>
+                                                    <td><div className="skeleton_v1">01</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video6.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg grn skeleton_v1">Approved</span></td>
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg grn skeleton_v1">Approved</span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                            <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                            <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                                 data-bs-target="#video_modal">
                                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                     xmlns="http://www.w3.org/2000/svg">
@@ -452,24 +452,24 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">02</div></td>
+                                                    <td><div className="skeleton_v1">02</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video2.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
+                                                        <div className="skeleton_v1">
                                                             <a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a>
                                                         </div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg grn skeleton_v1">Approved</span></td>
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg grn skeleton_v1">Approved</span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                            <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                            <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -486,31 +486,31 @@ function MyVideos() {
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <div class="skeleton_v1">
+                                                        <div className="skeleton_v1">
                                                         03
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video3.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
+                                                        <div className="skeleton_v1">
                                                             <a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a>
                                                         </div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg red skeleton_v1">Rejected<i tabindex="0"
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg red skeleton_v1">Rejected<i tabIndex="0"
                                                                 data-bs-custom-class="white" data-tip=""
                                                                 data-bs-toggle="tooltip"
                                                                 title="Hello from speech bubble!"><img
                                                                     src="images/q.svg" alt=""/></i></span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                            <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                            <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -526,21 +526,21 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">04</div></td>
+                                                    <td><div className="skeleton_v1">04</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video4.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg grn skeleton_v1">Approved</span></td>
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg grn skeleton_v1">Approved</span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                            <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                            <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -556,21 +556,21 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">05</div></td>
+                                                    <td><div className="skeleton_v1">05</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video5.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg grn skeleton_v1">Approved</span></td>
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg grn skeleton_v1">Approved</span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                            <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                            <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                                 data-bs-target="#video_modal">
                                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                     xmlns="http://www.w3.org/2000/svg">
@@ -586,21 +586,21 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">06</div></td>
+                                                    <td><div className="skeleton_v1">06</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video6.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg grn skeleton_v1">Approved</span></td>
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg grn skeleton_v1">Approved</span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                        <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                        <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -616,25 +616,25 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">07</div></td>
+                                                    <td><div className="skeleton_v1">07</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video4.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg red skeleton_v1">Rejected<i tabindex="0"
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg red skeleton_v1">Rejected<i tabIndex="0"
                                                                 data-bs-custom-class="white" data-tip=""
                                                                 data-bs-toggle="tooltip"
                                                                 title="Hello from speech bubble!"><img
                                                                     src="images/q.svg" alt=""/></i></span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                        <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                        <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -650,21 +650,21 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">08</div></td>
+                                                    <td><div className="skeleton_v1">08</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video1.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg grn skeleton_v1">Approved</span></td>
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg grn skeleton_v1">Approved</span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                        <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                        <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -680,21 +680,21 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">09</div></td>
+                                                    <td><div className="skeleton_v1">09</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video2.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg grn skeleton_v1">Approved</span></td>
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg grn skeleton_v1">Approved</span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                            <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                            <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                                 data-bs-target="#video_modal">
                                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                     xmlns="http://www.w3.org/2000/svg">
@@ -710,25 +710,25 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">10</div></td>
+                                                    <td><div className="skeleton_v1">10</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video3.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg red skeleton_v1">Rejected<i tabindex="0"
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg red skeleton_v1">Rejected<i tabIndex="0"
                                                                 data-bs-custom-class="white" data-tip=""
                                                                 data-bs-toggle="tooltip"
                                                                 title="Hello from speech bubble!"><img
                                                                     src="images/q.svg" alt=""/></i></span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                            <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                            <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                                 data-bs-target="#video_modal">
                                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                     xmlns="http://www.w3.org/2000/svg">
@@ -747,9 +747,9 @@ function MyVideos() {
                                         </table>
                                     </div>
                                 </div>
-                                <div class="tab_panel">
-                                    <div class="panel_inner">
-                                        <table class="list_table rec">
+                                <div className="tab_panel">
+                                    <div className="panel_inner">
+                                        <table className="list_table rec">
                                             <thead>
                                                 <tr>
                                                     <th>NO.</th>
@@ -764,21 +764,21 @@ function MyVideos() {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">01</div></td>
+                                                    <td><div className="skeleton_v1">01</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video2.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg grn skeleton_v1">Approved</span></td>
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg grn skeleton_v1">Approved</span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                            <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                            <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                                 data-bs-target="#video_modal">
                                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                     xmlns="http://www.w3.org/2000/svg">
@@ -794,24 +794,24 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">02</div></td>
+                                                    <td><div className="skeleton_v1">02</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video1.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
+                                                        <div className="skeleton_v1">
                                                             <a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a>
                                                         </div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg grn skeleton_v1">Approved</span></td>
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg grn skeleton_v1">Approved</span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                            <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                            <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -828,31 +828,31 @@ function MyVideos() {
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <div class="skeleton_v1">
+                                                        <div className="skeleton_v1">
                                                         03
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video3.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
+                                                        <div className="skeleton_v1">
                                                             <a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a>
                                                         </div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg red skeleton_v1">Rejected<i tabindex="0"
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg red skeleton_v1">Rejected<i tabIndex="0"
                                                                 data-bs-custom-class="white" data-tip=""
                                                                 data-bs-toggle="tooltip"
                                                                 title="Hello from speech bubble!"><img
                                                                     src="images/q.svg" alt=""/></i></span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                            <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                            <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -868,21 +868,21 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">04</div></td>
+                                                    <td><div className="skeleton_v1">04</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video4.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg grn skeleton_v1">Approved</span></td>
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg grn skeleton_v1">Approved</span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                            <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                            <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -898,21 +898,21 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">05</div></td>
+                                                    <td><div className="skeleton_v1">05</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video5.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg grn skeleton_v1">Approved</span></td>
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg grn skeleton_v1">Approved</span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                            <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                            <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                                 data-bs-target="#video_modal">
                                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                     xmlns="http://www.w3.org/2000/svg">
@@ -928,21 +928,21 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">06</div></td>
+                                                    <td><div className="skeleton_v1">06</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video6.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg grn skeleton_v1">Approved</span></td>
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg grn skeleton_v1">Approved</span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                        <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                        <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -958,25 +958,25 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">07</div></td>
+                                                    <td><div className="skeleton_v1">07</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video4.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg red skeleton_v1">Rejected<i tabindex="0"
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg red skeleton_v1">Rejected<i tabIndex="0"
                                                                 data-bs-custom-class="white" data-tip=""
                                                                 data-bs-toggle="tooltip"
                                                                 title="Hello from speech bubble!"><img
                                                                     src="images/q.svg" alt=""/></i></span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                        <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                        <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -992,21 +992,21 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">08</div></td>
+                                                    <td><div className="skeleton_v1">08</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video1.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg grn skeleton_v1">Approved</span></td>
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg grn skeleton_v1">Approved</span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                        <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                        <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1022,21 +1022,21 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">09</div></td>
+                                                    <td><div className="skeleton_v1">09</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video2.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg grn skeleton_v1">Approved</span></td>
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg grn skeleton_v1">Approved</span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                            <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                            <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                                 data-bs-target="#video_modal">
                                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                     xmlns="http://www.w3.org/2000/svg">
@@ -1052,25 +1052,25 @@ function MyVideos() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><div class="skeleton_v1">10</div></td>
+                                                    <td><div className="skeleton_v1">10</div></td>
                                                     <td>
-                                                        <span class="video_inline_img skeleton_v1">
+                                                        <span className="video_inline_img skeleton_v1">
                                                             <img src="images/video3.jpeg" alt="" />
                                                         </span>
                                                     </td>
-                                                    <td><div class="skeleton_v1">Rabbit on fence</div></td>
-                                                    <td><div class="skeleton_v1">John Smith</div></td>
-                                                    <td><div class="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
+                                                    <td><div className="skeleton_v1">Rabbit on fence</div></td>
+                                                    <td><div className="skeleton_v1">John Smith</div></td>
+                                                    <td><div className="skeleton_v1"><a href="mailto:johnsmith@gmail.com">johnsmith@gmail.com</a></div>
                                                     </td>
-                                                    <td><div class="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
-                                                    <td><span class="tg red skeleton_v1">Rejected<i tabindex="0"
+                                                    <td><div className="skeleton_v1">12/12/2021 | 12:55 PM UTC</div></td>
+                                                    <td><span className="tg red skeleton_v1">Rejected<i tabIndex="0"
                                                                 data-bs-custom-class="white" data-tip=""
                                                                 data-bs-toggle="tooltip"
                                                                 title="Hello from speech bubble!"><img
                                                                     src="images/q.svg" alt=""/></i></span></td>
                                                     <td>
-                                                        <div class="skeleton_v1">
-                                                            <a href="#" class="view_ico_btn" data-bs-toggle="modal"
+                                                        <div className="skeleton_v1">
+                                                            <a href="#" className="view_ico_btn" data-bs-toggle="modal"
                                                                 data-bs-target="#video_modal">
                                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                                     xmlns="http://www.w3.org/2000/svg">
@@ -1092,42 +1092,42 @@ function MyVideos() {
                             </div>
                         </div>
 
-                        <div class="view_box grid_view_box grid_view_box_selection">
-                            <div class="all_tab_panel" data-tab-parent="tabgroup1">
-                                <div class="tab_panel active">
-                                    <div class="panel_inner">
-                                        <div class="grid_row">
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                        <div className="view_box grid_view_box grid_view_box_selection">
+                            <div className="all_tab_panel" data-tab-parent="tabgroup1">
+                                <div className="tab_panel active">
+                                    <div className="panel_inner">
+                                        <div className="grid_row">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big1.jpeg" alt="" />
-                                                        <label class="skeleton_v1">101</label>
+                                                        <label className="skeleton_v1">101</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -1140,37 +1140,37 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big2.jpeg" alt="" />
-                                                        <label class="skeleton_v1">102</label>
+                                                        <label className="skeleton_v1">102</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -1183,40 +1183,40 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big3.jpeg" alt="" />
-                                                        <label class="skeleton_v1">103</label>
+                                                        <label className="skeleton_v1">103</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="rd">Rejected<img src="images/q.svg" alt=""
-                                                                        tabindex="0" data-bs-custom-class="white"
+                                                                <p className="rd">Rejected<img src="images/q.svg" alt=""
+                                                                        tabIndex="0" data-bs-custom-class="white"
                                                                         data-tip="" data-bs-toggle="tooltip"
                                                                         title="Hello from speech bubble!"/></p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -1229,37 +1229,37 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big4.jpeg" alt="" />
-                                                        <label class="skeleton_v1">104</label>
+                                                        <label className="skeleton_v1">104</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -1272,37 +1272,37 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big5.jpeg" alt="" />
-                                                        <label class="skeleton_v1">105</label>
+                                                        <label className="skeleton_v1">105</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -1315,37 +1315,37 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big6.jpeg" alt="" />
-                                                        <label class="skeleton_v1">106</label>
+                                                        <label className="skeleton_v1">106</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -1358,37 +1358,37 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big2.jpeg" alt="" />
-                                                        <label class="skeleton_v1">107</label>
+                                                        <label className="skeleton_v1">107</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -1401,37 +1401,37 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big1.jpeg" alt="" />
-                                                        <label class="skeleton_v1">108</label>
+                                                        <label className="skeleton_v1">108</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -1444,40 +1444,40 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big3.jpeg" alt="" />
-                                                        <label class="skeleton_v1">109</label>
+                                                        <label className="skeleton_v1">109</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="rd">Rejected <img src="images/q.svg" alt=""
-                                                                        tabindex="0" data-bs-custom-class="white"
+                                                                <p className="rd">Rejected <img src="images/q.svg" alt=""
+                                                                        tabIndex="0" data-bs-custom-class="white"
                                                                         data-tip="" data-bs-toggle="tooltip"
                                                                         title="Hello from speech bubble!"/></p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -1490,37 +1490,37 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big4.jpeg" alt="" />
-                                                        <label class="skeleton_v1">110</label>
+                                                        <label className="skeleton_v1">110</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -1536,40 +1536,40 @@ function MyVideos() {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab_panel">
-                                    <div class="panel_inner">
-                                        <div class="grid_row">
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                <div className="tab_panel">
+                                    <div className="panel_inner">
+                                        <div className="grid_row">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big4.jpeg" alt="" />
-                                                        <label class="skeleton_v1">101</label>
+                                                        <label className="skeleton_v1">101</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -1582,37 +1582,37 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big6.jpeg" alt="" />
-                                                        <label class="skeleton_v1">102</label>
+                                                        <label className="skeleton_v1">102</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -1625,40 +1625,40 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big1.jpeg" alt="" />
-                                                        <label class="skeleton_v1">103</label>
+                                                        <label className="skeleton_v1">103</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="rd">Rejected<img src="images/q.svg" alt=""
-                                                                        tabindex="0" data-bs-custom-class="white"
+                                                                <p className="rd">Rejected<img src="images/q.svg" alt=""
+                                                                        tabIndex="0" data-bs-custom-class="white"
                                                                         data-tip="" data-bs-toggle="tooltip"
                                                                         title="Hello from speech bubble!"/></p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -1671,37 +1671,37 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big4.jpeg" alt="" />
-                                                        <label class="skeleton_v1">104</label>
+                                                        <label className="skeleton_v1">104</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -1714,37 +1714,37 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big5.jpeg" alt="" />
-                                                        <label class="skeleton_v1">105</label>
+                                                        <label className="skeleton_v1">105</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -1757,37 +1757,37 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big6.jpeg" alt="" />
-                                                        <label class="skeleton_v1">106</label>
+                                                        <label className="skeleton_v1">106</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -1800,37 +1800,37 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big2.jpeg" alt="" />
-                                                        <label class="skeleton_v1">107</label>
+                                                        <label className="skeleton_v1">107</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -1843,37 +1843,37 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big1.jpeg" alt="" />
-                                                        <label class="skeleton_v1">108</label>
+                                                        <label className="skeleton_v1">108</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -1886,40 +1886,40 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big3.jpeg" alt="" />
-                                                        <label class="skeleton_v1">109</label>
+                                                        <label className="skeleton_v1">109</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="rd">Rejected <img src="images/q.svg" alt=""
-                                                                        tabindex="0" data-bs-custom-class="white"
+                                                                <p className="rd">Rejected <img src="images/q.svg" alt=""
+                                                                        tabIndex="0" data-bs-custom-class="white"
                                                                         data-tip="" data-bs-toggle="tooltip"
                                                                         title="Hello from speech bubble!"/></p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -1932,37 +1932,37 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big4.jpeg" alt="" />
-                                                        <label class="skeleton_v1">110</label>
+                                                        <label className="skeleton_v1">110</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -1978,40 +1978,40 @@ function MyVideos() {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab_panel">
-                                    <div class="panel_inner">
-                                        <div class="grid_row">
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                <div className="tab_panel">
+                                    <div className="panel_inner">
+                                        <div className="grid_row">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big6.jpeg" alt="" />
-                                                        <label class="skeleton_v1">101</label>
+                                                        <label className="skeleton_v1">101</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -2024,37 +2024,37 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big1.jpeg" alt="" />
-                                                        <label class="skeleton_v1">102</label>
+                                                        <label className="skeleton_v1">102</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -2067,40 +2067,40 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big5.jpeg" alt="" />
-                                                        <label class="skeleton_v1">103</label>
+                                                        <label className="skeleton_v1">103</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="rd">Rejected<img src="images/q.svg" alt=""
-                                                                        tabindex="0" data-bs-custom-class="white"
+                                                                <p className="rd">Rejected<img src="images/q.svg" alt=""
+                                                                        tabIndex="0" data-bs-custom-class="white"
                                                                         data-tip="" data-bs-toggle="tooltip"
                                                                         title="Hello from speech bubble!"/></p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -2113,37 +2113,37 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big4.jpeg" alt="" />
-                                                        <label class="skeleton_v1">104</label>
+                                                        <label className="skeleton_v1">104</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -2156,37 +2156,37 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big5.jpeg" alt="" />
-                                                        <label class="skeleton_v1">105</label>
+                                                        <label className="skeleton_v1">105</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -2199,37 +2199,37 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big6.jpeg" alt="" />
-                                                        <label class="skeleton_v1">106</label>
+                                                        <label className="skeleton_v1">106</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -2242,37 +2242,37 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big2.jpeg" alt="" />
-                                                        <label class="skeleton_v1">107</label>
+                                                        <label className="skeleton_v1">107</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -2285,37 +2285,37 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big1.jpeg" alt="" />
-                                                        <label class="skeleton_v1">108</label>
+                                                        <label className="skeleton_v1">108</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -2328,40 +2328,40 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big3.jpeg" alt="" />
-                                                        <label class="skeleton_v1">109</label>
+                                                        <label className="skeleton_v1">109</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="rd">Rejected <img src="images/q.svg" alt=""
-                                                                        tabindex="0" data-bs-custom-class="white"
+                                                                <p className="rd">Rejected <img src="images/q.svg" alt=""
+                                                                        tabIndex="0" data-bs-custom-class="white"
                                                                         data-tip="" data-bs-toggle="tooltip"
                                                                         title="Hello from speech bubble!"/></p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -2374,37 +2374,37 @@ function MyVideos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="grid_item">
-                                                <div class="grid_item_inner">
-                                                    <figure class="grid_imgs skeleton_v1">
+                                            <div className="grid_item">
+                                                <div className="grid_item_inner">
+                                                    <figure className="grid_imgs skeleton_v1">
                                                         <img src="images/video_big4.jpeg" alt="" />
-                                                        <label class="skeleton_v1">110</label>
+                                                        <label className="skeleton_v1">110</label>
                                                     </figure>
-                                                    <div class="grid_content">
-                                                        <h5 class="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
+                                                    <div className="grid_content">
+                                                        <h5 className="skeleton_v1"><a href="#">Rabbit on fence</a></h5>
                                                         <ul>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/usr.svg" alt="" /></i>
                                                                 <label>Client Name:</label>
                                                                 <p>Jhon Smith</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/eml.svg" alt="" /></i>
                                                                 <label>Email:</label>
                                                                 <p>johnsmith@gmail.com</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/dt.svg" alt="" /></i>
                                                                 <label>Submission Date:</label>
                                                                 <p>12/12/2021 | 12:55 PM UTC</p>
                                                             </li>
-                                                            <li class="skeleton_v1">
+                                                            <li className="skeleton_v1">
                                                                 <i><img src="images/stc.svg" alt="" /></i>
                                                                 <label>Status:</label>
-                                                                <p class="grn">Approved</p>
+                                                                <p className="grn">Approved</p>
                                                             </li>
                                                         </ul>
-                                                        <a href="#" class="view_btns skeleton_v1" data-bs-toggle="modal"
+                                                        <a href="#" className="view_btns skeleton_v1" data-bs-toggle="modal"
                                                             data-bs-target="#video_modal">
                                                             View Details
                                                             <svg width="22" height="12" viewBox="0 0 22 12" fill="none"
@@ -2424,14 +2424,14 @@ function MyVideos() {
                         </div>
 
 
-                        <div class="pagination_panel">
-                            <ul class="pagination">
+                        <div className="pagination_panel">
+                            <ul className="pagination">
                                 <li>
                                     <a href="#">
                                         <svg width="5" height="9" viewBox="0 0 5 9" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M4 1L1 4.5L4 8" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M4 1L1 4.5L4 8" stroke="currentColor" strokeWidth="2"
+                                                strokeLinecap="round" strokeLinejoin="round" />
                                         </svg>
                                         Previous
                                     </a>
@@ -2456,8 +2456,8 @@ function MyVideos() {
                                         Next
                                         <svg width="5" height="9" viewBox="0 0 5 9" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1 8L4 4.5L1 1" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M1 8L4 4.5L1 1" stroke="currentColor" strokeWidth="2"
+                                                strokeLinecap="round" strokeLinejoin="round" />
                                         </svg>
                                     </a>
                                 </li>
