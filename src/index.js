@@ -1,16 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { QueryClientProvider } from "react-query";
+import { queryClient } from "./lib/queryClient";
+import { AuthProvider } from "react-auth-kit";
+import BroadcastProvider from "./context/BroadcastContext";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
 
+import reportWebVitals from "./reportWebVitals";
 
-import App from './App';
-
-import reportWebVitals from './reportWebVitals';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider
+        authType={"cookie"}
+        authName={"_partner"}
+        cookieDomain={window.location.hostname}
+        cookieSecure={window.location.protocol === "https:"}
+      >
+        <BroadcastProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </BroadcastProvider>
+      </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 
