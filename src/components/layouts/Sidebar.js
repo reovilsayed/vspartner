@@ -1,11 +1,13 @@
 import React from 'react'
 import { Link, Location, useLocation } from 'react-router-dom'
+import { useSignOut } from 'react-auth-kit';
 
 function Sidebar() {
     const location = useLocation();
     const isCurrentRoute = (pathName) => {
         return pathName === location.pathname? 'current-menu-item': '';
     };
+    const SignOut = useSignOut();
   return (
     <>
        <div className="navigation" id="navigation">
@@ -66,7 +68,10 @@ function Sidebar() {
                                 </Link>
                             </li>
                             <li>
-                                <a href="#">
+                                <a onClick={(e) => {
+                                    e.preventDefault();
+                                    SignOut();
+                                }}>
                                     <i>
                                         <img src="images/nav7.png" alt="" />
                                         <img src="images/nav7_hov.png" alt="" />
