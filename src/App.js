@@ -1,5 +1,4 @@
 import logo from "./logo.svg";
-// import './assets/bootstrap.min.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/nice-select2.css";
 import "./App.css";
@@ -13,72 +12,89 @@ import Notifications from "./routes/Notifications";
 import Setting from "./routes/Setting";
 import Login from "./routes/Login";
 import { AuthProvider, RequireAuth } from "react-auth-kit";
+import React, { createContext, Suspense, useState } from "react";
+import { Toaster } from "react-hot-toast";
+import "./App.css";
+
+export const VideoContext = createContext();
 
 function App() {
+  const [modal, setModal] = useState(false);
+
+  const [videoDetails, setVideoDetails] = useState({});
+  const toggle = (video) => {
+    if (video) {
+      setVideoDetails({ ...video });
+    }
+    setModal(!modal);
+  };
   return (
     <div className="App">
-      <AuthProvider
-        authType={"cookie"}
-        authName={"_partner_auth"}
-        cookieDomain={window.location.hostname}
-        cookieSecure={window.location.protocol === "https:"}
-      >
-        <BrowserRouter>
-          <Routes>
-            <Route
-              path="/"
-              element={
+      <VideoContext.Provider value={{ videoDetails, setVideoDetails, toggle }}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <RequireAuth loginPath="/login">
                 <DefaultLayout>
                   <Home />
                 </DefaultLayout>
-              }
-            />
-            <Route
-              path="/my-videos"
-              element={
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/my-videos"
+            element={
+              <RequireAuth loginPath="/login">
                 <DefaultLayout>
                   <MyVideos />
                 </DefaultLayout>
-              }
-            />
-            <Route
-              path="/my-earnings"
-              element={
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/my-earnings"
+            element={
+              <RequireAuth loginPath="/login">
                 <DefaultLayout>
                   <MyEearning />
                 </DefaultLayout>
-              }
-            />
-            <Route
-              path="/my-messages"
-              element={
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/my-messages"
+            element={
+              <RequireAuth loginPath="/login">
                 <DefaultLayout>
                   <MyMessages />
                 </DefaultLayout>
-              }
-            />
-            <Route
-              path="/notification"
-              element={
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/notification"
+            element={
+              <RequireAuth loginPath="/login">
                 <DefaultLayout>
                   <Notifications />
                 </DefaultLayout>
-              }
-            />
-            <Route
-              path="/setting"
-              element={
-                <RequireAuth loginPath="/login">
-                  <DefaultLayout>
-                    <Setting />
-                  </DefaultLayout>
-                </RequireAuth>
-              }
-            />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-        </BrowserRouter>
-      </AuthProvider>
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/setting"
+            element={
+              <RequireAuth loginPath="/login">
+                <DefaultLayout>
+                  <Setting />
+                </DefaultLayout>
+              </RequireAuth>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </VideoContext.Provider>
     </div>
   );
 }
