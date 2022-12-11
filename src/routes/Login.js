@@ -3,16 +3,45 @@ import "../App.css";
 import { useSignIn } from "react-auth-kit";
 import { useState } from "react";
 import requests from "../services/httpService";
+import { Navigate, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Login() {
-    const baseURL = process.env.REACT_APP_API_BASE;
+  const baseURL = process.env.REACT_APP_API_BASE;
   const [creds, setCreds] = useState({
     email: "",
     password: "",
-    device_name: 'test',
+    device_name: "test",
     role_id: "3",
   });
   const signIn = useSignIn();
+  const navigate = useNavigate();
+  const onSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post(`${baseURL}/login`, creds)
+      .then((res) => {
+        if (res.status === 200) {
+          //console.log(res.data)
+          if (
+            signIn({
+              token: res.data.token,
+              expiresIn: 60 * 24,
+              tokenType: "Bearer",
+              authState: res.data.user,
+            })
+          ) {
+            navigate("/");
+          } else {
+            //Throw error
+          }
+        }
+      })
+      .catch((err) => {
+        const message = err.response.data.message;
+        console.log(message);
+      });
+  };
   return (
     <div classNameName="auth_body">
       <div className="wrapper_scroll_cmn">
@@ -107,31 +136,7 @@ function Login() {
                       </div>
 
                       <div className="col-lg-12 login_pages_contents_inr_form_col">
-                        <button
-                          type="submit"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            requests
-                              .post(`${baseURL}/api-login`, creds)
-                              .then((res) => {
-                                console.log(res);
-                                if (
-                                  signIn({
-                                    token: res.token,
-                                    expiresIn: 60 * 24,
-                                    tokenType: "Bearer",
-                                  })
-                                ) {
-                                  console.log("loggedin");
-                                } else {
-                                  //Throw error
-                                }
-                              })
-                              .catch((error) => {
-                                console.log(error);
-                              });
-                          }}
-                        >
+                        <button type="submit" onClick={onSubmit}>
                           Sign in
                         </button>
                       </div>
