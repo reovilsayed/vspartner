@@ -46,12 +46,12 @@ function MyVideos() {
       pagePrefetchKey: ["videos", status, search, endDate, currentPage + 1],
     }
   );
-  /* useBroadcast('video', refetch);
+  useBroadcast('video', refetch);
 	useEffect(() => {
 		if (searchParams.get('search')) {
 			setSearch(searchParams.get('search'));
 		}
-	}, [searchParams]); */
+	}, [searchParams]);
   return (
     <>
       <div className="dashboard_content">
