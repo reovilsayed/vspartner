@@ -4,8 +4,8 @@ import "./assets/nice-select2.css";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DefaultLayout from "./components/layouts/DefaultLayout";
-import Home from "./routes/Home";
-import MyVideos from "./routes/MyVideos";
+
+
 import MyEearning from "./routes/MyEearning";
 import MyMessages from "./routes/MyMessages";
 import Notifications from "./routes/Notifications";
@@ -15,6 +15,9 @@ import { AuthProvider, RequireAuth } from "react-auth-kit";
 import React, { createContext, Suspense, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import "./App.css";
+import Videos from "./Pages/Videos/Videos";
+import Earnings from "./Pages/Earnings/Earnings";
+
 
 export const VideoContext = createContext();
 
@@ -37,7 +40,7 @@ function App() {
             element={
               <RequireAuth loginPath="/login">
                 <DefaultLayout>
-                  <Home />
+                  <Earnings />
                 </DefaultLayout>
               </RequireAuth>
             }
@@ -47,7 +50,7 @@ function App() {
             element={
               <RequireAuth loginPath="/login">
                 <DefaultLayout>
-                  <MyVideos />
+                  <Videos />
                 </DefaultLayout>
               </RequireAuth>
             }
