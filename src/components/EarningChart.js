@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import ReactApexChart from 'react-apexcharts'
 
-function EarningChart() {
+function EarningChart({ chartData }) {
     const [state,setState]=useState({
         series: [{
             name: 'series1',
-            data: [31, 40, 28, 51, 42, 109, 100]
+            data: chartData? chartData: [31, 40, 28, 51, 42, 109, 100]
           }, ],
           options: {
+            colors: ['#72efc5'],
             chart: {
               height: 350,
               type: 'area'
