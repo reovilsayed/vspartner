@@ -3,7 +3,7 @@ import React from 'react';
 const GridSkeleton = ({ count = 10 }) => {
     const ROWS = [];
     for (let i = 0; i < count; i++) {
-        ROWS.push(<div className="grid_item">
+        ROWS.push(<div key={i} className="grid_item">
             <div className="grid_item_inner">
                 <figure className="grid_imgs skeleton_v1">
                     <img src="images/video_big1.jpeg" alt="" />

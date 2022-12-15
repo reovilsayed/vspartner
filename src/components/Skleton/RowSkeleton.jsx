@@ -3,7 +3,7 @@ import React from 'react';
 const RowSkeleton = ({count = 10}) => {
     const ROWS = [];
     for (let i = 0; i < count; i++) {
-        ROWS.push(<tr>
+        ROWS.push(<tr key={i}>
             <td>
                 <div className="skeleton_v1">01</div>
             </td>
