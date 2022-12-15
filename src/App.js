@@ -4,8 +4,9 @@ import "./assets/nice-select2.css";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DefaultLayout from "./components/layouts/DefaultLayout";
+import VideoDetailsModal from './components/videos/VideoDetailsModal';
 
-
+import Home from "./routes/Home"
 import MyEearning from "./routes/MyEearning";
 import MyMessages from "./routes/MyMessages";
 import Notifications from "./routes/Notifications";
@@ -40,7 +41,7 @@ function App() {
             element={
               <RequireAuth loginPath="/login">
                 <DefaultLayout>
-                  <Earnings />
+                  <Home />
                 </DefaultLayout>
               </RequireAuth>
             }
@@ -97,6 +98,7 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
         </Routes>
+			{modal && <VideoDetailsModal toggle={toggle} videoDetails={videoDetails} />}
       </VideoContext.Provider>
     </div>
   );
