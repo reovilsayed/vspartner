@@ -1,12 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import useBroadcast from "../hooks/useBroadcast";
-import useFetch from "../hooks/useFetch";
-import Pagination from "../components/Pagination";
-import DateRangePicker from "../components/DateRangePicker";
-
-import VideoCard from "../components/VideoCard";
-import VideoTable from "../components/VideoTable";
+import VideoContext from '../App';
 import { format } from "date-fns/esm";
 import { useAuth, useAuthUser } from "react-auth-kit";
 import useFetchVideos from "../hooks/useFetchVideos";
@@ -21,6 +16,7 @@ function MyVideos() {
   const [isListView, setIsListView] = useState(true);
   const [status, setStatus] = useState(null);
   const [search, setSearch] = useState();
+  const { videoDetails, setVideoDetails, toggle } = useContext(VideoContext);
 
   const [activeTab, setActiveTab] = useState("All");
 
@@ -63,17 +59,17 @@ function MyVideos() {
                 data-tab-target="tabgroup1"
               >
                 <li>
-                  <a href="#" className="active" id="nav_tab_selecton_all">
+                  <a className="active" id="nav_tab_selecton_all">
                     All Videos
                   </a>
                 </li>
                 <li>
-                  <a href="#" id="nav_tab_selecton_appr">
+                  <a id="nav_tab_selecton_appr">
                     Approved
                   </a>
                 </li>
                 <li>
-                  <a href="#" id="nav_tab_selecton_rej">
+                  <a id="nav_tab_selecton_rej">
                     Rejected
                   </a>
                 </li>
@@ -279,7 +275,9 @@ function MyVideos() {
                                 <td>
                                   <div className="">
                                     <a
-                                      href="#"
+                                      onClick={() => {
+                                        toggle(video);
+                                      }}
                                       className="view_ico_btn"
                                       data-bs-toggle="modal"
                                       data-bs-target="#video_modal"
