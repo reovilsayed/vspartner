@@ -1,7 +1,7 @@
 import React from 'react';
 import RowSkeleton from '../../../components/Skleton/RowSkeleton';
 import getImageURL from '../../../lib/queryClient';
-const List = ({ videos, isLoading, active }) => {
+const List = ({ videos, isLoading, active, toggle }) => {
     return (
         <div className={`view_box list_view_box ${active?'active_view':''}`}>
             <div className="all_tab_panel" data-tab-parent="tabgroup1">
@@ -59,10 +59,10 @@ const List = ({ videos, isLoading, active }) => {
                                                 <td>
                                                     <div className="">
                                                         <a
-                                                            href="#"
+                                                            onClick={() => {
+                                                                toggle(video);
+                                                            }}
                                                             className="view_ico_btn"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#video_modal"
                                                         >
                                                             <svg
                                                                 width={32}
