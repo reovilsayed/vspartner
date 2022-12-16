@@ -73,7 +73,6 @@ function VideoPlayer(props) {
       player.hlsQualitySelector({ displayCurrentQuality: true });
     }
   }, [player]);
-  console.log("hit");
   return (
     <video
       ref={videoRef}

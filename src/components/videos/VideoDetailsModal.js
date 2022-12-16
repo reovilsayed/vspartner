@@ -61,7 +61,7 @@ const VideoDetailsModal = ({ toggle }) => {
 					<div className='video_detail_area'>
 						<div className='video_detail_left'>
 							<div className='item_detail_col_item_img'>
-								<VideoPlayer src={`${process.env.REACT_APP_VIDEO_BASE}${video?.converted_url}`} poster={getImageURL(thumbnail)} />
+								{/* <VideoPlayer src={`${process.env.REACT_APP_VIDEO_BASE}${video?.converted_url? video.converted_url: ''}`} poster={getImageURL(thumbnail)} /> */}
 							</div>
 							<ul className='btn_option'>
 								<li>
@@ -158,7 +158,7 @@ const VideoDetailsModal = ({ toggle }) => {
 											<h2>On {video?.birthdate}</h2>
 											<h4>Signature:</h4>
 											<div className='video_info_detail_col_image'>
-												<img src={getImageURL(video?.signature)} style={{ width: '70px' }} />
+												<img src={getImageURL(video?.signature? video.signature: '')} style={{ width: '70px' }} />
 											</div>
 										</div>
 									</div>
