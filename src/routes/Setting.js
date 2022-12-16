@@ -1,35 +1,37 @@
 import userEvent from "@testing-library/user-event";
-import axios from "axios";
-import React, { useState } from "react";
+import useFetch from "../hooks/useFetch";
+import React, { useEffect, useState } from "react";
 import { useAuthHeader, useAuthUser } from "react-auth-kit";
 import getImageURL from "../lib/queryClient";
 import requests from "../services/httpService";
 
 function Setting() {
-  const authUser = useAuthUser();
   const authHeader = useAuthHeader();
-  const user = authUser();
+  const {data: user, refetch, isError, isSuccess, isLoading} = useFetch(['user-prof'], `/user`, {}, {token: authHeader()});
+  useEffect(() => {
+    refetch();
+  }, [user, isError, isSuccess, isLoading])
   const [nameField, setnameField] = useState(false);
   const [emailField, setEmailField] = useState(false);
   const [phoneField, setphoneField] = useState(false);
   const [countriField, setcountriField] = useState(false);
   const [passField, setpassField] = useState(false);
-
+  console.log(user);
   const baseURL = process.env.REACT_APP_API_BASE;
   const updateProfile = (formData) => {
     if (formData) {
       requests.post(`update-profile`, formData, {token: authHeader()});
-      
+      refetch();
     }
   };
 
   const [formData, setFormData] = useState({
-    name: user.name || '',
-    last_name: user.last_name || '',
-    email: user.email || '',
-    phone: user.phone || '',
-    country: user.country || '',
-    password: user.password || '',
+    name: user?.name? user.name : '',
+    last_name: user?.last_name? user.last_name : '',
+    email: user?.email? user.email : '',
+    phone: user?.phone? user.phone : '',
+    country: user?.country? user.country : '',
+    password: user?.password? user.password : '',
   });
 
   function handalNameField(e) {
@@ -108,7 +110,7 @@ console.log(formData);
                       <div className="prf_lft">
                         <div className="prf_box">
                           <div className="prf" data-profile-image>
-                            <img src={getImageURL(user.avater)} alt="" />
+                            <img src={getImageURL(user?.avater? user.avater: '')} alt="" />
                             <span className="prf_pic_change">
                               <input type="file" accept="image/*" />
                               <svg
@@ -127,15 +129,15 @@ console.log(formData);
                           </div>
                           <div className="prf_rt">
                             <h4>
-                              {user.name} {user.last_name}
+                              {user?.name? user.name: ''} {user?.last_name? user.last_name: ''}
                             </h4>
                             <p>
                               <img src="images/pr_msg.png" alt="" />
-                              <a href={`mailto:${user.email}`}>{user.email}</a>
+                              <a href={`mailto:${user?.email? user.email: ''}`}>{user?.email? user.email: ''}</a>
                             </p>
                             <p>
                               <img src="images/pr_cal.png" alt="" />
-                              joined {user.joined_at}
+                              joined {user?.joined_at? user.joined_at: ''}
                             </p>
                           </div>
                         </div>
