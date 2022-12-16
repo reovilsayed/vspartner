@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useReducer, useState } from 'react'
+import { useAuthUser } from 'react-auth-kit';
+import getImageURL from '../../lib/queryClient';
 import Sidebar from './Sidebar'
 
 function DefaultLayout({children}) {
@@ -7,6 +9,8 @@ function DefaultLayout({children}) {
         e.preventDefault()
         setNotification(!notification);
     }
+    const authUser = useAuthUser();
+    const user = authUser();
   return (
 <>
 <div className="dashboard_header">
@@ -86,10 +90,10 @@ function DefaultLayout({children}) {
                 </div>
 
                 <div className="admin_panel panel_inline">
-                    <span>jhon morrison</span>
+                    <span>{user.name} {user.last_name}</span>
                     <span className="nav_avatar">
                         <a href="#">
-                            <img src="images/avatar.png" alt=""/>
+                            <img src={getImageURL(user.avater)} alt=""/>
                         </a>
                     </span>
                 </div>
