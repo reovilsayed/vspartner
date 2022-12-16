@@ -1,7 +1,14 @@
 import React from 'react'
 import EarningChart from '../components/EarningChart'
+import useBroadcast from '../hooks/useBroadcast';
+import useFetch from '../hooks/useFetch';
 
 function MyEearning() {
+    const { data: earningCount,refetch } = useFetch(['earning_counts'], `/earning-count`);
+    const { data: earningReport,refetch: refetchReport} = useFetch(['earning_reports_by_month'], `/earning-report-by-month`);
+	useBroadcast('video', refetch);
+    console.log("h");
+    console.log(earningReport);
   return (
     <>
     <div className="dashboard_content dashboard_content_earning">
@@ -30,7 +37,7 @@ function MyEearning() {
                                                 <div className="vr_item grn">
                                                     <i><img src="images/wlt.png" alt="" /></i>
                                                     <h3>My Earnings</h3>
-                                                    <label>$3250</label>
+                                                    <label>${earningCount?.total_earning? earningCount.total_earning: ''}</label>
                                                 </div>
                                                 <div className="vr_item grn">
                                                     <i><img src="images/chks.png" alt="" /></i>
