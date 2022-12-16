@@ -1,8 +1,14 @@
 import React from 'react'
 import EarningChart from '../components/EarningChart'
 import SubmissionChart from '../components/SubmissionChart'
+import useFetch from '../hooks/useFetch';
 
 function Home() {
+    const currYear = new Date().getFullYear();
+    const currMonth = new Date().getMonth();
+	const { data: earningCount,refetch: refetchEarningCount } = useFetch(['earning_counts'], `/earning-count`);
+	//const { data: graphData,refetch: refetchGraphData } = useFetch(['graph'], `/graph/${currYear}/${currMonth}`);
+    const { data: graphData,refetch: refetchGraphData } = useFetch(['graph'], `/graph/${currYear}/2`);
   return (
         <div className="dashboard_content">
                     <div className="dashboard_content_inner">
@@ -45,12 +51,12 @@ function Home() {
                                         <div className="vr_item grn">
                                             <i><img src="images/wlt.png" alt="" /></i>
                                             <h3>My Earnings</h3>
-                                            <label>$3250</label>
+                                            <label>${earningCount? earningCount.total_earning: ''}</label>
                                         </div>
                                         <div className="vr_item grn">
                                             <i><img src="images/chks.png" alt="" /></i>
                                             <h3>Approved Submissions</h3>
-                                            <label>150</label>
+                                            <label>{graphData? graphData[0]?.accepted: ''}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -108,17 +114,17 @@ function Home() {
                                         <div className="vr_item">
                                             <i><img src="images/chks.png" alt="" /></i>
                                             <h3>Approved Submissions</h3>
-                                            <label>130</label>
+                                            <label>{graphData? graphData[0]? graphData[0].accepted: '': ''}</label>
                                         </div>
                                         <div className="vr_item">
                                             <i><img src="images/clos.png" alt="" /></i>
                                             <h3>Rejected Submissions</h3>
-                                            <label>150</label>
+                                            <label>{graphData? graphData[0]? graphData[0].rejected: '': ''}</label>
                                         </div>
                                         <div className="vr_item">
                                             <i><img src="images/infs.png" alt="" /></i>
                                             <h3>Pending Submissions</h3>
-                                            <label>150</label>
+                                            <label>{graphData? graphData[0]? graphData[0].pending: '': ''}</label>
                                         </div>
                                     </div>
                                 </div>
