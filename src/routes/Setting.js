@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useAuthHeader, useAuthUser } from "react-auth-kit";
 import getImageURL from "../lib/queryClient";
+import requests from "../services/httpService";
 
 function Setting() {
   const authUser = useAuthUser();
@@ -17,18 +18,8 @@ function Setting() {
   const baseURL = process.env.REACT_APP_API_BASE;
   const updateProfile = (formData) => {
     if (formData) {
-
-      axios
-        .post(`${baseURL}/update-profile`, formData, {headers: {Authorization: authHeader()}})
-        .then((res) => {
-          if (res.status === 200) {
-            console.log("Update Successful");
-          }
-        })
-        .catch((err) => {
-          const message = err.response.data.message;
-          console.log(message);
-        });
+      requests.post(`update-profile`, formData, {token: authHeader()});
+      
     }
   };
 
@@ -163,7 +154,7 @@ console.log(formData);
                               ) : (
                                 <input
                                   type="text"
-                                  value={formData.name}
+                                  value={`${formData.name} ${formData.last_name}`}
                                   placeholder="Name"
                                   disabled
                                   className="disabled data-input"
@@ -1366,7 +1357,7 @@ console.log(formData);
                                 <input
                                   type="password"
                                   value={formData.password}
-                                  placeholder="Password"
+                                  placeholder="********"
                                   disabled
                                   className="disabled data-input"
                                 />
