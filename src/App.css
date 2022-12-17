@@ -4943,7 +4943,8 @@ select::-ms-expand {
 .skeleton_v1 img,
 .skeleton_v1 h5,
 .skeleton_v1 label,
-.skeleton_v1 p {
+.skeleton_v1 p,
+.skeleton_v1 td {
     opacity: 0;
     color: transparent;
     user-select: none;
