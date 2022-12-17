@@ -23,7 +23,7 @@ function MyMessages() {
     ".InquiryDeleted",
   ]);
   const [inquiry, setInquiry] = useState({ to_user_id: 1, role: "admin" });
-  const authHeader = useAuthHeader();
+
   const handleFormSubmit = () => {
     requests.post(`inquiry-create`, inquiry, { token: authHeader() });
     notify();

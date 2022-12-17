@@ -2,13 +2,14 @@ import logo from "./logo.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/nice-select2.css";
 import "./App.css";
+import "./Override.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DefaultLayout from "./components/layouts/DefaultLayout";
 import VideoDetailsModal from './components/videos/VideoDetailsModal';
 
 import Home from "./routes/Home"
 import MyEearning from "./routes/MyEearning";
-import MyMessages from "./routes/MyMessages";
+
 import Notifications from "./routes/Notifications";
 import Setting from "./routes/Setting";
 import Login from "./routes/Login";
@@ -18,6 +19,8 @@ import { Toaster } from "react-hot-toast";
 import "./App.css";
 import Videos from "./Pages/Videos/Videos";
 import Earnings from "./Pages/Earnings/Earnings";
+import Messages from "./Pages/Messages/Messages";
+import VideoModal from "./components/videos/VideoModal";
 
 
 export const VideoContext = createContext();
@@ -71,7 +74,7 @@ function App() {
             element={
               <RequireAuth loginPath="/login">
                 <DefaultLayout>
-                  <MyMessages />
+                  <Messages />
                 </DefaultLayout>
               </RequireAuth>
             }
@@ -98,7 +101,8 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
         </Routes>
-			{modal && <VideoDetailsModal toggle={toggle} videoDetails={videoDetails} />}
+        <VideoModal show={modal} toggle={toggle} videoDetails={videoDetails} />
+        {/* {modal && <VideoDetailsModal toggle={toggle} videoDetails={videoDetails} />} */}
       </VideoContext.Provider>
     </div>
   );
