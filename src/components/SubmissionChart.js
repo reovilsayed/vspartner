@@ -14,15 +14,19 @@ function SubmissionChart() {
             data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
           }],
           options: {
+            colors:['#3b92fe', '#90c1e7', 'rgb(209, 227, 241)'],
             chart: {
               type: 'bar',
-              height: 350
+              height: 350,
+              redrawOnParentResize: true,
+              redrawOnWindowResize: true,
             },
             plotOptions: {
               bar: {
                 horizontal: false,
                 columnWidth: '55%',
-                endingShape: 'rounded'
+                endingShape: 'rounded',
+                borderRadius: 12,
               },
             },
             dataLabels: {
@@ -38,7 +42,13 @@ function SubmissionChart() {
             },
             yaxis: {
               title: {
-                text: '$ (thousands)'
+                text: 'per Month',
+                style: {
+                  color: "#525050",
+                  fontSize: '20px',
+                  fontFamily: 'Cabin, sans-serif',
+                  fontWeight: 600,
+              }
               }
             },
             fill: {

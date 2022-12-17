@@ -2,6 +2,7 @@ import React from 'react'
 import EarningChart from '../components/EarningChart'
 import SubmissionChart from '../components/SubmissionChart'
 import useFetch from '../hooks/useFetch';
+import "../App.css";
 
 function Home() {
     const currYear = new Date().getFullYear();
@@ -30,7 +31,7 @@ function Home() {
                                         </div>
                                     </div>
                                     <div className="dash_body">
-                                        <div id="chart0" className="chart chart0">
+                                        <div id="chart0" className="chart chart0" style={{ minHeight:'240px' }}>
                                         <EarningChart/>
                                         </div>
                                     </div>

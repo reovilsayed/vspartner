@@ -9,6 +9,7 @@ function MyEearning() {
 	const { data: earningCount,refetch: refetchEarningCount } = useFetch(['earning_counts'], `/earning-count`);
 	//const { data: graphData,refetch: refetchGraphData } = useFetch(['graph'], `/graph/${currYear}/${currMonth}`);
     const { data: graphData,refetch: refetchGraphData } = useFetch(['graph'], `/graph/${currYear}/2`);
+
   return (
     <>
     <div className="dashboard_content dashboard_content_earning">
@@ -37,12 +38,12 @@ function MyEearning() {
                                                 <div className="vr_item grn">
                                                     <i><img src="images/wlt.png" alt="" /></i>
                                                     <h3>My Earnings</h3>
-                                                    <label>${earningCount.total_earning}</label>
+                                                    <label>${earningCount?.total_earning || 0}</label>
                                                 </div>
                                                 <div className="vr_item grn">
                                                     <i><img src="images/chks.png" alt="" /></i>
                                                     <h3>Approved Submissions</h3>
-                                                    <label>{graphData[0].accepted}</label>
+                                                    {/* <label>{graphData[0].accepted}</label> */}
                                                 </div>
                                             </div>
                                         </div>
