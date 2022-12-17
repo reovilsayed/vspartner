@@ -1,5 +1,5 @@
 import axios from "axios";
-import { format, sub } from "date-fns";
+import { format, getDate, sub } from "date-fns";
 import { getTime } from "date-fns/esm";
 import React, { useEffect, useState } from "react";
 import { useAuthHeader } from "react-auth-kit";
@@ -14,8 +14,13 @@ function Notifications() {
   const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState({});
   const [filtersArray, setFiltersArray] = useState("");
+  const noteTypesId = [5, 6, 7, 8, 13, 14, 16, 19, 20, 23, 24];
 
-  const { data, refetch } = useFetch(
+  const {
+    data,
+    refetch,
+    isLoading: notificationsIsLoading,
+  } = useFetch(
     ["notifications", filtersArray, currentPage, search],
     `/notifications?page=${currentPage}`,
     {
@@ -112,115 +117,103 @@ function Notifications() {
               <div className="box_model box_model_notification">
                 <div className="per_day_notif">
                   <ul className="notify_list">
-                    {data?.total > 0 ? (
-                      <div className="notification_body_content">
-                        {Object.keys(groupedData)?.map((notificationGroup) => (
+                    <div className="notification_body_content">
+                      {notificationsIsLoading ? (
+                        <>
+                          <div class="skeleton line-header">
+                            <h5>
+                              <span></span>
+                            </h5>
+                          </div>
+                          <ul class="notify_list">
+                            {[0, 0, 0, 0, 0].map((notification) => {
+                              return (
+                                <li>
+                                  <div class="nof_ico">
+                                    <i class="skeleton">
+                                      <img src="images/rocket.svg" alt="" />
+                                    </i>
+                                  </div>
+                                  <p class="skeleton">
+                                    Your video submission (<a href="#">VSID</a>{" "}
+                                    1523) has been approved.
+                                  </p>
+                                  <span class="skeleton nof_time">9.38 pm</span>
+                                  <span class="nt_close" data-notify-close>
+                                    <div class="skeleton">
+                                      <svg
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 16 16"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <path
+                                          fill-rule="evenodd"
+                                          clip-rule="evenodd"
+                                          d="M0.390524 0.390524C0.911223 -0.130175 1.75544 -0.130175 2.27614 0.390524L8 6.11438L13.7239 0.390524C14.2446 -0.130175 15.0888 -0.130175 15.6095 0.390524C16.1302 0.911223 16.1302 1.75544 15.6095 2.27614L9.88562 8L15.6095 13.7239C16.1302 14.2446 16.1302 15.0888 15.6095 15.6095C15.0888 16.1302 14.2446 16.1302 13.7239 15.6095L8 9.88562L2.27614 15.6095C1.75544 16.1302 0.911223 16.1302 0.390524 15.6095C-0.130175 15.0888 -0.130175 14.2446 0.390524 13.7239L6.11438 8L0.390524 2.27614C-0.130175 1.75544 -0.130175 0.911223 0.390524 0.390524Z"
+                                          fill="currentColor"
+                                        />
+                                      </svg>
+                                    </div>
+                                  </span>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </>
+                      ) : (
+                        Object.keys(groupedData)?.map((notificationGroup) => (
                           <React.Fragment key={notificationGroup}>
-                            <h2>{notificationGroup}</h2>
-                            <div
-                              className={`mobile_filter_btn ${
-                                isFilter ? "active" : ""
-                              }`}
-                              onClick={() => setIsFilter(!isFilter)}
-                            >
-                              Filter
+                            <div class="line-header">
+                              <h5>
+                                <span>{notificationGroup}</span>
+                              </h5>
                             </div>
-                            {groupedData?.[notificationGroup]?.map(
-                              (notification) =>
-                                notification?.video_id ? (
-                                  <a
-                                    onClick={() =>
-                                      setEditModal({
-                                        isOpen: true,
-                                        data: notification,
-                                      })
-                                    }
-                                    href="javascript:void(0)"
-                                    className="noti_body_content_col video_notification"
-                                    data-toggle="modal"
-                                    data-target="#video_notify_popup"
-                                  >
-                                    <div className="noti_body_content_col_image">
-                                      <img
-                                        src={getImageURL(
-                                          notification?.video?.thumbnail
-                                        )}
-                                        alt=""
-                                      />
-                                    </div>
-                                    <div className="noti_body_content_col_content">
-                                      <h3>
-                                        Video ID:{" "}
-                                        <strong>{notification.video_id}</strong>
-                                      </h3>
-                                      <h4>{notification.title}...</h4>
-                                    </div>
-                                    <p>
-                                      From:{" "}
-                                      {notification.user?.name +
-                                        " " +
-                                        notification.user.last_name}
-                                      <br />
-                                      {format(
-                                        new Date(notification.created_at),
-                                        "hh:mm a"
-                                      )}
-                                    </p>
-                                  </a>
-                                ) : (
-                                  <a
-                                    key={notification.id}
-                                    href="javascript:void(0)"
-                                    onClick={() =>
-                                      setGeneralModal({
-                                        isOpen: true,
-                                        data: notification,
-                                      })
-                                    }
-                                    className="noti_body_content_col"
-                                    data-toggle="modal_general"
-                                    data-target="#notify_general_popup"
-                                  >
-                                    <div className="noti_body_content_col_image">
-                                      <img
-                                        src={getImageURL(
-                                          notification?.user?.avatar
-                                        )}
-                                        alt=""
-                                      />
-                                    </div>
-                                    <div className="noti_body_content_col_content">
-                                      <h3>{notification.description}</h3>
-                                      <h4>
-                                        {notification.user?.name +
-                                          " " +
-                                          notification.user.last_name}
-                                      </h4>
-                                    </div>
-                                    <p>
-                                      {format(
-                                        new Date(notification.created_at),
-                                        "hh:mm a"
-                                      )}
-                                    </p>
-                                  </a>
-                                )
-                            )}
+                            <ul class="notify_list">
+                              {groupedData?.[notificationGroup]?.map(
+                                (notification) => {
+                                  return (
+                                    <li>
+                                      <div class="nof_ico">
+                                        <i class="">
+                                          <img src="images/rocket.svg" alt="" />
+                                        </i>
+                                      </div>
+                                      <p class="">
+                                        {notification.title}
+                                      </p>
+                                      {
+                                        (noteTypesId.includes(notification.notification_type_id))? <a href="#" class="nof_inline_btn">Reply Now</a>: ''
+                                      }
+                                      <span class=" nof_time">{getDate(notification.created_at)}</span>
+                                      <span class="nt_close" data-notify-close>
+                                        <div class="">
+                                          <svg
+                                            width="16"
+                                            height="16"
+                                            viewBox="0 0 16 16"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          >
+                                            <path
+                                              fill-rule="evenodd"
+                                              clip-rule="evenodd"
+                                              d="M0.390524 0.390524C0.911223 -0.130175 1.75544 -0.130175 2.27614 0.390524L8 6.11438L13.7239 0.390524C14.2446 -0.130175 15.0888 -0.130175 15.6095 0.390524C16.1302 0.911223 16.1302 1.75544 15.6095 2.27614L9.88562 8L15.6095 13.7239C16.1302 14.2446 16.1302 15.0888 15.6095 15.6095C15.0888 16.1302 14.2446 16.1302 13.7239 15.6095L8 9.88562L2.27614 15.6095C1.75544 16.1302 0.911223 16.1302 0.390524 15.6095C-0.130175 15.0888 -0.130175 14.2446 0.390524 13.7239L6.11438 8L0.390524 2.27614C-0.130175 1.75544 -0.130175 0.911223 0.390524 0.390524Z"
+                                              fill="currentColor"
+                                            />
+                                          </svg>
+                                        </div>
+                                      </span>
+                                    </li>
+                                  );
+                                }
+                              )}
+                            </ul>
                           </React.Fragment>
-                        ))}
-                      </div>
-                    ) : (
-                      <div
-                        style={{
-                          display: "flex",
-                          height: "80vh",
-                          alignItems: "center",
-                          justifyContent: "center",
-                        }}
-                      >
-                        <h2>No notifications available!</h2>
-                      </div>
-                    )}
+                        ))
+                      )}
+                    </div>
                     {data?.total > 12 && (
                       <Pagination
                         perPage={12}
