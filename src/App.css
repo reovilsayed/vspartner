@@ -1447,7 +1447,7 @@ select::-ms-expand {
     top: 0;
     width: 40px;
     height: 100%;
-    /* background-image: url(images/Calendar.svg); */
+    background-image: url(../public/images/Calendar.svg);
     background-position: center center;
     background-size: 16px;
     background-repeat: no-repeat;
@@ -1548,7 +1548,7 @@ select::-ms-expand {
     height: 54px;
     padding-right: 40px;
     width: 265px;
-    /* background-image: url(images/arrow_bottom.svg); */
+    background-image: url(../public/images/arrow_bottom.svg);
     background-repeat: no-repeat;
     background-position: calc(100% - 22px) center;
     background-size: 10px;

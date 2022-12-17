@@ -88,7 +88,7 @@ function MyVideos() {
                   className="calender_range_value"
                   id="calender_range_value"
                 />
-                <div className="calender_range" id="calender_range_toggle">
+                <div className="calender_range active" id="calender_range_toggle">
                   <input type="text" className="d-none" id="calender_range" />
                   <div className="range_btn">
                     <div className="range_btn_col">
