@@ -7,38 +7,55 @@ import requests from "../services/httpService";
 
 function Setting() {
   const authHeader = useAuthHeader();
-  const {data: user, refetch, isError, isSuccess, isLoading} = useFetch(['user-prof'], `/user`, {}, {token: authHeader()});
+  const {
+    data: user,
+    refetch,
+    isError,
+    isSuccess,
+    isLoading,
+  } = useFetch(["user-prof"], `/user`, {}, { token: authHeader() });
   useEffect(() => {
     refetch();
-  }, [user, isError, isSuccess, isLoading])
+  }, [user, isError, isSuccess, isLoading]);
   const [nameField, setnameField] = useState(false);
   const [emailField, setEmailField] = useState(false);
   const [phoneField, setphoneField] = useState(false);
   const [countriField, setcountriField] = useState(false);
   const [passField, setpassField] = useState(false);
-  console.log(user);
   const baseURL = process.env.REACT_APP_API_BASE;
   const updateProfile = (formData) => {
     if (formData) {
-      requests.post(`update-profile`, formData, {token: authHeader()});
+      requests.post(`update-profile`, formData, { token: authHeader() });
       refetch();
+      resetFormData(user);
     }
   };
 
   const [formData, setFormData] = useState({
-    name: user?.name? user.name : '',
-    last_name: user?.last_name? user.last_name : '',
-    email: user?.email? user.email : '',
-    phone: user?.phone? user.phone : '',
-    country: user?.country? user.country : '',
-    password: user?.password? user.password : '',
+    name: user?.name ? user.name : "",
+    last_name: user?.last_name ? user.last_name : "",
+    email: user?.email ? user.email : "",
+    phone: user?.phone ? user.phone : "",
+    country: user?.country ? user.country : "",
+    password: user?.password ? user.password : "",
   });
+
+  const resetFormData = (user) => {
+    const tmp = {
+      name: user?.name ? user.name : "",
+      last_name: user?.last_name ? user.last_name : "",
+      email: user?.email ? user.email : "",
+      phone: user?.phone ? user.phone : "",
+      country: user?.country ? user.country : "",
+      password: user?.password ? user.password : "",
+    };
+    setFormData(tmp);
+  };
 
   function handalNameField(e) {
     e.preventDefault();
     if (nameField) {
       updateProfile(formData);
-      console.log('up');
     }
     setnameField(!nameField);
   }
@@ -46,7 +63,6 @@ function Setting() {
     e.preventDefault();
     if (emailField) {
       updateProfile(formData);
-      console.log('up');
     }
     setEmailField(!emailField);
   }
@@ -54,7 +70,6 @@ function Setting() {
     e.preventDefault();
     if (phoneField) {
       updateProfile(formData);
-      console.log('up');
     }
     setphoneField(!phoneField);
   }
@@ -62,7 +77,6 @@ function Setting() {
     e.preventDefault();
     if (countriField) {
       updateProfile(formData);
-      console.log('up');
     }
     setcountriField(!countriField);
   }
@@ -70,15 +84,14 @@ function Setting() {
     e.preventDefault();
     if (passField) {
       updateProfile(formData);
-      console.log('up');
     }
     setpassField(!passField);
   }
 
   const setNameData = (e) => {
     e.preventDefault();
-    const full_name = e.target.value.split(' ');
-    setFormData({ ...formData, name: full_name[0], last_name: full_name[1]});
+    const full_name = e.target.value.split(" ");
+    setFormData({ ...formData, name: full_name[0], last_name: full_name[1] });
   };
   const setEmailData = (e) => {
     e.preventDefault();
@@ -96,7 +109,10 @@ function Setting() {
     e.preventDefault();
     setFormData({ ...formData, password: e.target.value });
   };
-console.log(formData);
+  useEffect(() => {
+    resetFormData(user);
+  }, [user, isLoading, isSuccess]);
+  console.log(formData);
   return (
     <>
       <div className="dashboard_content dashboard_content_setting">
@@ -110,7 +126,10 @@ console.log(formData);
                       <div className="prf_lft">
                         <div className="prf_box">
                           <div className="prf" data-profile-image>
-                            <img src={getImageURL(user?.avater? user.avater: '')} alt="" />
+                            <img
+                              src={getImageURL(user?.avater ? user.avater : "")}
+                              alt=""
+                            />
                             <span className="prf_pic_change">
                               <input type="file" accept="image/*" />
                               <svg
@@ -129,15 +148,20 @@ console.log(formData);
                           </div>
                           <div className="prf_rt">
                             <h4>
-                              {user?.name? user.name: ''} {user?.last_name? user.last_name: ''}
+                              {user?.name ? user.name : ""}{" "}
+                              {user?.last_name ? user.last_name : ""}
                             </h4>
                             <p>
                               <img src="images/pr_msg.png" alt="" />
-                              <a href={`mailto:${user?.email? user.email: ''}`}>{user?.email? user.email: ''}</a>
+                              <a
+                                href={`mailto:${user?.email ? user.email : ""}`}
+                              >
+                                {user?.email ? user.email : ""}
+                              </a>
                             </p>
                             <p>
                               <img src="images/pr_cal.png" alt="" />
-                              joined {user?.joined_at? user.joined_at: ''}
+                              joined {user?.joined_at ? user.joined_at : ""}
                             </p>
                           </div>
                         </div>
@@ -1288,8 +1312,11 @@ console.log(formData);
                                   className="selectize disabled data-input"
                                   disabled
                                 >
-                                  <option value="Afghanistan" data-class="af">
-                                    Afghanistan
+                                  <option
+                                    value={formData.country}
+                                    data-class="af"
+                                  >
+                                    {formData.country}
                                   </option>
                                 </select>
                               )}

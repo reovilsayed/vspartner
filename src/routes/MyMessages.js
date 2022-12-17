@@ -163,7 +163,7 @@ function MyMessages() {
                   </h5>
                   <button
                     className="cross"
-                    data-bs-dismiss="modal"
+                    onClick={() => {setModalOpen(false)}}
                     aria-label="Close"
                   >
                     <img src="images/circle-cross.svg" alt="" />
