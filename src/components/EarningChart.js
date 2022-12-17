@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ReactApexChart from 'react-apexcharts'
 
 function EarningChart({ chartData }) {
+
     const [state,setState]=useState({
         series: [{
             name: 'series1',
@@ -20,19 +21,42 @@ function EarningChart({ chartData }) {
               curve: 'smooth'
             },
             xaxis: {
-              type: 'datetime',
-              categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+              type: 'date',
+              tickAmount: 11,
+              categories: ["Sep 1st", "Sep 4th", "Sep 7th", "Sep 10th", "Sep 13th", "Sep 16th", "Sep 19th", "Sep 21th", "Sep 24th", "Sep 27th", "Sep 30th"],
+              labels: {
+                show: true,
+                rotate: 0,
+                // trim: true,
+                style: {
+                    colors: "#000000",
+                    fontSize: '12px',
+                    fontFamily: 'Cabin, sans-serif',
+                    fontWeight: 600,
+                },
+            }
+            },
+            yaxis: {
+              title: {
+                text: '$',
+                style: {
+                  color: "#525050",
+                  fontSize: '20px',
+                  fontFamily: 'Cabin, sans-serif',
+                  fontWeight: 600,
+              }
+              }
             },
             tooltip: {
               x: {
-                format: 'dd/MM/yy HH:mm'
+                format: 'dd/MM/yy'
               },
             },
           },
     })
   return (
     <div>
-      <ReactApexChart options={state.options} series={state.series} type="area" height={350} />
+      <ReactApexChart options={state.options} series={state.series} type="area" height={224} />
     </div>
   )
 }
