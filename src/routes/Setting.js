@@ -31,7 +31,7 @@ function Setting() {
       resetFormData(user);
     }
   };
-  console.log(user);
+
 
   const [formData, setFormData] = useState({
     name: user?.name ? user.name : "",

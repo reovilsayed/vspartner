@@ -745,7 +745,7 @@ if (checkElements("[data-toggle-password]")) {
         let togglePasswordFields = el.childNodes[3];
         togglePasswordBtns.forEach(function (togglePasswordBtn) {
             togglePasswordBtn.addEventListener("click", function () {
-                // console.log(togglePasswordFields);
+              
                 togglePasswordBtns.forEach(function (e) {
                     if (e.classList.contains("active")) {
                         e.classList.remove("active")

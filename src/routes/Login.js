@@ -39,7 +39,7 @@ function Login() {
       })
       .catch((err) => {
         const message = err.response.data.message;
-        console.log(message);
+   
       });
   };
   return (

@@ -46,7 +46,7 @@ const VideoModal = (props) => {
     const handleOnChange = e => {
         setEditableFields({ ...editableFields, [e.target.name]: e.target.value });
     };
-    console.log(video);
+
     return (
 
         <Modal

@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 
 const MessageModal = (props) => {
   
-    console.log(props.inquiry)
+
 
     return (
         <Modal

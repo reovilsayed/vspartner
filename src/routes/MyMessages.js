@@ -11,6 +11,7 @@ import { notify, plainDateTime } from "../lib/queryClient";
 
 function MyMessages() {
   const [modalOpen, setModalOpen] = useState(false);
+  const authHeader = useAuthHeader();
   const {
     data: inquiries,
     refetch,
@@ -30,7 +31,6 @@ function MyMessages() {
     refetch();
     setModalOpen(false);
   };
-  console.log(modalOpen);
   return (
     <>
       <div className="dashboard_content dashboard_content_message">

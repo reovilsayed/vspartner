@@ -64,7 +64,7 @@ function Notifications() {
     const updateFilter = Object.keys(updateItems)
       .filter((item, index) => updateItems[item])
       .join(",");
-    console.log(updateFilter);
+
     setFiltersArray(updateFilter);
     setFilters({ ...filters, [filterNo]: !filters[filterNo] });
 
@@ -108,7 +108,6 @@ function Notifications() {
 
   const dismissNotification = (notification_id) => {
     const mes = requests.post(`notification-status-update`, {'notification_id': notification_id}, {token: authHeader()});
-    console.log(mes);
     refetch();
   }
 
