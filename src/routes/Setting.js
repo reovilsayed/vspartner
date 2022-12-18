@@ -17,6 +17,7 @@ function Setting() {
   useEffect(() => {
     refetch();
   }, [user, isError, isSuccess, isLoading]);
+
   const [nameField, setnameField] = useState(false);
   const [emailField, setEmailField] = useState(false);
   const [phoneField, setphoneField] = useState(false);
@@ -30,6 +31,7 @@ function Setting() {
       resetFormData(user);
     }
   };
+  console.log(user);
 
   const [formData, setFormData] = useState({
     name: user?.name ? user.name : "",
@@ -112,7 +114,7 @@ function Setting() {
   useEffect(() => {
     resetFormData(user);
   }, [user, isLoading, isSuccess]);
-  console.log(formData);
+
   return (
     <>
       <div className="dashboard_content dashboard_content_setting">

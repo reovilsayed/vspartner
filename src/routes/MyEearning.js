@@ -12,6 +12,12 @@ function MyEearning() {
     isLoading: earningCountIsLoading,
     isSuccess,
   } = useFetch(["earning_counts"], `/earning-count`);
+  const {
+    data: earningByMonths,
+    refetch: refetchEarningByMonths,
+    isLoading: earningByMonthsIsLoading,
+    isSuccess: earningByMonthsSuccess,
+  } = useFetch(["earning-report-by-month"], `/earning-report-by-month`);
   //const { data: graphData,refetch: refetchGraphData } = useFetch(['graph'], `/graph/${currYear}/${currMonth}`);
   const {
     data: graphData,
@@ -22,6 +28,9 @@ function MyEearning() {
     refetchEarningCount();
     refetchGraphData();
   }, [earningCountIsLoading, graphDataIsLoading]);
+
+
+
   return (
     <>
       <div className="dashboard_content dashboard_content_earning">
@@ -85,162 +94,28 @@ function MyEearning() {
               </select>
             </div>
             <div className="earning_download_lists">
-              <div className="earning_download_lists_col">
-                <div className="earning_download_lists_col_box">
-                  <div className="earning_download_month">
-                    <p>January</p>
-                  </div>
-                  <div className="earning_download_controller">
-                    <p className="earning_download_price">$214</p>
-                    <button type="button" className="earning_download_btn">
-                      <img src="images/earning-download-icon.svg" alt="" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="earning_download_lists_col">
-                <div className="earning_download_lists_col_box">
-                  <div className="earning_download_month">
-                    <p>February</p>
-                  </div>
-                  <div className="earning_download_controller">
-                    <p className="earning_download_price">$252</p>
-                    <button type="button" className="earning_download_btn">
-                      <img src="images/earning-download-icon.svg" alt="" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="earning_download_lists_col">
-                <div className="earning_download_lists_col_box">
-                  <div className="earning_download_month">
-                    <p>March</p>
-                  </div>
-                  <div className="earning_download_controller">
-                    <p className="earning_download_price">$452</p>
-                    <button type="button" className="earning_download_btn">
-                      <img src="images/earning-download-icon.svg" alt="" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="earning_download_lists_col">
-                <div className="earning_download_lists_col_box">
-                  <div className="earning_download_month">
-                    <p>April</p>
-                  </div>
-                  <div className="earning_download_controller">
-                    <p className="earning_download_price">$985</p>
-                    <button type="button" className="earning_download_btn">
-                      <img src="images/earning-download-icon.svg" alt="" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="earning_download_lists_col">
-                <div className="earning_download_lists_col_box">
-                  <div className="earning_download_month">
-                    <p>May</p>
-                  </div>
-                  <div className="earning_download_controller">
-                    <p className="earning_download_price">$742</p>
-                    <button type="button" className="earning_download_btn">
-                      <img src="images/earning-download-icon.svg" alt="" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="earning_download_lists_col">
-                <div className="earning_download_lists_col_box">
-                  <div className="earning_download_month">
-                    <p>June</p>
-                  </div>
-                  <div className="earning_download_controller">
-                    <p className="earning_download_price">$125</p>
-                    <button type="button" className="earning_download_btn">
-                      <img src="images/earning-download-icon.svg" alt="" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="earning_download_lists_col">
-                <div className="earning_download_lists_col_box">
-                  <div className="earning_download_month">
-                    <p>July</p>
-                  </div>
-                  <div className="earning_download_controller">
-                    <p className="earning_download_price">$652</p>
-                    <button type="button" className="earning_download_btn">
-                      <img src="images/earning-download-icon.svg" alt="" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="earning_download_lists_col">
-                <div className="earning_download_lists_col_box">
-                  <div className="earning_download_month">
-                    <p>August</p>
-                  </div>
-                  <div className="earning_download_controller">
-                    <p className="earning_download_price">$325</p>
-                    <button type="button" className="earning_download_btn">
-                      <img src="images/earning-download-icon.svg" alt="" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="earning_download_lists_col">
-                <div className="earning_download_lists_col_box">
-                  <div className="earning_download_month">
-                    <p>September</p>
-                  </div>
-                  <div className="earning_download_controller">
-                    <p className="earning_download_price">$758</p>
-                    <button type="button" className="earning_download_btn">
-                      <img src="images/earning-download-icon.svg" alt="" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="earning_download_lists_col">
-                <div className="earning_download_lists_col_box">
-                  <div className="earning_download_month">
-                    <p>October</p>
-                  </div>
-                  <div className="earning_download_controller">
-                    <p className="earning_download_price">$852</p>
-                    <button type="button" className="earning_download_btn">
-                      <img src="images/earning-download-icon.svg" alt="" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="earning_download_lists_col">
-                <div className="earning_download_lists_col_box">
-                  <div className="earning_download_month">
-                    <p>November</p>
-                  </div>
-                  <div className="earning_download_controller">
-                    <p className="earning_download_price">$125</p>
-                    <button type="button" className="earning_download_btn">
-                      <img src="images/earning-download-icon.svg" alt="" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="earning_download_lists_col">
-                <div className="earning_download_lists_col_box">
-                  <div className="earning_download_month">
-                    <p>December</p>
-                  </div>
-                  <div className="earning_download_controller">
-                    <p className="earning_download_price">$952</p>
-                    <button type="button" className="earning_download_btn">
-                      <img src="images/earning-download-icon.svg" alt="" />
-                    </button>
-                  </div>
-                </div>
-              </div>
+              {
+                !earningByMonthsIsLoading ? earningByMonths.reports.map((d) => {
+                  return (
+                    <div className="earning_download_lists_col">
+                      <div className="earning_download_lists_col_box">
+                        <div className="earning_download_month">
+                          <p>{d.date}</p>
+                        </div>
+                        <div className="earning_download_controller">
+                          <p className="earning_download_price">${d.total}</p>
+                          <button type="button" className="earning_download_btn">
+                            <img src="images/earning-download-icon.svg" alt="" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )
+
+                }) : 'Loading...'
+              }
+
+
             </div>
             <div className="earning_download_lists_account">
               <div className="earning_download_lists_account_line">
