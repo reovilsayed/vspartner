@@ -3,7 +3,7 @@ import "../App.css";
 import { useSignIn } from "react-auth-kit";
 import { useState } from "react";
 import requests from "../services/httpService";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Login() {
@@ -125,12 +125,9 @@ function Login() {
                           </div>
 
                           <div className="col-6 remember_pass_col_in">
-                            <a
-                              href="forgot_password.html"
-                              className="cmn_anc_nn"
-                            >
-                              Forgot password?
-                            </a>
+                       
+                              <Link className="cmn_anc_nn" to={'/forgot-password'}>Forgot password?</Link>
+                         
                           </div>
                         </div>
                       </div>

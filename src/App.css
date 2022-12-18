@@ -395,7 +395,7 @@ select,
     border: 1px solid rgba(255, 255, 255, 0.7);
     width: 100%;
     padding: 0 11px;
-    /* background: url(images/arrow_bottom.svg) no-repeat calc(100% - 12px) center transparent; */
+    background: url(../public/images/arrow_bottom.svg) no-repeat calc(100% - 12px) center transparent;
     background-size: 10px;
     padding-right: 30px;
     outline: none;
@@ -3302,7 +3302,7 @@ select::-ms-expand {
 }
 
 .filter_noti_list .form_input_check label input[type="checkbox"]+span::after {
-    /* background: url(images/tick.svg) no-repeat center center var(--secondary-color); */
+    background: url(../public/images/tick.svg) no-repeat center center var(--secondary-color);
     background-size: 15px;
 }
 
@@ -4285,7 +4285,7 @@ select::-ms-expand {
 } */
 
 .toggle_open_eye {
-    /* background: url(images/eye2.svg) no-repeat center center; */
+    background: url(../public/images/eye2.svg) no-repeat center center;
     background-size: 24px;
     width: 24px;
     height: 24px;
@@ -4298,7 +4298,7 @@ select::-ms-expand {
 }
 
 .toggle_open_eye.active {
-    /* background: url(images/eye1.svg) no-repeat center center; */
+    background: url(../public/images/eye1.svg) no-repeat center center;
     background-size: 24px;
 }
 
@@ -4423,7 +4423,7 @@ select::-ms-expand {
     white-space: nowrap;
     padding-left: 18px;
     padding-right: 30px;
-    /* background: url(images/arrow_bottom.svg) no-repeat calc(100% - 12px) center transparent; */
+    background: url(../public/images/arrow_bottom.svg) no-repeat calc(100% - 12px) center transparent;
     background-size: 10px;
     line-height: 38px;
 }
@@ -7792,7 +7792,7 @@ select::-ms-expand {
         width: 94px;
         padding-left: 8px;
         padding-right: 14px;
-        /* background: url(images/arrow_bottom.svg) no-repeat calc(100% - 6px) center transparent; */
+        background: url(../public/images/arrow_bottom.svg) no-repeat calc(100% - 6px) center transparent;
         background-size: 7px;
     }
 

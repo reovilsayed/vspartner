@@ -21,6 +21,7 @@ import Videos from "./Pages/Videos/Videos";
 import Earnings from "./Pages/Earnings/Earnings";
 import Messages from "./Pages/Messages/Messages";
 import VideoModal from "./components/videos/VideoModal";
+import ForgotPassword from "./routes/ForgotPassword";
 
 
 export const VideoContext = createContext();
@@ -100,6 +101,7 @@ function App() {
             }
           />
           <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
         <VideoModal show={modal} toggle={toggle} videoDetails={videoDetails} />
         {/* {modal && <VideoDetailsModal toggle={toggle} videoDetails={videoDetails} />} */}
