@@ -5,6 +5,9 @@ import List from "./Components/List";
 import Pagination from "../../components/Pagination";
 import useFetch from "../../hooks/useFetch";
 import { VideoContext } from "../../App";
+//import "flatpickr/dist/themes/material_green.css";
+import Flatpickr from "react-flatpickr";
+
 const Videos = () => {
   const AUTH = useAuthUser();
 
@@ -19,6 +22,10 @@ const Videos = () => {
   const [isListView, setIsListView] = useState(true);
   const [status, setStatus] = useState(null);
   const [search, setSearch] = useState();
+  const [calendarExtended, setCalendarExtended] = useState(false);
+  const handleCalenderExtend = () => {
+    setCalendarExtended(!calendarExtended);
+  }
   const { data, refetch, isLoading } = useFetch(
     ["videos", status, search, currentPage],
     `/videos/12?page=${currentPage}`,
@@ -88,14 +95,11 @@ const Videos = () => {
                 </span>
               </div>
               <div className="calendar_wrapper dsh_cld">
-                <input
-                  type="text"
-                  className="calender_range_value"
-                  id="calender_range_value"
-                />
-                <div className="calender_range" id="calender_range_toggle">
-                  <input type="text" className="d-none" id="calender_range" />
-                  <div className="range_btn">
+                  <Flatpickr
+                  onClick={handleCalenderExtend}
+        data-enable-time
+      />
+                  <div className="range_btn" style={{'display': calendarExtended? 'flex': 'none'}}>
                     <div className="range_btn_col">
                       <button
                         className="btn-outline btn-outline-red"
@@ -112,7 +116,6 @@ const Videos = () => {
                         Apply
                       </button>
                     </div>
-                  </div>
                 </div>
               </div>
 
