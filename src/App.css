@@ -5423,6 +5423,7 @@ select::-ms-expand {
 
     .video_inline_img {
         max-width: 82px;
+        height: 90px;
     }
 
     .pagination li>* {
