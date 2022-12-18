@@ -105,7 +105,7 @@ function MyMessages() {
                         <tr key={index}>
                           <td>{index + 1}</td>
                           <td className="skeleton">
-                            {inquiry?.created_at ? inquiry.created_at : ""}
+                            {inquiry?.created_at ? plainDateTime(inquiry.created_at) : ""}
                           </td>
                           <td>{inquiry?.subject ? inquiry.subject : ""}</td>
                           <td>{inquiry?.message ? inquiry.message : ""}</td>
