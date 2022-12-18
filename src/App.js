@@ -22,6 +22,7 @@ import Earnings from "./Pages/Earnings/Earnings";
 import Messages from "./Pages/Messages/Messages";
 import VideoModal from "./components/videos/VideoModal";
 import ForgotPassword from "./routes/ForgotPassword";
+import Chat from "./routes/Chat";
 
 
 export const VideoContext = createContext();
@@ -97,6 +98,15 @@ function App() {
                 <DefaultLayout>
                   <Setting />
                 </DefaultLayout>
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/chat-details/:id"
+            element={
+              <RequireAuth loginPath="/login">
+
+                  <Chat/>
               </RequireAuth>
             }
           />

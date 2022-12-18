@@ -78,8 +78,8 @@ function MyMessages() {
                             <span className="tg grn"></span>
                           </td>
                           <td className="skeleton_v1">
-                            <a href="chat_detail.html" className="view_ico_btn">
-                              <svg
+                          <Link to={"/chat-details/" + inquiry?.id} className="view_ico_btn">
+                            <svg
                                 width="32"
                                 height="32"
                                 viewBox="0 0 32 32"
@@ -95,7 +95,7 @@ function MyMessages() {
                                   fill="currentColor"
                                 ></path>
                               </svg>
-                            </a>
+                            </Link>
                           </td>
                         </tr>
                       );
@@ -115,8 +115,8 @@ function MyMessages() {
                             </span>
                           </td>
                           <td>
-                            <a href="chat_detail.html" className="view_ico_btn">
-                              <svg
+                            <Link to={"/chat-details/" + inquiry?.id} className="view_ico_btn">
+                            <svg
                                 width="32"
                                 height="32"
                                 viewBox="0 0 32 32"
@@ -132,7 +132,7 @@ function MyMessages() {
                                   fill="currentColor"
                                 ></path>
                               </svg>
-                            </a>
+                            </Link>
                           </td>
                         </tr>
                       );
