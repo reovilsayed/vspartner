@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthHeader } from "react-auth-kit";
 import Pagination from "../components/Pagination";
 import useFetch from "../hooks/useFetch";
-import getImageURL from "../lib/queryClient";
+import getImageURL, { plainDateTime, plainTime } from "../lib/queryClient";
 import requests from "../services/httpService";
 
 function Notifications() {
@@ -193,7 +193,7 @@ function Notifications() {
                                       {
                                         (noteTypesId.includes(notification.notification_type_id))? <a href="#" className="nof_inline_btn">Reply Now</a>: ''
                                       }
-                                      <span className=" nof_time">{notification.created_at}</span>
+                                      <span className=" nof_time">{plainTime(notification.created_at)}</span>
                                       <span className="nt_close" onClick={() => {dismissNotification(notification.id)}}>
                                         <div className="">
                                           <svg
@@ -268,7 +268,6 @@ function Notifications() {
                             checked={filters[type.id]}
                             onClick={() => toggleCheck(type.id)}
                           />
-                          <span>Approved Video</span>
                         </label>
                       </div>
                     ))}
