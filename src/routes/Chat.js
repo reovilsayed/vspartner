@@ -121,10 +121,10 @@ function Chat() {
                     data?.inquery?.video?.last_name}</p>
                                                     </div>
                                                     <div class="panel-box-info-wrap-col">
-                                                        <p><span>Phone Number </span> +00 1234567890</p>
+                                                        <p><span>Phone Number </span> {data?.inquery?.video?.phone }</p>
                                                     </div>
                                                     <div class="panel-box-info-wrap-col">
-                                                        <p><span>Date Of Birth </span> 06/07/1996</p>
+                                                        <p><span>Date Of Birth </span> {data?.inquery?.video?.birthdate }</p>
                                                     </div>
                                                     <div class="panel-box-info-wrap-col">
                                                         <p><span>Client Email Address </span> Jognsmith@Gmail.Com</p>
@@ -133,13 +133,13 @@ function Chat() {
                                                         <p><span>Payment Method  </span> <img src="images/paypal.png" alt="" /></p>
                                                     </div>
                                                     <div class="panel-box-info-wrap-col">
-                                                        <p><span>Paypal Email Address </span> jognsmith@gmail.com</p>
+                                                        <p><span>Paypal Email Address </span>{data?.inquery?.video?.paypal_email }</p>
                                                     </div>
                                                     <div class="panel-box-info-wrap-col">
                                                         <p><span>Signature </span> <img src="images/signature.png" alt="" /></p>
                                                     </div>
                                                     <div class="panel-box-info-wrap-col">
-                                                        <p><span>Video Credit </span> Saimon Jhonson</p>
+                                                        <p><span>Video Credit </span> {data?.inquery?.video?.video_credit }</p>
                                                     </div>
                                                     <div class="panel-box-info-wrap-col"></div>
                                                 </div>
@@ -250,25 +250,39 @@ function Chat() {
                                             <span class="chat-timeline-date">Tuesday, march 1</span>
                                         </div>
                                         <div class="modal-body-message-lists-wrap">
-                                            <div class="message-body receiver">
+                                        {data?.messages?.map(message => {
+                                            return (
+                                                <div>
+                                            <div class={auth()?.id === message?.sender?.id ? "message-body sender" :'message-body receiver'}>
                                                 <div class="message-body-row">
+                                                   {
+                                                    !auth()?.id === message?.sender?.id &&
                                                     <div class="chat-avatar">
-                                                        <img src="images/receiver.png" alt="" />
-                                                    </div>
+                                                    <img src="images/receiver.png" alt="" />
+                                                </div>
+                                                   }
+                                                  
                                                     <div class="chat-content">
                                                         <div class="chat-content-info">
-                                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                                industry. Lorem Ipsum has been the industry's standard
-                                                                dummy text ever since the 1500s, when an unknown printer took a
-                                                                galley of type and scrambled</p>
+                                                            <p>{message.message}</p>
                                                         </div>
                                                     </div>
+                                                    {
+                                                    auth()?.id === message?.sender?.id &&
+                                                    <div class="chat-avatar">
+                                                    <img src="images/receiver.png" alt="" />
+                                                </div>
+                                                   }
                                                 </div>
                                                 <div class="chat-deliver-time">
-                                                    <p>12.07.2021<span>@12.55am</span></p>
+                                                    <p>{message.created_at}<span>@12.55am</span></p>
                                                 </div>
                                             </div>
-                                            <div class="message-body sender">
+                                        
+                                        </div>
+                                               );
+                                            })}
+                                                {/* <div class="message-body sender">
                                                 <div class="message-body-row">
                                                     <div class="chat-content">
                                                         <div class="chat-content-info">
@@ -303,11 +317,15 @@ function Chat() {
                                                 <div class="chat-deliver-time">
                                                     <p>12.07.2021<span>@12.55am</span></p>
                                                 </div>
-                                            </div>
+                                            </div> */}
                                         </div>
+                                        <form onSubmit={sendMessage}>
                                         <div class="chat-footer_inner">
+                                         
                                             <div class="chat-footer-left">
-                                                <textarea placeholder="Type your message here..."></textarea>
+                                                <textarea value={messageData.message} onChange={e =>
+                                                setMessageData({ ...messageData, message: e.target.value })}
+                                                 placeholder="Type your message here..."></textarea>
                                             </div>
                                             <div class="chat-footer-right">
                                                 <label for="file" class="file-upload">
@@ -315,9 +333,11 @@ function Chat() {
                                                     <img src="images/file-upload.svg" alt="" />
                                                 </label>
                                                 <button type="button" class="btn-outline btn-outline-black">Done</button>
-                                                <button type="button" class="btn-outline btn-outline-red">Send</button>
+                                                <button type="submit" class="btn-outline btn-outline-red">Send</button>
                                             </div>
+                                       
                                         </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
