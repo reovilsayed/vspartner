@@ -55,9 +55,19 @@ export const plainDateTime = (d) => {
   if (d) {
     return (
       <>
-        On {getDateTime(d).date}
+        {getDateTime(d).date}
         <br />
-        at {getDateTime(d).time} UTC
+        {getDateTime(d).time} UTC
+      </>
+    );
+  }
+  return '';
+};
+export const plainTime = (d) => {
+  if (d) {
+    return (
+      <>
+        {getDateTime(d).time}
       </>
     );
   }
