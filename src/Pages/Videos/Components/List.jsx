@@ -1,6 +1,6 @@
 import React from 'react';
 import RowSkeleton from '../../../components/Skleton/RowSkeleton';
-import getImageURL from '../../../lib/queryClient';
+import getImageURL, { plainDateTime } from '../../../lib/queryClient';
 const List = ({ videos, isLoading, active, toggle }) => {
     return (
         <div className={`view_box list_view_box ${active?'active_view':''}`}>
@@ -51,7 +51,7 @@ const List = ({ videos, isLoading, active, toggle }) => {
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <div className="">{video.created_at}</div>
+                                                    <div className="">{plainDateTime(video.created_at)}</div>
                                                 </td>
                                                 <td>
                                                     <span className={`tg ${video.status === 0 ? 'yel' : video.status === 1 ? 'grn' : video.status === 2 ? 'red' : ''}`}>{video.status === 0 ? 'Pending' : video.status === 1 ? 'Approved' : video.status === 2 ? 'Rejected' : 'Unknown'}</span>

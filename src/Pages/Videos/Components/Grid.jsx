@@ -1,6 +1,6 @@
 import React from 'react';
 import GridSkeleton from '../../../components/Skleton/GridSkeleton';
-import getImageURL from '../../../lib/queryClient';
+import getImageURL, { plainDateTime } from '../../../lib/queryClient';
 
 const Grid = ({ videos, isLoading, active }) => {
     return (
@@ -44,7 +44,7 @@ const Grid = ({ videos, isLoading, active }) => {
                                                                 <img src="images/dt.svg" alt="" />
                                                             </i>
                                                             <label>Submission Date:</label>
-                                                            <p>{video.created_at}</p>
+                                                            <p>{plainDateTime(video.created_at)}</p>
                                                         </li>
                                                         <li className="">
                                                             <i>
