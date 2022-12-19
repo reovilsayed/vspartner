@@ -103,7 +103,7 @@ function DefaultLayout({ children }) {
 
             <div className="float_header_right">
               <div className="message_panel panel_inline">
-                <a href="#" className="nof_btn">
+                <Link to={`/my-messages`} className="nof_btn">
                   <img src="images/msg.svg" alt="" />
                   {notificationDataIsSuccess ? (
                     notificationData?.messages ? (
@@ -114,7 +114,7 @@ function DefaultLayout({ children }) {
                   ) : (
                     ""
                   )}
-                </a>
+                </Link>
               </div>
 
               <div className="notification_panel panel_inline">
