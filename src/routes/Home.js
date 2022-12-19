@@ -3,6 +3,7 @@ import EarningChart from '../components/EarningChart'
 import SubmissionChart from '../components/SubmissionChart'
 import useFetch from '../hooks/useFetch';
 import "../App.css";
+import { Link } from 'react-router-dom';
 
 function Home() {
     const currYear = new Date().getFullYear();
@@ -138,7 +139,8 @@ function Home() {
                                     <div className="box_model">
                                         <div className="dash_head">
                                             <h4>Manage Account</h4>
-                                            <a href="#" className="inline_btn">Edit Now</a>
+                                            {/* <a href="#" className="inline_btn">Edit Now</a> */}
+                                            <Link to={'/setting'} className="inline_btn">Edit Now</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -146,7 +148,8 @@ function Home() {
                                     <div className="box_model">
                                         <div className="dash_head">
                                             <h4>View My Videos</h4>
-                                            <a href="#" className="inline_btn">View Now</a>
+                                            {/* <a href="#" className="inline_btn">View Now</a> */}
+                                            <Link to={'/my-videos'} className="inline_btn">View Now</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -154,7 +157,8 @@ function Home() {
                                     <div className="box_model">
                                         <div className="dash_head">
                                             <h4>Need Help?</h4>
-                                            <a href="#" className="inline_btn">Contact Us</a>
+                                            {/* <a href="#" className="inline_btn">Contact Us</a> */}
+                                            <Link className="inline_btn" to={'/my-messages'}>Contact Us</Link>
                                         </div>
                                     </div>
                                 </div>
