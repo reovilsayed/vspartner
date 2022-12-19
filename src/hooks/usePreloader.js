@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState } from "react";
-import Preloader from "../components/layouts/Preloader";
 export const PreloaderContext = createContext([]);
 
 export const PreloaderProvider = ({ children }) => {
@@ -7,7 +6,7 @@ export const PreloaderProvider = ({ children }) => {
   return (
     <PreloaderContext.Provider value={[showLoader, setShowLoader]}>
       <div style={{ display: showLoader ? "none" : "block" }}>{children}</div>
-      {showLoader && <Preloader />}
+      {showLoader}
     </PreloaderContext.Provider>
   );
 };
