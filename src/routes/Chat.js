@@ -494,7 +494,7 @@ function Chat() {
                         <div className="chat-footer-right">
                           <label htmlFor="file" className="file-upload">
                             <input type="file" id="file" />
-                            <img src="images/file-upload.svg" alt="" />
+                            <img src="/images/file-upload.svg" alt="" />
                           </label>
                           <button
                             type="button"
