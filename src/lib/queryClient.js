@@ -64,9 +64,9 @@ export const plainDateTime = (d) => {
   return "";
 };
 
-export const styledDateTime = (d) => {
+export const styledDateTime = (d, joinStr = '.') => {
   const dateTime = d.split("T");
-  const date = dateTime[0].split("-").reverse().join(".");
+  const date = dateTime[0].split("-").reverse().join(joinStr);
   const tmpTime = dateTime[1].split(".")[0].split(":");
   const time = `${tmpTime[0] >= 12 ? tmpTime[0] - 12 : tmpTime[0]}.${
     tmpTime[1]
