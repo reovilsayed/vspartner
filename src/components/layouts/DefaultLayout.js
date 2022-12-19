@@ -1,6 +1,6 @@
 import React, { useReducer, useState } from "react";
 import { useAuthHeader, useAuthUser } from "react-auth-kit";
-import getImageURL from "../../lib/queryClient";
+import getImageURL, { plainTime } from "../../lib/queryClient";
 import Sidebar from "./Sidebar";
 import useFetch from "../../hooks/useFetch";
 import { Link, useNavigate } from "react-router-dom";
@@ -164,7 +164,7 @@ function DefaultLayout({ children }) {
                               ) : (
                                 ""
                               )}
-                              <span className="nof_time">9.38 pm</span>
+                              <span className="nof_time">{plainTime(notification.created_at)}</span>
                             </li>
                           ) : (
                             ""
