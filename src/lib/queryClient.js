@@ -63,6 +63,15 @@ export const plainDateTime = (d) => {
   }
   return '';
 };
+
+export const styledDateTime = (d) => {
+  const dateTime = d.split('T');
+  const date = dateTime[0].split('-').reverse().join('.');
+  const tmpTime = dateTime[1].split('.')[0].split(':');
+  const time = `${tmpTime[0] >= 12? tmpTime[0] - 12: tmpTime[0]}.${tmpTime[1]}${tmpTime[0] >= 12? 'pm': 'am'}`;
+
+  return {date: date, time: time};
+}
 export const plainTime = (d) => {
   if (d) {
     return (
