@@ -5,7 +5,7 @@ import { useCreate } from "../../hooks/useUpdate";
 import { VideoContext } from "../../App";
 import useFetch from "../../hooks/useFetch";
 import requests from "../../services/httpService";
-import getImageURL, { notify, plainDateTime } from "../../lib/queryClient";
+import getImageURL, { notify, plainDateTime, styledDateTime } from "../../lib/queryClient";
 import VideoPlayer from "./VideoPlayer";
 
 const VideoModal = (props) => {
@@ -51,7 +51,7 @@ const VideoModal = (props) => {
   const handleOnChange = (e) => {
     setEditableFields({ ...editableFields, [e.target.name]: e.target.value });
   };
-
+  console.log(video);
   return (
     <>
     <Modal fullscreen={true} show={props.show} onHide={() => props.toggle()}>
@@ -100,19 +100,20 @@ const VideoModal = (props) => {
                           <div className="panel-box-info-wrap">
                             <div className="panel-box-info-wrap-col">
                               <p>
-                                <span>Title of the video :</span> Rabbit on
-                                Fence
+                                <span>Title of the video :</span> 
+                                {video?.title? video.title: 'Title'}
                               </p>
                             </div>
                             <div className="panel-box-info-wrap-col">
                               <p>
-                                <span>Filming Date : </span> 23/05/2021
+                                <span>Filming Date : </span> 
+                                {video?.when_filmed? video.when_filmed.split('-').join('/'): 'Film Date'}
                               </p>
                             </div>
                             <div className="panel-box-info-wrap-col">
                               <p>
-                                <span>Filming Location : </span> Los Cairo,
-                                Cairo, Egypt
+                                <span>Filming Location : </span> 
+                                {video?.city? video.city: 'City'}, {video?.state? video.state: 'State'}, {video?.country? video.country: 'Country'}
                               </p>
                             </div>
                           </div>
@@ -123,19 +124,7 @@ const VideoModal = (props) => {
                                 <div className="story-description-info-content">
                                   <div className="overflow_scroll">
                                     <p>
-                                      Lorem ipsum dolor sit amet, consectetur
-                                      adipiscing elit. In et pretium, eros ipsum
-                                      diam. Et eleifend ipsum cursus et pharetra
-                                      gravida vel nullam. Vitae arcu viverra sed
-                                      congue sagittis purus. Egestas ut tempus
-                                      convallis nunc nunc, fringilla magnis
-                                      odio. Aliquet. Consectetur adipiscing
-                                      elit. In et pretium, eros ipsum diam. Et
-                                      eleifend ipsum cursus et pharetra gravida
-                                      vel nullam. Vitae arcu viverra sed congue
-                                      sagittis purus. Egestas ut tempus
-                                      convallis nunc nunc, fringilla magnis
-                                      odio. Aliquet.
+                                    {video?.description? video.description: 'Description'}
                                     </p>
                                   </div>
                                 </div>
@@ -211,22 +200,26 @@ const VideoModal = (props) => {
                           <div className="panel-box-info-wrap column-4 border-b-0">
                             <div className="panel-box-info-wrap-col">
                               <p>
-                                <span>Client Name :</span> Saimon Jhonson
+                                <span>Client Name :</span> 
+                                {video?.first_name? video.first_name: 'Name'}{video?.last_name? video.last_name: ''}
                               </p>
                             </div>
                             <div className="panel-box-info-wrap-col">
                               <p>
-                                <span>Email Address: </span> jognsmith@gmail.com
+                                <span>Email Address: </span> 
+                                {video?.email? video.email: 'Email'}
                               </p>
                             </div>
                             <div className="panel-box-info-wrap-col">
                               <p>
-                                <span>Phone Number :</span> +00 1234567890
+                                <span>Phone Number :</span> 
+                                +{video?.phone? video.phone: 'Phone'}
                               </p>
                             </div>
                             <div className="panel-box-info-wrap-col">
                               <p>
-                                <span>Date of Birth :</span> 06/07/1996
+                                <span>Date of Birth :</span> 
+                                {video?.birthdate? video.birthdate.split('-').join('/'): 'birthdate'}
                               </p>
                             </div>
                             <div className="panel-box-info-wrap-col">
@@ -253,7 +246,8 @@ const VideoModal = (props) => {
                             </div>
                             <div className="panel-box-info-wrap-col">
                               <p>
-                                <span>Video Credit :</span> Saimon Jhonson{" "}
+                                <span>Video Credit :</span> 
+                                {video?.person_who_filmed? video.person_who_filmed: 'person_who_filmed'}
                               </p>
                             </div>
                           </div>
@@ -271,12 +265,13 @@ const VideoModal = (props) => {
                                   <span>
                                     Are There People Appearing In the Video?{" "}
                                   </span>{" "}
-                                  <mark className="stripe-btn-danger">Yes</mark>
+                                  <mark className="stripe-btn-danger">{video?.people_appearing? video.people_appearing: 'people_appearing'}</mark>
                                 </p>
                               </div>
                               <div className="panel-box-info-wrap-col m-0">
                                 <p>
-                                  <span>Who Are They? </span> Person Name
+                                  <span>Who Are They? </span> 
+                                  {video?.people_appearing_list? video.people_appearing_list: 'people_appearing_list'}
                                 </p>
                               </div>
                             </div>
@@ -286,7 +281,7 @@ const VideoModal = (props) => {
                                   <span>
                                     The person who filmed this video is{" "}
                                   </span>{" "}
-                                  A Security camera
+                                  {video?.person_who_filmed_other? video.person_who_filmed_other: 'A Security camera'}
                                 </p>
                               </div>
                             </div>
@@ -296,7 +291,7 @@ const VideoModal = (props) => {
                                   <span>
                                     Did Anyone Reach You About Using This Video?
                                   </span>{" "}
-                                  <mark className="stripe-btn-danger">Yes</mark>
+                                  <mark className="stripe-btn-danger">{video?.did_anyone_reach? video.did_anyone_reach: 'did_anyone_reach'}</mark>
                                 </p>
                               </div>
                               <div className="panel-box-info-wrap-col m-0">
@@ -315,14 +310,14 @@ const VideoModal = (props) => {
                                   Did You Send/Submit/Upload This Video To A
                                   Website And/Or Social Media Account?{" "}
                                   <mark className="stripe-btn-danger">
-                                    Yes A Youtube Account
+                                  {video?.submit_other_website? video.submit_other_website: 'submit_other_website'}
                                   </mark>
                                 </p>
                               </div>
                               <div className="panel-box-info-wrap-col m-0">
                                 <p>
-                                  <span>Where Did You Submit It? </span> Our
-                                  Instagram, Facebook and youTube
+                                  <span>Where Did You Submit It? </span> 
+                                  {video?.submit_place? video.submit_place: 'Our Instagram, Facebook and youTube'}
                                 </p>
                               </div>
                             </div>
@@ -334,7 +329,7 @@ const VideoModal = (props) => {
                                     Video With Another Company/Page?
                                   </span>
                                   <mark className="stripe-btn-danger">
-                                    Yes, I Have Signed An Exclusive Agreement
+                                  {video?.aggrement_with_another_company? video.aggrement_with_another_company: 'aggrement_with_another_company'}
                                   </mark>
                                 </p>
                               </div>
