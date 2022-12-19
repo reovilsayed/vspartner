@@ -62,15 +62,8 @@ const VideoModal = (props) => {
                       <div className="left-panel sticky_box">
                         <div className="panel-box">
                           <div className="single-video-box">
-                            <video
-                              className="video"
-                              loop="1"
-                              preload="auto"
-                              controls
-                              poster="images/video-poster.jpg"
-                            >
-                              <source src="images/video.mp4" type="video/mp4" />
-                            </video>
+                            
+                          <VideoPlayer src={`${process.env.REACT_APP_VIDEO_BASE}${video?.converted_url}`} poster={getImageURL(thumbnail)} />
                           </div>
                           <div className="btn-wrap">
                             <a href="#" className="btn-outline btn-outline-blue">
