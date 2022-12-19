@@ -1315,10 +1315,10 @@ function Setting() {
                                   disabled
                                 >
                                   <option
-                                    value={formData.country}
+                                    value={formData?.country? formData.country: 'None'}
                                     data-class="af"
                                   >
-                                    {formData.country}
+                                    {formData?.country? formData.country: 'None'}
                                   </option>
                                 </select>
                               )}
