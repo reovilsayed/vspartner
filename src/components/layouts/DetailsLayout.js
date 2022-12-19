@@ -3,7 +3,7 @@ import { useAuthHeader, useAuthUser } from "react-auth-kit";
 import getImageURL from "../../lib/queryClient";
 import Sidebar from "./Sidebar";
 import useFetch from "../../hooks/useFetch";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function DefaultLayout({ children }) {
   const [notification, setNotification] = useState(false);
@@ -11,6 +11,17 @@ function DefaultLayout({ children }) {
     e.preventDefault();
     setNotification(!notification);
   }
+  const [icon, setIcon] = useState(false);
+  function handaleIcon(e) {
+    e.preventDefault();
+    setIcon(!icon);
+  }
+ const [searchIcon, setSearchIcon]=useState(false)
+ function handaleSearchIcon(e) {
+  e.preventDefault();
+  setSearchIcon(!searchIcon);
+ }
+
   const authUser = useAuthUser();
   const authHeader = useAuthHeader();
   const user = authUser();
@@ -24,6 +35,14 @@ function DefaultLayout({ children }) {
     {},
     { token: authHeader() }
   );
+  const [search, setSearch] = useState();
+  const navigate = useNavigate();
+  console.log(search);
+  const handleSearch = () => {
+    const value = search;
+    setSearch('');
+    navigate(`/my-videos?search=${value}`);
+  }
 
   const noteTypesId = [5, 6, 7, 8, 13, 14, 16, 19, 20, 23, 24];
   const {
@@ -66,30 +85,33 @@ function DefaultLayout({ children }) {
             <div className="search_panel">
               <span
                 className="search_btn m_srch_trigger_btn"
-                id="m_srch_trigger"
+                id="m_srch_trigger" onClick={handaleSearchIcon}
               >
                 <img src="/images/search.svg" alt="" />
               </span>
               <div className="search_box_inner earch_box_desktop">
-                <input type="text" placeholder="Search Here......" />
-                <span className="search_btn">
+                <input type="text" placeholder="Search Here......" value={search} onChange={(e) => setSearch(e.target.value)} />
+                <span className="search_btn" onClick={handleSearch}>
                   <img src="/images/search.svg" alt="" />
                 </span>
               </div>
             </div>
-            <div className="search_box_mobile" id="m_srch_trigger_box">
+ 
+            <div className={searchIcon ? "search_box_mobile active" : "search_box_mobile "} id="m_srch_trigger_box">
               <div className="search_box_inner">
-                <input type="text" placeholder="Search Here......" />
-                <span className="search_btn">
-                  <img src="images/search.svg" alt="" />
+                <input type="text" placeholder="Search Here..." value={search} onChange={(e) => setSearch(e.target.value)} />
+
+                <span className="search_btn" onClick={handleSearch}>
+                  <img src="/images/search.svg" alt="" />
                 </span>
+      
               </div>
             </div>
 
             <div className="float_header_right">
               <div className="message_panel panel_inline">
                 <Link to={`/my-messages`} className="nof_btn">
-                  <img src="images/msg.svg" alt="" />
+                  <img src="/images/msg.svg" alt="" />
                   {notificationDataIsSuccess ? (
                     notificationData?.messages ? (
                       <span className="bdg">{notificationData.messages}</span>
@@ -109,7 +131,7 @@ function DefaultLayout({ children }) {
                   className="nof_btn"
                   id="nof_btn"
                 >
-                  <img src="images/notification.svg" alt="" />
+                  <img src="/images/notification.svg" alt="" />
                   {notificationDataIsSuccess ? (
                     notificationData?.notifications ? (
                       <span className="bdg">
@@ -137,7 +159,7 @@ function DefaultLayout({ children }) {
                               notification.status === 0 ? (
                               <li key={index}>
                                 <i className="nof_ico">
-                                  <img src="images/rocket.svg" alt="" />
+                                  <img src="/images/rocket.svg" alt="" />
                                 </i>
                                 <p>{notification.title}</p>
                                 {noteTypesId.includes(
