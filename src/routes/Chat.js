@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useAuthUser } from "react-auth-kit";
 import { useAuthHeader } from "react-auth-kit";
 import { useParams } from "react-router-dom";
+import VideoPlayer from "../components/videos/VideoPlayer";
 import useFetch from "../hooks/useFetch";
+import getImageURL, { styledDateTime } from "../lib/queryClient";
 import requests from "../services/httpService";
 
 function Chat() {
@@ -31,7 +33,7 @@ function Chat() {
   const handleActive = (data) => {
     setActive(data);
   };
-  console.log(active);
+  /* console.log(data); */
   return (
     <>
       <div className="dashboard_body dashboard_body_chat_detail">
@@ -42,15 +44,7 @@ function Chat() {
                 <div className="left-panel">
                   <div className="panel-box">
                     <div className="single-video-box mb-0">
-                      <video
-                        className="video"
-                        loop="1"
-                        preload="auto"
-                        controls=""
-                        poster="images/video-poster.jpg"
-                      >
-                        <source src="images/video.mp4" type="video/mp4" />
-                      </video>
+                      <VideoPlayer src={`${process.env.REACT_APP_VIDEO_BASE}${data?.inquery?.video?.converted_url},`} poster={getImageURL(data?.inquery?.video?.thumbnail)} />
                     </div>
                   </div>
                   <div className="panel-box-info">
@@ -119,13 +113,13 @@ function Chat() {
                           <div className="panel-box-info-wrap-col">
                             <p>
                               <span>Filming Date : </span>{" "}
-                              {data?.inquery?.video?.created_at}
+                              {data?.inquery?.video?.when_filmed}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
-                              <span>Filming Location : </span> Los Cairo, Cairo,
-                              Egypt
+                              <span>Filming Location : </span> 
+                              {data?.inquery?.video?.city}, {data?.inquery?.video?.state}, {data?.inquery?.video?.country}
                             </p>
                           </div>
                         </div>
@@ -135,30 +129,7 @@ function Chat() {
                               <label>Story/Description:</label>
                               <div className="story-description-info-content scroller">
                                 <p>
-                                  Lorem ipsum dolor sit amet, consectetur
-                                  adipiscing elit. In et pretium, eros ipsum
-                                  diam. Et eleifend ipsum cursus et pharetra
-                                  gravida vel nullam. Vitae arcu viverra sed
-                                  congue sagittis purus. Egestas ut tempus
-                                  convallis nunc nunc, fringilla magnis odio.
-                                  Aliquet. Consectetur adipiscing elit. In et
-                                  pretium, eros ipsum diam. Et eleifend ipsum
-                                  cursus et pharetra gravida vel nullam. Vitae
-                                  arcu viverra sed congue sagittis purus.
-                                  Egestas ut tempus convallis nunc nunc,
-                                  fringilla magnis odio. Aliquet.Lorem ipsum
-                                  dolor sit amet, consectetur adipiscing elit.
-                                  In et pretium, eros ipsum diam. Et eleifend
-                                  ipsum cursus et pharetra gravida vel nullam.
-                                  Vitae arcu viverra sed congue sagittis purus.
-                                  Egestas ut tempus convallis nunc nunc,
-                                  fringilla magnis odio. Aliquet. Consectetur
-                                  adipiscing elit. In et pretium, eros ipsum
-                                  diam. Et eleifend ipsum cursus et pharetra
-                                  gravida vel nullam. Vitae arcu viverra sed
-                                  congue sagittis purus. Egestas ut tempus
-                                  convallis nunc nunc, fringilla magnis odio.
-                                  Aliquet.
+                                {data?.inquery?.video?.description}
                                 </p>
                               </div>
                             </div>
@@ -196,31 +167,32 @@ function Chat() {
                           <div className="panel-box-info-wrap-col">
                             <p>
                               <span>Client Email Address </span>{" "}
-                              Jognsmith@Gmail.Com
+                              {data?.inquery?.video?.email}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
                               <span>Payment Method </span>{" "}
-                              <img src="images/paypal.png" alt="" />
+                              <img src="/images/paypal.png" alt="" />
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
                               <span>Paypal Email Address </span>
-                              {data?.inquery?.video?.paypal_email}
+                              {data?.inquery?.video?.paypal_email? data?.inquery?.video?.paypal_email: 'None'}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
                               <span>Signature </span>{" "}
-                              <img src="images/signature.png" alt="" />
+                              <img src="/images/signature.png" alt="" />
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
                               <span>Video Credit </span>{" "}
-                              {data?.inquery?.video?.video_credit}
+                              {data?.inquery?.video?.person_who_filmed}
+                              {data?.inquery?.video?.person_who_filmed_other? `& ${data?.inquery?.video?.person_who_filmed_other}`: ''}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col"></div>
@@ -237,18 +209,18 @@ function Chat() {
                               <span>
                                 Are There People Appearing In The Video?
                               </span>{" "}
-                              <mark className="stripe-btn-danger">Yes</mark>
+                              <mark className="stripe-btn-danger">{data?.inquery?.video?.people_appearing}</mark>
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
-                              <span>Who Are They? </span> Person Name
+                              <span>Who Are They? </span> {data?.inquery?.video?.people_appearing_list}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
-                              <span>The Person Who Filmed This Video Is</span> A
-                              Security Camera
+                              <span>The Person Who Filmed This Video Is</span> 
+                              {data?.inquery?.video?.person_who_filmed}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col"></div>
@@ -257,7 +229,9 @@ function Chat() {
                               <span>
                                 Did Anyone Reach You About Using This Video?
                               </span>{" "}
-                              <mark className="stripe-btn-danger">Yes</mark>
+                              <mark className="stripe-btn-danger">
+                              {data?.inquery?.video?.did_anyone_reach}
+                              </mark>
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
@@ -266,7 +240,7 @@ function Chat() {
                                 Please Share With Us The Name Of The
                                 Company/Page{" "}
                               </span>{" "}
-                              Company Name/Page
+                              {data?.inquery?.video?.share_reach_name}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
@@ -277,15 +251,15 @@ function Chat() {
                               </span>{" "}
                               <span className="tg grn">
                                 <mark className="stripe-btn-danger">
-                                  Yes A Youtube Account
+                                {data?.inquery?.video?.submit_other_website}
                                 </mark>
                               </span>
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
-                              <span>Where Did You Submit It?</span> Our
-                              Instagram, Facebook And YouTube
+                              <span>Where Did You Submit It?</span>
+                              {data?.inquery?.video?.submit_place}
                             </p>
                           </div>
 
@@ -297,7 +271,7 @@ function Chat() {
                               </span>{" "}
                               <span className="tg grn">
                                 <mark className="stripe-btn-danger">
-                                  Yes, I Have Signed An Exclusive Agreement
+                                {data?.inquery?.video?.aggrement_with_another_company}
                                 </mark>
                               </span>
                             </p>
@@ -439,9 +413,9 @@ function Chat() {
                               }
                             >
                               <div className="message-body-row">
-                                {!auth()?.id === message?.sender?.id && (
+                                {auth()?.id !== message?.sender?.id && (
                                   <div className="chat-avatar">
-                                    <img src="images/receiver.png" alt="" />
+                                    <img src="/images/receiver.png" alt="" />
                                   </div>
                                 )}
 
@@ -452,14 +426,14 @@ function Chat() {
                                 </div>
                                 {auth()?.id === message?.sender?.id && (
                                   <div className="chat-avatar">
-                                    <img src="images/receiver.png" alt="" />
+                                    <img src="/images/sender.png" alt="" />
                                   </div>
                                 )}
                               </div>
                               <div className="chat-deliver-time">
                                 <p>
-                                  {message.created_at}
-                                  <span>@12.55am</span>
+                                  {styledDateTime(message.created_at).date}
+                                  <span>@{styledDateTime(message.created_at).time}</span>
                                 </p>
                               </div>
                             </div>
