@@ -3,7 +3,9 @@ import { useAuthHeader, useAuthUser } from "react-auth-kit";
 import getImageURL from "../../lib/queryClient";
 import Sidebar from "./Sidebar";
 import useFetch from "../../hooks/useFetch";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AiOutlineAlignLeft, AiOutlineClose } from "react-icons/ai";
+
 
 function DefaultLayout({ children }) {
   const [notification, setNotification] = useState(false);
@@ -11,6 +13,14 @@ function DefaultLayout({ children }) {
     e.preventDefault();
     setNotification(!notification);
   }
+  const [icon, setIcon] = useState(false);
+  function handaleIcon(e) {
+    e.preventDefault();
+    setIcon(!icon);
+  }
+  console.log(icon);
+
+
   const authUser = useAuthUser();
   const authHeader = useAuthHeader();
   const user = authUser();
@@ -24,6 +34,14 @@ function DefaultLayout({ children }) {
     {},
     { token: authHeader() }
   );
+  const [search, setSearch] = useState();
+  const navigate = useNavigate();
+  console.log(search);
+  const handleSearch = () => {
+    const value = search;
+    setSearch('');
+    navigate(`/my-videos?search=${value}`);
+  }
 
   const noteTypesId = [5, 6, 7, 8, 13, 14, 16, 19, 20, 23, 24];
   const {
@@ -36,6 +54,19 @@ function DefaultLayout({ children }) {
       <div className="dashboard_header">
         <div className="fluid_container">
           <div className="header_row">
+            <a href="#" onClick={handaleIcon}>
+
+
+              <div class="hamburger_menu" id="hamburger_menu">
+                {
+                  icon ? (<AiOutlineClose />) : (<AiOutlineAlignLeft />)
+                }
+                
+              </div>
+
+
+            </a>
+
             <a href="#" className="logo">
               <img src="images/logo.png" alt="" />
             </a>
@@ -48,8 +79,8 @@ function DefaultLayout({ children }) {
                 <img src="images/search.svg" alt="" />
               </span>
               <div className="search_box_inner earch_box_desktop">
-                <input type="text" placeholder="Search Here......" />
-                <span className="search_btn">
+                <input type="text" placeholder="Search Here......" value={search} onChange={(e) => setSearch(e.target.value)} />
+                <span className="search_btn" onClick={handleSearch}>
                   <img src="images/search.svg" alt="" />
                 </span>
               </div>
@@ -110,28 +141,28 @@ function DefaultLayout({ children }) {
                     <ul className="notify_list">
                       {notifiactions?.data
                         ? notifiactions.data.map((notification, index) => {
-                            return notification.seen === 0 &&
-                              notification.status === 0 ? (
-                              <li key={index}>
-                                <i className="nof_ico">
-                                  <img src="images/rocket.svg" alt="" />
-                                </i>
-                                <p>{notification.title}</p>
-                                {noteTypesId.includes(
-                                  notification.notification_type_id
-                                ) ? (
-                                  <a href="#" className="nof_inline_btn">
-                                    Reply Now
-                                  </a>
-                                ) : (
-                                  ""
-                                )}
-                                <span className="nof_time">9.38 pm</span>
-                              </li>
-                            ) : (
-                              ""
-                            );
-                          })
+                          return notification.seen === 0 &&
+                            notification.status === 0 ? (
+                            <li key={index}>
+                              <i className="nof_ico">
+                                <img src="images/rocket.svg" alt="" />
+                              </i>
+                              <p>{notification.title}</p>
+                              {noteTypesId.includes(
+                                notification.notification_type_id
+                              ) ? (
+                                <a href="#" className="nof_inline_btn">
+                                  Reply Now
+                                </a>
+                              ) : (
+                                ""
+                              )}
+                              <span className="nof_time">9.38 pm</span>
+                            </li>
+                          ) : (
+                            ""
+                          );
+                        })
                         : ""}
                     </ul>
                   </div>
@@ -158,7 +189,7 @@ function DefaultLayout({ children }) {
       <div className="dashboard_body">
         <div className="fluid_container">
           <div className="dashboard_body_inner">
-            <Sidebar />
+            <Sidebar icon={icon} />
 
             {children}
           </div>

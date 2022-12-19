@@ -2,15 +2,16 @@ import React from 'react'
 import { Link, Location, useLocation } from 'react-router-dom'
 import { useSignOut } from 'react-auth-kit';
 
-function Sidebar() {
+function Sidebar(props) {
     const location = useLocation();
     const isCurrentRoute = (pathName) => {
         return pathName === location.pathname? 'current-menu-item': '';
     };
     const SignOut = useSignOut();
+
   return (
     <>
-       <div className="navigation" id="navigation">
+       <div className={props.icon ? "navigation active" : "navigation "} id="navigation">
                     <div className="nav_inner">
                         <ul className="nav_list">
                             <li className={isCurrentRoute('/')}>

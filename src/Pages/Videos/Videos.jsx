@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useAuthUser } from "react-auth-kit";
 import Grid from "./Components/Grid";
 import List from "./Components/List";
@@ -7,6 +7,7 @@ import useFetch from "../../hooks/useFetch";
 import { VideoContext } from "../../App";
 //import "flatpickr/dist/themes/material_green.css";
 import Flatpickr from "react-flatpickr";
+import { useSearchParams } from "react-router-dom";
 
 const Videos = () => {
   const AUTH = useAuthUser();
@@ -22,13 +23,15 @@ const Videos = () => {
   const [isListView, setIsListView] = useState(true);
   const [status, setStatus] = useState(null);
   const [search, setSearch] = useState();
+  const [filter, setFilter] = useState({ search: '' });
+  const [searchParams] = useSearchParams();
   const [calendarExtended, setCalendarExtended] = useState(false);
   const handleCalenderExtend = () => {
     setCalendarExtended(!calendarExtended);
   }
   const { data, refetch, isLoading } = useFetch(
-    ["videos", status, search, currentPage],
-    `/videos/12?page=${currentPage}`,
+    ["videos", status, search, currentPage,filter],
+    `/videos/12?page=${currentPage}`,filter,
     {
       status: status,
       search: search,
@@ -37,6 +40,11 @@ const Videos = () => {
       pagePrefetchKey: ["videos", status, search, currentPage + 1],
     }
   );
+  useEffect(() => {
+		if (searchParams.get('search')) {
+			setFilter({ ...filter, search: searchParams.get('search') });
+		}
+	}, [searchParams, filter]);
 
   return (
     <>
