@@ -4,7 +4,7 @@ import { useAuthHeader } from "react-auth-kit";
 import { useParams } from "react-router-dom";
 import VideoPlayer from "../components/videos/VideoPlayer";
 import useFetch from "../hooks/useFetch";
-import getImageURL, { styledDateTime } from "../lib/queryClient";
+import getImageURL, { styledDateTime, todayDateTime } from "../lib/queryClient";
 import requests from "../services/httpService";
 
 function Chat() {
@@ -398,7 +398,7 @@ function Chat() {
                     <h4>Subject: Regarding our order...</h4>
                     <div className="chat-timeline">
                       <span className="chat-timeline-date">
-                        Tuesday, march 1
+                        {todayDateTime().day}, {todayDateTime().month} {todayDateTime().date}
                       </span>
                     </div>
                     <div className="modal-body-message-lists-wrap">
