@@ -53,12 +53,12 @@ function Home() {
                                         <div className="vr_item grn">
                                             <i><img src="images/wlt.png" alt="" /></i>
                                             <h3>My Earnings</h3>
-                                            <label>${earningCount? earningCount.total_earning: ''}</label>
+                                            <label>${earningCount?.total_earning? earningCount.total_earning: '0'}</label>
                                         </div>
                                         <div className="vr_item grn">
                                             <i><img src="images/chks.png" alt="" /></i>
                                             <h3>Approved Submissions</h3>
-                                            <label>{graphData? graphData[0]?.accepted: ''}</label>
+                                            <label>{graphData? graphData[0]?.accepted? graphData[0]?.accepted : '0' : '0'}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -116,17 +116,17 @@ function Home() {
                                         <div className="vr_item">
                                             <i><img src="images/chks.png" alt="" /></i>
                                             <h3>Approved Submissions</h3>
-                                            <label>{graphData? graphData[0]? graphData[0].accepted: '': ''}</label>
+                                            <label>{graphData? graphData[0]?.accepted? graphData[0].accepted: '0': '0'}</label>
                                         </div>
                                         <div className="vr_item">
                                             <i><img src="images/clos.png" alt="" /></i>
                                             <h3>Rejected Submissions</h3>
-                                            <label>{graphData? graphData[0]? graphData[0].rejected: '': ''}</label>
+                                            <label>{graphData? graphData[0]?.rejected? graphData[0].rejected: '0': '0'}</label>
                                         </div>
                                         <div className="vr_item">
                                             <i><img src="images/infs.png" alt="" /></i>
                                             <h3>Pending Submissions</h3>
-                                            <label>{graphData? graphData[0]? graphData[0].pending: '': ''}</label>
+                                            <label>{graphData? graphData[0]?.pending? graphData[0].pending: '0': '0'}</label>
                                         </div>
                                     </div>
                                 </div>
