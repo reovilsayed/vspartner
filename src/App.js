@@ -19,7 +19,7 @@ import { Toaster } from "react-hot-toast";
 import "./App.css";
 import Videos from "./Pages/Videos/Videos";
 import Earnings from "./Pages/Earnings/Earnings";
-import Messages from "./Pages/Messages/Messages";
+import MyMessages from "./routes/MyMessages";
 import VideoModal from "./components/videos/VideoModal";
 import ForgotPassword from "./routes/ForgotPassword";
 import Chat from "./routes/Chat";
@@ -76,7 +76,7 @@ function App() {
             element={
               <RequireAuth loginPath="/login">
                 <DefaultLayout>
-                  <Messages />
+                  <MyMessages />
                 </DefaultLayout>
               </RequireAuth>
             }
