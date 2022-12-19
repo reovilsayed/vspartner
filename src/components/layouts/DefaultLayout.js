@@ -39,7 +39,6 @@ function DefaultLayout({ children }) {
   );
   const [search, setSearch] = useState();
   const navigate = useNavigate();
-  console.log(search);
   const handleSearch = () => {
     const value = search;
     setSearch('');
@@ -60,7 +59,7 @@ function DefaultLayout({ children }) {
             <a href="#" onClick={handaleIcon}>
 
 
-              <div class="hamburger_menu" id="hamburger_menu">
+              <div className="hamburger_menu" id="hamburger_menu">
                 {
                   icon ? (<AiOutlineClose />) : (<AiOutlineAlignLeft />)
                 }
@@ -173,8 +172,8 @@ function DefaultLayout({ children }) {
                         : ""}
                     </ul>
                   </div>
-                  <Link to={`/notification`}>
-                    <a className="nof_all">See All Notification</a>
+                  <Link to={`/notification`} className="nof_all">
+                    See All Notification
                   </Link>
                 </div>
               </div>
