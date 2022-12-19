@@ -18,8 +18,11 @@ function DefaultLayout({ children }) {
     e.preventDefault();
     setIcon(!icon);
   }
-  console.log(icon);
-
+ const [searchIcon, setSearchIcon]=useState(false)
+ function handaleSearchIcon(e) {
+  e.preventDefault();
+  setSearchIcon(!searchIcon);
+ }
 
   const authUser = useAuthUser();
   const authHeader = useAuthHeader();
@@ -74,7 +77,7 @@ function DefaultLayout({ children }) {
             <div className="search_panel">
               <span
                 className="search_btn m_srch_trigger_btn"
-                id="m_srch_trigger"
+                id="m_srch_trigger" onClick={handaleSearchIcon}
               >
                 <img src="images/search.svg" alt="" />
               </span>
@@ -85,14 +88,18 @@ function DefaultLayout({ children }) {
                 </span>
               </div>
             </div>
-            <div className="search_box_mobile" id="m_srch_trigger_box">
+ 
+            <div className={searchIcon ? "search_box_mobile active" : "search_box_mobile "} id="m_srch_trigger_box">
               <div className="search_box_inner">
-                <input type="text" placeholder="Search Here......" />
-                <span className="search_btn">
+                <input type="text" placeholder="Search Here..." value={search} onChange={(e) => setSearch(e.target.value)} />
+
+                <span className="search_btn" onClick={handleSearch}>
                   <img src="images/search.svg" alt="" />
                 </span>
+      
               </div>
             </div>
+   
 
             <div className="float_header_right">
               <div className="message_panel panel_inline">
