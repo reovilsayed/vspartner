@@ -36,7 +36,7 @@ function DefaultLayout({ children }) {
       <div className="dashboard_header">
         <div className="fluid_container">
           <div className="header_row">
-            <a href="#" className="logo">
+            <a className="logo">
               <img src="images/logo.png" alt="" />
             </a>
 
