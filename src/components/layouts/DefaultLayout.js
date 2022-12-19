@@ -184,9 +184,10 @@ function DefaultLayout({ children }) {
                   {user.name} {user.last_name}
                 </span>
                 <span className="nav_avatar">
-                  <a href="#">
-                    <img src={getImageURL(user.avater)} alt="" />
-                  </a>
+                  <Link to={`/setting`}>
+                    {/* <img src={getImageURL(user.avater)} alt="" /> */}
+                    <img src="/images/sender.png" alt="user-image" />
+                  </Link>
                 </span>
               </div>
             </div>
