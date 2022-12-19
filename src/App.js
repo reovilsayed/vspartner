@@ -113,7 +113,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
-        <VideoModal show={modal} toggle={toggle} videoDetails={videoDetails} />
+        {/* <VideoModal show={modal} toggle={toggle} videoDetails={videoDetails} /> */}
         {/* {modal && <VideoDetailsModal toggle={toggle} videoDetails={videoDetails} />} */}
       </VideoContext.Provider>
     </div>

@@ -19,7 +19,7 @@ function Login() {
   const onSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`${baseURL}/login`, creds)
+      .post(`${baseURL}/api-login`, creds)
       .then((res) => {
         if (res.status === 200) {
           //console.log(res.data)
