@@ -13,8 +13,8 @@ import { useSearchParams } from "react-router-dom";
 
 const Videos = () => {
 
-  const [fromDate, setfromDate] = useState();
-  const [endDate, setendDate] = useState();
+  const [fromDate, setfromDate] = useState('');
+  const [endDate, setendDate] = useState('');
   const [popup, setPopup] = useState(false);
   const picker = flatpickr("#calender_range", {
     mode: "range",
@@ -26,11 +26,13 @@ const Videos = () => {
   });
 
   const filterByDate = (value) => {
-    dateInput.current.value =value;
+
+    dateInput.current.value = value;
     const dates = value.split(" to ");
+    console.log(dates);
     setfromDate(dates[0]);
     setendDate(dates[1]);
-    picker.clear();
+
     setPopup(false);
   }
 
@@ -47,7 +49,7 @@ const Videos = () => {
   const [isListView, setIsListView] = useState(true);
   const [status, setStatus] = useState(null);
   const [search, setSearch] = useState();
-  const [filter, setFilter] = useState({ search: '' });
+
   const [searchParams] = useSearchParams();
   const [calendarExtended, setCalendarExtended] = useState(false);
   const handleCalenderExtend = () => {
@@ -58,8 +60,8 @@ const Videos = () => {
 
 
   const { data, refetch, isLoading } = useFetch(
-    ["videos", status, fromDate, endDate, search, currentPage,filter],
-    `/videos/12?page=${currentPage}`,filter,
+    ["videos", status, fromDate, endDate, search, currentPage,],
+    `/videos/12?page=${currentPage}`,
     {
       status: status,
       search: search,
@@ -72,10 +74,10 @@ const Videos = () => {
     }
   );
   useEffect(() => {
-		if (searchParams.get('search')) {
-			setFilter({ ...filter, search: searchParams.get('search') });
-		}
-	}, [searchParams, filter]);
+    if (searchParams.get('search')) {
+      setSearch(searchParams.get('search'));
+    }
+  }, [searchParams, search]);
 
   return (
     <>
@@ -143,6 +145,7 @@ const Videos = () => {
                       <button className="btn-outline btn-outline-red" onClick={() => picker.clear()} id="range_clear">Clear</button>
                     </div>
                     <div className="range_btn_col">
+                      {/* <button className="btn-outline btn-outline-blue fill" id="apply_range" onClick={() => filterByDate(picker.input.value)} >Apply</button> */}
                       <button className="btn-outline btn-outline-blue fill" id="apply_range" onClick={() => filterByDate(picker.input.value)} >Apply</button>
                     </div>
                   </div>
