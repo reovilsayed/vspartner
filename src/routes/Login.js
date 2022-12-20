@@ -5,10 +5,18 @@ import { useState } from "react";
 import requests from "../services/httpService";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { notify } from "../lib/queryClient";
+import { toast } from "react-hot-toast";
 
 function Login() {
   const baseURL = process.env.REACT_APP_API_BASE;
   const [showPassword, setShowPassword] = useState(false);
+  const [rememberSession, setRememberSession] = useState(false);
+  const handleRememberSession = () => {
+    setRememberSession(currRem => {
+      return !currRem;
+    })
+  }
   const handleShowPassword = () => {
     setShowPassword(currShow => {
       return !currShow;
@@ -28,7 +36,6 @@ function Login() {
       .post(`${baseURL}/api-login`, creds)
       .then((res) => {
         if (res.status === 200) {
-          //console.log(res.data)
           if (
             signIn({
               token: res.data.token,
@@ -37,15 +44,16 @@ function Login() {
               authState: res.data.user,
             })
           ) {
+            notify('Login Successfull')
             navigate("/");
           } else {
-            //Throw error
+            notify('Internal Server Error...Please Try Again', true);
           }
         }
       })
       .catch((err) => {
         const message = err.response.data.message;
-   
+        notify(message, true);
       });
   };
   return (
@@ -124,7 +132,7 @@ function Login() {
                             <div className="custom_checked_remmbr">
                               <div className="form_input_check">
                                 <label>
-                                  <input type="checkbox" checked="" />
+                                  <input type="checkbox" checked={rememberSession} value={'true'} onClick={handleRememberSession} />
                                   <span>Remember session?</span>
                                 </label>
                               </div>
