@@ -1,13 +1,21 @@
 import React from 'react'
 import { Link, Location, useLocation } from 'react-router-dom'
-import { useSignOut } from 'react-auth-kit';
+import { useAuthHeader, useAuthUser, useSignOut } from 'react-auth-kit';
+import requests from '../../services/httpService';
 
 function Sidebar(props) {
+    const baseURL = process.env.REACT_APP_API_BASE;
     const location = useLocation();
     const isCurrentRoute = (pathName) => {
         return pathName === location.pathname? 'current-menu-item': '';
     };
     const SignOut = useSignOut();
+    const authUser = useAuthUser();
+    const authHeader = useAuthHeader();
+    const logOut = () => {
+        requests.post(`${baseURL}/logout`, {user: authUser()}, {token: authHeader()});
+        SignOut();
+    }
 
   return (
     <>
@@ -71,7 +79,7 @@ function Sidebar(props) {
                             <li>
                                 <a onClick={(e) => {
                                     e.preventDefault();
-                                    SignOut();
+                                    logOut();
                                 }}>
                                     <i>
                                         <img src="images/nav7.png" alt="" />
