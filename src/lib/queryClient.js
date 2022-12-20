@@ -1,6 +1,6 @@
-import toast from 'react-hot-toast';
-import { QueryCache, QueryClient } from 'react-query';
-import { format, isToday, isYesterday } from 'date-fns';
+import toast from "react-hot-toast";
+import { QueryCache, QueryClient } from "react-query";
+import { format, isToday, isYesterday } from "date-fns";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -17,7 +17,7 @@ export const queryClient = new QueryClient({
   }),
 });
 
-export const notify = (message = 'Successfully Updated!', error = false) => {
+export const notify = (message = "Successfully Updated!", error = false) => {
   if (!error) {
     toast.success(message);
   } else {
@@ -26,7 +26,7 @@ export const notify = (message = 'Successfully Updated!', error = false) => {
 };
 
 const getImageURL = (file) => {
-  return 'https://vsclips.s3.us-east-2.amazonaws.com/' + file;
+  return "https://vsclips.s3.us-east-2.amazonaws.com/" + file;
 };
 
 export default getImageURL;
@@ -42,12 +42,12 @@ export const getYearList = (date) => {
 
 export const getDateTime = (d) => {
   const today = d ? new Date(d) : new Date();
-  const date = new Intl.DateTimeFormat('en-US', {
-    dateStyle: 'long',
+  const date = new Intl.DateTimeFormat("en-US", {
+    dateStyle: "long",
   }).format(today);
 
-  const time = new Intl.DateTimeFormat('en-US', {
-    timeStyle: 'short',
+  const time = new Intl.DateTimeFormat("en-US", {
+    timeStyle: "short",
   }).format(today);
   return { date, time: time.toLowerCase(), isSuccess: !!d };
 };
@@ -61,17 +61,57 @@ export const plainDateTime = (d) => {
       </>
     );
   }
-  return '';
+  return "";
 };
+
+export const styledDateTime = (d, joinStr = '.') => {
+  const dateTime = d.split("T");
+  const date = dateTime[0].split("-").reverse().join(joinStr);
+  const tmpTime = dateTime[1].split(".")[0].split(":");
+  const time = `${tmpTime[0] >= 12 ? tmpTime[0] - 12 : tmpTime[0]}.${
+    tmpTime[1]
+  }${tmpTime[0] >= 12 ? "pm" : "am"}`;
+
+  return { date: date, time: time };
+};
+
+export const todayDateTime = () => {
+  const date = new Date();
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const dayNames = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return {
+    day: dayNames[date.getDay()],
+    date: date.getDate(),
+    month: monthNames[date.getMonth()],
+  };
+};
+
 export const plainTime = (d) => {
   if (d) {
-    return (
-      <>
-        {getDateTime(d).time}
-      </>
-    );
+    return <>{getDateTime(d).time}</>;
   }
-  return '';
+  return "";
 };
 export const copyText = (text) => {
   navigator.clipboard
@@ -82,10 +122,10 @@ export const copyText = (text) => {
 
 export const getTitle = (date) => {
   if (isToday(new Date(date))) {
-    return 'Today';
+    return "Today";
   } else if (isYesterday(new Date(date))) {
-    return 'Yesterday';
+    return "Yesterday";
   } else {
-    return format(new Date(date), 'dd.MM.yyyy');
+    return format(new Date(date), "dd.MM.yyyy");
   }
 };

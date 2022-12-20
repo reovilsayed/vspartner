@@ -129,6 +129,7 @@ const Videos = () => {
                 <input
                   type="text"
                   placeholder="Search Here......"
+                  defaultValue={searchParams.get('search')? searchParams.get('search'): ''}
                   onChange={(e) => setSearch(e.target.value)}
                 />
                 <span className="srch_btn">

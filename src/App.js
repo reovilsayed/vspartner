@@ -5,9 +5,10 @@ import "./App.css";
 import "./Override.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DefaultLayout from "./components/layouts/DefaultLayout";
-import VideoDetailsModal from './components/videos/VideoDetailsModal';
+import DetailsLayout from "./components/layouts/DetailsLayout";
+import VideoDetailsModal from "./components/videos/VideoDetailsModal";
 
-import Home from "./routes/Home"
+import Home from "./routes/Home";
 import MyEearning from "./routes/MyEearning";
 
 import Notifications from "./routes/Notifications";
@@ -19,11 +20,10 @@ import { Toaster } from "react-hot-toast";
 import "./App.css";
 import Videos from "./Pages/Videos/Videos";
 import Earnings from "./Pages/Earnings/Earnings";
-import Messages from "./Pages/Messages/Messages";
+import MyMessages from "./routes/MyMessages";
 import VideoModal from "./components/videos/VideoModal";
 import ForgotPassword from "./routes/ForgotPassword";
 import Chat from "./routes/Chat";
-
 
 export const VideoContext = createContext();
 
@@ -76,7 +76,7 @@ function App() {
             element={
               <RequireAuth loginPath="/login">
                 <DefaultLayout>
-                  <Messages />
+                  <MyMessages />
                 </DefaultLayout>
               </RequireAuth>
             }
@@ -105,8 +105,9 @@ function App() {
             path="/chat-details/:id"
             element={
               <RequireAuth loginPath="/login">
-
-                  <Chat/>
+                <DetailsLayout>
+                  <Chat />
+                </DetailsLayout>
               </RequireAuth>
             }
           />

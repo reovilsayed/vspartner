@@ -29,7 +29,7 @@ function MyEearning() {
     refetchGraphData();
   }, [earningCountIsLoading, graphDataIsLoading]);
 
-
+console.log(earningByMonths);
 
   return (
     <>
@@ -64,7 +64,7 @@ function MyEearning() {
                         </i>
                         <h3>My Earnings</h3>
                         <label>
-                          ${earningCount ? earningCount.total_earning : ""}
+                          ${earningCount?.total_earning ? earningCount.total_earning : "0"}
                         </label>
                       </div>
                       <div className="vr_item grn">
@@ -72,7 +72,7 @@ function MyEearning() {
                           <img src="images/chks.png" alt="" />
                         </i>
                         <h3>Approved Submissions</h3>
-                        <label>{graphData ? graphData[0]?.accepted : ""}</label>
+                        <label>{graphData ? graphData[0]?.accepted? graphData[0].accepted : "0": "0"}</label>
                       </div>
                     </div>
                   </div>

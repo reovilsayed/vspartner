@@ -1,485 +1,716 @@
-import Modal from 'react-bootstrap/Modal';
-import React, { useContext, useState } from 'react';
-import { useAuthHeader } from 'react-auth-kit';
-import { useCreate } from '../../hooks/useUpdate';
-import { VideoContext } from '../../App';
-import useFetch from '../../hooks/useFetch';
-import requests from '../../services/httpService';
-import getImageURL, { notify, plainDateTime } from '../../lib/queryClient';
-import VideoPlayer from './VideoPlayer';
+import Modal from "react-bootstrap/Modal";
+import React, { useContext, useState } from "react";
+import { useAuthHeader } from "react-auth-kit";
+import { useCreate } from "../../hooks/useUpdate";
+import { VideoContext } from "../../App";
+import useFetch from "../../hooks/useFetch";
+import requests from "../../services/httpService";
+import getImageURL, { notify, plainDateTime, styledDateTime } from "../../lib/queryClient";
+import VideoPlayer from "./VideoPlayer";
 
 const VideoModal = (props) => {
-
-    const [toggleWeTransfer, settoggleWeTransfer] = useState(false);
-    const authHeader = useAuthHeader();
-    const sendNotification = async video_id => {
-        await requests.post('/send-notification', { video_id: video_id }, { token: authHeader() });
-        notify();
-    };
-    const { videoDetails } = useContext(VideoContext);
-    const { id, title, thumbnail, email, first_name, last_name, created_at } = videoDetails;
-    const { data: video } = useFetch(['video', id], `/video/${id}`);
-    const { status } = video || {};
-
-    const { mutateAsync: mutateNote } = useCreate('note');
-    const createNote = async payload => {
-        mutateNote({ payload }).finally(() => {
-            // refetch();
-            // refetchEarning();
-        });
-    };
-    const [tabItem, setTabItem] = useState(1);
-    const [showNotForCopyWriterInput, setShowNotForCopyWriterInput] = useState(false);
-    const [showNotForEditorInput, setShowNotForEditorInput] = useState(false);
-    const filterNote = (notes, key) => {
-        if (notes) {
-            const filtered_note = notes.filter(note => {
-                return note.note_key === key;
-            });
-            if (filtered_note.length > 0) {
-                return filtered_note[0].note;
-            }
-        }
-    };
-    const [editableFields, setEditableFields] = useState({});
-
-    const handleOnChange = e => {
-        setEditableFields({ ...editableFields, [e.target.name]: e.target.value });
-    };
-
-    return (
-
-        <Modal
-            fullscreen={true}
-
-            show={props.show}
-            onHide={() => props.toggle()}
-
-        >
-
-            <Modal.Body>
-
-                <button onClick={() => props.toggle()} aria-label='Close' className='close' data-dismiss='modal' type='button'>
-                    <span aria-hidden='true'>×</span>
-                </button>
-                <div className='video_detail_area'>
-                    <div className='video_detail_left'>
-                        <div className='item_detail_col_item_img'>
-                            <VideoPlayer src={`${process.env.REACT_APP_VIDEO_BASE}${video?.converted_url}`} poster={getImageURL(thumbnail)} />
-                        </div>
-                        <ul className='btn_option'>
-                            <li>
-                                <a className='btn_option_download' href={`https://downloads.viralsnare.com/${video?.video}`}>
-                                    <span>
-                                        <i aria-hidden='true' className='fa fa-download'></i>
-                                    </span>{' '}
-                                    Download Video
-                                </a>
-                            </li>
-                            <li>
-                                <a className='btn_option_approve' onClick={() => sendNotification(video?.id)}>
-                                    <span>
-                                        <i aria-hidden='true' className='fa fa-share-alt'></i>
-                                    </span>{' '}
-                                    Send Notification
-                                </a>
-                            </li>
-                        </ul>
-                        <div className='video_info_detail'>
-                            <div className='row'>
-                                <div className='col-md-12'>
-                                    <h3>
-                                        <span>About Video</span>
-                                    </h3>
-                                </div>
-                                <div className='col-md-4'>
-                                    <div className='video_info_detail_col'>
-                                        <h4>Title of the video</h4>
-                                        <h2>{title}</h2>
-                                        <h4>Country</h4>
-                                        <h2>{video?.country}</h2>
-                                    </div>
-                                </div>
-                                <div className='col-md-4'>
-                                    <div className='video_info_detail_col'>
-                                        <h4>Submission Date:</h4>
-                                        <h2>{plainDateTime(created_at)}</h2>
-                                        <h4>City</h4>
-                                        <h2>{video?.city}</h2>
-                                    </div>
-                                </div>
-                                <div className='col-md-4'>
-                                    <div className='video_info_detail_col'>
-                                        <h4>When was this video filmed?</h4>
-                                        <h2>On {video?.when_filmed}</h2>
-                                        <h4>State</h4>
-                                        <h2>{video?.state}</h2>
-                                    </div>
-                                </div>
-                                <div className='col-md-12'>
-                                    <div className='video_info_detail_col'>
-                                        <h4>Story/Description:</h4>
-                                        <h2>{video?.description}</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <a className='add_youtube_link' href='' onClick={() => settoggleWeTransfer(!toggleWeTransfer)}>
-                            WeTransfer Link
-                        </a>
-                        <div className={toggleWeTransfer ? 'youtube_link_area  show' : 'youtube_link_area '}>
-                            <div className='video_info_detail'>
-                                <div className='row'>
-                                    <div className='col-md-12'>
-                                        <h3>
-                                            <span>WeTransfer Link</span>
-                                        </h3>
-                                    </div>
-                                    <div className='col-md-12'>
-                                        <div className='video_info_detail_col'>
-                                            <input name='' defaultValue={video?.video_meta?.wetransfer_link ? video.video_meta.wetransfer_link : ''} placeholder='Enter WeTransfer Link here' type='text' />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='video_detail_right'>
-                        <div className='video_info_detail'>
-                            <div className='row'>
-                                <div className='col-md-12'>
-                                    <h3>
-                                        <span>About User</span>
-                                    </h3>
-                                </div>
-                                <div className='col-md-4'>
-                                    <div className='video_info_detail_col'>
-                                        <h4>Client Name:</h4>
-                                        <h2>
-                                            {first_name} {last_name}
-                                        </h2>
-                                        <h4>Date of Birth</h4>
-                                        <h2>On {video?.birthdate}</h2>
-                                        <h4>Signature:</h4>
-                                        <div className='video_info_detail_col_image'>
-                                            <img src={getImageURL(video?.signature ? video.signature : '')} style={{ width: '70px' }} />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='col-md-4'>
-                                    <div className='video_info_detail_col'>
-                                        <h4>Email Address:</h4>
-                                        <h2>{email}</h2>
-                                        <h4>Payment Method</h4>
-                                        <div className='video_info_detail_col_image'>
-                                            {video?.payment_method === 'paypal-content' ? <img src='assets/img/payment/paypal.png' alt='' /> : ''}
-                                            {video?.payment_method === 'bank-transfer' ? <img src='assets/img/payment/bank.png' /> : ''}
-                                            {video?.payment_method === 'transfer-wisp-content' ? <img src='assets/img/payment/transferwise.png' /> : ''}
-                                        </div>
-                                        <h4>Video Credit</h4>
-                                        <h2>{video?.video_credit}</h2>
-                                    </div>
-                                </div>
-                                <div className='col-md-4'>
-                                    <div className='video_info_detail_col'>
-                                        <h4>Phone Number</h4>
-                                        <h2>{video?.phone}</h2>
-                                        {video?.payment_method === 'paypal-content' && (
-                                            <>
-                                                <h4>Paypal Email Address:</h4>
-                                                <h2>{video?.paypal_email}</h2>
-                                            </>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='video_info_detail'>
-                            <div className='row'>
-                                <div className='col-md-12'>
-                                    <h3>
-                                        <span>Copyrights Ownership</span>
-                                    </h3>
-                                </div>
-                                <div className='col-md-12'>
-                                    <div className='video_info_detail_col'>
-                                        <h4>Are There People Appearing In The Video?</h4>
-                                        <h2>{video?.people_appearing}</h2>
-                                        {video?.people_appearing_list && (
-                                            <>
-                                                <h4>Who Are They?</h4>
-                                                <h2>{video?.people_appearing_list}</h2>
-                                            </>
-                                        )}
-                                        <h4>The person who filmed this video is</h4>
-                                        <h2>
-                                            {video?.person_who_filmed}
-                                            {video?.person_who_filmed && <> -{video?.person_who_filmed_other}</>}
-                                        </h2>
-                                        <h4>Did You Send/Submit/Upload This Video To A Website And/Or Social Media Account?</h4>
-                                        <h2>{video?.submit_other_website} </h2>
-                                        {video?.submit_place && (
-                                            <>
-                                                <h4>Where Did You Submit It?</h4>
-                                                <h2>{video?.submit_place} </h2>
-                                            </>
-                                        )}
-                                        <h4>Did Anyone Reach You About Using This Video?</h4>
-                                        <h2>
-                                            {video?.did_anyone_reach} {video?.share_reach_name}
-                                        </h2>
-                                        {video?.share_reach_name && (
-                                            <>
-                                                <h4>Please Share With Us The Name Of The Company/Page:</h4>
-                                                <h2>{video?.share_reach_name}</h2>
-                                            </>
-                                        )}
-                                        <h4>Did You Sign A Licensing Agreement For This Video With Another Company/Page?</h4>
-                                        <h2>{video?.aggrement_with_another_company}</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='video_info_detail'>
-                            <div className='row'>
-                                <div className='col-md-12'>
-                                    <h3>
-                                        <span>Submission Information</span>
-                                    </h3>
-                                </div>
-                                <div className='col-md-4'>
-                                    <div className='video_info_detail_col'>
-                                        <h4>Video Status:</h4>
-                                        {status === 0 && <h2 className='fw-bold'>Pending</h2>}
-                                        {status === 1 && <h2 className='fw-bold green_text'>Approved</h2>}
-                                        {status === 2 && <h2 className='fw-bold red_text'>Rejected</h2>}
-                                        {status === 3 && <h2 className='fw-bold'>Inquiry</h2>}
-                                        {status === 4 && <h2 className='fw-bold'>Delete</h2>}
-                                    </div>
-                                </div>
-                                <div className='col-md-3'>
-                                    <div className='video_info_detail_col'>
-                                        <h4>User IP address:</h4>
-                                        <h2>{video?.video_meta?.ip_address || 'N/A'}</h2>
-                                    </div>
-                                </div>
-                                <div className='col-md-5'>
-                                    <div className='video_info_detail_col'>
-                                        <h4>Submission date:</h4>
-                                        {/* <h2>August 23rd, 2021 at 11:15:34 PM UTC</h2>  */}
-                                        <h2>{new Date(created_at).toUTCString().slice(0, -3)}</h2>
-                                    </div>
-                                </div>
-                                <div className='col-md-4'>
-                                    <div className='video_info_detail_col'>
-                                        <h4>Terms of Submission:</h4>
-                                        <h2>Exclusive License | Agreed</h2>
-                                    </div>
-                                </div>
-                                <div className='col-md-3'>
-                                    <div className='video_info_detail_col'>
-                                        <h4>Terms of Service:</h4>
-                                        <h2>Agreed</h2>
-                                    </div>
-                                </div>
-                                <div className='col-md-5'>
-                                    <div className='video_info_detail_col'>
-                                        <h4>Revenue Share:</h4>
-                                        <h2>{video?.user?.revenue_share}%</h2>
-                                    </div>
-                                </div>
-                                <div className='col-md-4'>
-                                    <div className='video_info_detail_col'>
-                                        <h4>Acquired By</h4>
-                                        <h2>
-                                            {video?.user?.name} {video?.user?.last_name}
-                                        </h2>
-                                    </div>
-                                </div>
-                                <div className='col-md-3'>
-                                    <div className='video_info_detail_col'>
-                                        <h4>VSID</h4>
-                                        <h2>{video?.id}</h2>
-                                    </div>
-                                </div>
-                                {video?.manager_decision && (
-                                    <div className='col-md-5'>
-                                        <div className='video_info_detail_col'>
-                                            <h4> {video?.manager_decision === 1 ? 'Approved' : 'Rejected'} By</h4>
-                                            <h2>
-                                                {video?.manager?.name || '-'} {video?.manager?.last_name || '-'} <br />
-                                                {plainDateTime(video?.video_meta?.manager_updated_at)}
-                                            </h2>
-                                        </div>
-                                    </div>
-                                )}
-                                {video?.quality_team_decision && (
-                                    <div className='col-md-5'>
-                                        <div className='video_info_detail_col'>
-                                            <h4>{video?.quality_team_decision === 1 ? 'Confirmed' : 'Declined'} By</h4>
-                                            <h2>
-                                                {video?.quality_team?.name || '-'} {video?.quality_team?.last_name || '-'} On <br />
-                                                {plainDateTime(video?.video_meta?.quality_team_updated_at)}
-                                            </h2>
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-
-                        <div className='video_info_detail'>
-                            <div className='row'>
-                                <div className='col-md-12'>
-                                    <h3>
-                                        <span>Notes</span>
-                                    </h3>
-                                </div>
-                                <div className='col-md-12'>
-                                    {filterNote(video?.notes, 'editor_to_partner') ||
-                                        filterNote(video?.notes, 'copyright_to_partner') ||
-                                        filterNote(video?.notes, 'manager_to_partner') ? (
-                                        <div className='container--tabs'>
-                                            <div className='nav_tabs_area'>
-                                                <ul className='nav nav-tabs'>
-                                                    <li onClick={() => setTabItem(1)} className={`${tabItem === 1 ? 'active' : ''}`}>
-                                                        <a href=''>Editor</a>
-                                                    </li>
-                                                    <li onClick={() => setTabItem(2)} className={`${tabItem === 2 ? 'active' : ''}`}>
-                                                        <a href=''>Copywriter</a>
-                                                    </li>
-                                                    <li onClick={() => setTabItem(3)} className={`${tabItem === 3 ? 'active' : ''}`}>
-                                                        <a href=''>Manager</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div className='tab-contents'>
-                                                <div id='tab-3' className={`tab-pane ${tabItem === 1 ? 'active' : ''}`}>
-                                                    <p>{filterNote(video?.notes, 'editor_to_admin')}</p>
-                                                </div>
-                                                <div id='tab-4' className={`tab-pane ${tabItem === 2 ? 'active' : ''}`}>
-                                                    <p>{filterNote(video?.notes, 'copyright_to_admin')}</p>
-                                                </div>
-                                                <div id='tab-5' className={`tab-pane ${tabItem === 3 ? 'active' : ''}`}>
-                                                    <p>{filterNote(video?.notes, 'manager_to_admin')}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ) : (
-                                        <h3 style={{ top: '0px' }}>No notes available!</h3>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                        {videoDetails.statusGroup !== 'lost' && videoDetails.statusGroup !== 'published' && (
-                            <div className='video_info_detail_btn'>
-                                <div className='row'>
-                                    <div className='col-md-5'>
-                                        {!showNotForCopyWriterInput && (
-                                            <a href='' onClick={() => setShowNotForCopyWriterInput(true)} className='admin_note_btn'>
-                                                Leave a note for Copywriter
-                                            </a>
-                                        )}
-
-                                        {showNotForCopyWriterInput && (
-                                            <>
-                                                {' '}
-                                                <div className='video_info_detail note_admin active'>
-                                                    <div className='row'>
-                                                        <div className='col-md-12'>
-                                                            <h3>
-                                                                <span>Leave a Note for Copywriter</span>
-                                                            </h3>
-                                                        </div>
-                                                        <div className='col-md-12'>
-                                                            <div className='video_info_detail_col'>
-                                                                <textarea
-                                                                    placeholder='Type the note here..'
-                                                                    className='autosize'
-                                                                    defaultValue={''}
-                                                                    name='noteForCopyWriter'
-                                                                    onChange={handleOnChange}
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className='admin_note_save_area activate'>
-                                                    <a
-                                                        onClick={() => {
-                                                            createNote({
-                                                                note: editableFields.noteForCopyWriter || 'hi',
-                                                                role: 'copyright',
-                                                                video_id: video?.id,
-                                                            });
-                                                            setShowNotForCopyWriterInput(false);
-                                                        }}
-                                                        href=''>
-                                                        Save
-                                                    </a>
-                                                    <a href='' onClick={() => setShowNotForCopyWriterInput(false)} className='cancel_admin_note'>
-                                                        Cancel
-                                                    </a>
-                                                </div>
-                                            </>
-                                        )}
-                                    </div>
-                                    <div className='col-md-5'>
-                                        {!showNotForEditorInput && (
-                                            <a href='' onClick={() => setShowNotForEditorInput(true)} className='editor_note_btn'>
-                                                Leave a note for Editor
-                                            </a>
-                                        )}
-                                        {showNotForEditorInput && (
-                                            <>
-                                                <div className='video_info_detail note_editor active'>
-                                                    <div className='row'>
-                                                        <div className='col-md-12'>
-                                                            <h3>
-                                                                <span>Leave a Note for Editor</span>
-                                                            </h3>
-                                                        </div>
-                                                        <div className='col-md-12'>
-                                                            <div className='video_info_detail_col'>
-                                                                <textarea
-                                                                    placeholder='Type the note here..'
-                                                                    className='autosize'
-                                                                    defaultValue={''}
-                                                                    name='noteForEditor'
-                                                                    onChange={handleOnChange}
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className='editor_note_save_area activate'>
-                                                    <a
-                                                        onClick={() => {
-                                                            createNote({
-                                                                note: editableFields.noteForEditor || 'hi',
-                                                                role: 'editor',
-                                                                video_id: video?.id,
-                                                            });
-                                                            setShowNotForEditorInput(false);
-                                                        }}
-                                                        href=''>
-                                                        Save
-                                                    </a>
-                                                    <a href='' className='cancel_editor_note' onClick={() => setShowNotForEditorInput(false)}>
-                                                        Cancel
-                                                    </a>
-                                                </div>
-                                            </>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </div>
-
-            </Modal.Body>
-        </Modal>
+  const [toggleWeTransfer, settoggleWeTransfer] = useState(false);
+  const authHeader = useAuthHeader();
+  const sendNotification = async (video_id) => {
+    await requests.post(
+      "/send-notification",
+      { video_id: video_id },
+      { token: authHeader() }
     );
+    notify();
+  };
+  const { videoDetails } = useContext(VideoContext);
+  const { id, title, thumbnail, email, first_name, last_name, created_at } =
+    videoDetails;
+  const { data: video } = useFetch(["video", id], `/video/${id}`);
+  const { status } = video || {};
+
+  const { mutateAsync: mutateNote } = useCreate("note");
+  const createNote = async (payload) => {
+    mutateNote({ payload }).finally(() => {
+      // refetch();
+      // refetchEarning();
+    });
+  };
+  const [tabItem, setTabItem] = useState(1);
+  const [showNotForCopyWriterInput, setShowNotForCopyWriterInput] =
+    useState(false);
+  const [showNotForEditorInput, setShowNotForEditorInput] = useState(false);
+  const filterNote = (notes, key) => {
+    if (notes) {
+      const filtered_note = notes.filter((note) => {
+        return note.note_key === key;
+      });
+      if (filtered_note.length > 0) {
+        return filtered_note[0].note;
+      }
+    }
+  };
+  const [editableFields, setEditableFields] = useState({});
+
+  const handleOnChange = (e) => {
+    setEditableFields({ ...editableFields, [e.target.name]: e.target.value });
+  };
+  console.log(video);
+  return (
+    <>
+    <Modal fullscreen={true} show={props.show} onHide={() => props.toggle()}>
+      <Modal.Body>
+                <div className="fluid_container">
+                  <div className="panel_right_spacing">
+                    <div className="panel_flex flex-start">
+                      <div className="left-panel sticky_box">
+                        <div className="panel-box">
+                          <div className="single-video-box">
+                            
+                          <VideoPlayer src={`${process.env.REACT_APP_VIDEO_BASE}${video?.converted_url}`} poster={getImageURL(thumbnail)} />
+                          </div>
+                          <div className="btn-wrap">
+                            <a href="#" className="btn-outline btn-outline-blue">
+                              <img
+                                src="images/icon-download.svg"
+                                className="icon"
+                                alt=""
+                              />
+                              Download Video
+                            </a>
+                            <a href="#" className="btn-outline btn-outline-red">
+                              <img
+                                src="images/icon-bell.svg"
+                                className="icon"
+                                alt=""
+                              />
+                              Send Notification
+                            </a>
+                          </div>
+                        </div>
+                        <div className="panel-box-info">
+                          <div className="line-header">
+                            <h5>
+                              <span>About Video</span>
+                            </h5>
+                          </div>
+                          <div className="panel-box-info-wrap">
+                            <div className="panel-box-info-wrap-col">
+                              <p>
+                                <span>Title of the video :</span> 
+                                {video?.title? video.title: 'Title'}
+                              </p>
+                            </div>
+                            <div className="panel-box-info-wrap-col">
+                              <p>
+                                <span>Filming Date : </span> 
+                                {video?.when_filmed? video.when_filmed.split('-').join('/'): 'Film Date'}
+                              </p>
+                            </div>
+                            <div className="panel-box-info-wrap-col">
+                              <p>
+                                <span>Filming Location : </span> 
+                                {video?.city? video.city: 'City'}, {video?.state? video.state: 'State'}, {video?.country? video.country: 'Country'}
+                              </p>
+                            </div>
+                          </div>
+                          <div className="story-description">
+                            <div className="story-description-scroll">
+                              <div className="story-description-info">
+                                <label>Story/Description:</label>
+                                <div className="story-description-info-content">
+                                  <div className="overflow_scroll">
+                                    <p>
+                                    {video?.description? video.description: 'Description'}
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            className="btn-wrap inline_popup"
+                            data-pop-block="url_note"
+                          >
+                            <a
+                              href="#"
+                              className="btn-outline btn-outline-blue"
+                              data-btn="url_note"
+                            >
+                              <img
+                                src="images/icon-file-link.svg"
+                                className="icon"
+                                alt=""
+                              />
+                              Original File
+                            </a>
+                            <div className="super_admin_note" data-modal="url_note">
+                              <div className="panel-box-info panel-box-info-xs-spacing mt-0">
+                                <div className="line-header">
+                                  <h5>
+                                    <span>Original Video File</span>
+                                  </h5>
+                                </div>
+                                <form>
+                                  <div className="form-field">
+                                    <input
+                                      type="text"
+                                      placeholder="Enter link"
+                                      data-text="url_note"
+                                    />
+                                  </div>
+                                  <div className="message-note-btn">
+                                    <button
+                                      type="button"
+                                      className="btn-outline btn-outline-blue"
+                                    >
+                                      Save
+                                    </button>
+                                    <button
+                                      type="button"
+                                      className="btn-outline btn-outline-red"
+                                      data-cancel="url_note"
+                                    >
+                                      Cancel
+                                    </button>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="right-panel">
+                        <div className="panel-box-info panel-box-info-xs-spacing mt-0">
+                          <div className="line-header">
+                            <h5>
+                              <span>About User</span>
+                            </h5>
+                            <button onClick={() => props.toggle()}
+                              className="cross"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                            >
+                              <img src="images/circle-cross.svg" alt="" />
+                            </button>
+                          </div>
+                          <div className="panel-box-info-wrap column-4 border-b-0">
+                            <div className="panel-box-info-wrap-col">
+                              <p>
+                                <span>Client Name :</span> 
+                                {video?.first_name? video.first_name: 'Name'}{video?.last_name? video.last_name: ''}
+                              </p>
+                            </div>
+                            <div className="panel-box-info-wrap-col">
+                              <p>
+                                <span>Email Address: </span> 
+                                {video?.email? video.email: 'Email'}
+                              </p>
+                            </div>
+                            <div className="panel-box-info-wrap-col">
+                              <p>
+                                <span>Phone Number :</span> 
+                                +{video?.phone? video.phone: 'Phone'}
+                              </p>
+                            </div>
+                            <div className="panel-box-info-wrap-col">
+                              <p>
+                                <span>Date of Birth :</span> 
+                                {video?.birthdate? video.birthdate.split('-').join('/'): 'birthdate'}
+                              </p>
+                            </div>
+                            <div className="panel-box-info-wrap-col">
+                              <p>
+                                <span>Payment Method : </span>{" "}
+                                <img src="images/paypal.png" alt="" />
+                              </p>
+                            </div>
+                            <div className="panel-box-info-wrap-col">
+                              <p>
+                                <span>Paypal Email Address :</span>{" "}
+                                Jognsmith@Gmail.Com
+                              </p>
+                            </div>
+                            <div className="panel-box-info-wrap-col">
+                              <p>
+                                <span>Signature : </span>{" "}
+                                <img
+                                  src="images/signature.png"
+                                  className="signs"
+                                  alt=""
+                                />
+                              </p>
+                            </div>
+                            <div className="panel-box-info-wrap-col">
+                              <p>
+                                <span>Video Credit :</span> 
+                                {video?.person_who_filmed? video.person_who_filmed: 'person_who_filmed'}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="panel-box-info panel-box-info-xxs-spacing theaming-red-box">
+                          <div className="line-header">
+                            <h5>
+                              <span>Copyrights Ownership</span>
+                            </h5>
+                          </div>
+                          <div className="column-wrap">
+                            <div className="panel-box-info-wrap column-2">
+                              <div className="panel-box-info-wrap-col m-0">
+                                <p>
+                                  <span>
+                                    Are There People Appearing In the Video?{" "}
+                                  </span>{" "}
+                                  <mark className="stripe-btn-danger">{video?.people_appearing? video.people_appearing: 'people_appearing'}</mark>
+                                </p>
+                              </div>
+                              <div className="panel-box-info-wrap-col m-0">
+                                <p>
+                                  <span>Who Are They? </span> 
+                                  {video?.people_appearing_list? video.people_appearing_list: 'people_appearing_list'}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="panel-box-info-wrap column-2">
+                              <div className="panel-box-info-wrap-col m-0">
+                                <p>
+                                  <span>
+                                    The person who filmed this video is{" "}
+                                  </span>{" "}
+                                  {video?.person_who_filmed_other? video.person_who_filmed_other: 'A Security camera'}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="panel-box-info-wrap column-2">
+                              <div className="panel-box-info-wrap-col m-0">
+                                <p>
+                                  <span>
+                                    Did Anyone Reach You About Using This Video?
+                                  </span>{" "}
+                                  <mark className="stripe-btn-danger">{video?.did_anyone_reach? video.did_anyone_reach: 'did_anyone_reach'}</mark>
+                                </p>
+                              </div>
+                              <div className="panel-box-info-wrap-col m-0">
+                                <p>
+                                  <span>
+                                    Please Share With Us The Name Of The
+                                    Company/Page:
+                                  </span>{" "}
+                                  Company Name/Page
+                                </p>
+                              </div>
+                            </div>
+                            <div className="panel-box-info-wrap column-2">
+                              <div className="panel-box-info-wrap-col m-0">
+                                <p>
+                                  Did You Send/Submit/Upload This Video To A
+                                  Website And/Or Social Media Account?{" "}
+                                  <mark className="stripe-btn-danger">
+                                  {video?.submit_other_website? video.submit_other_website: 'submit_other_website'}
+                                  </mark>
+                                </p>
+                              </div>
+                              <div className="panel-box-info-wrap-col m-0">
+                                <p>
+                                  <span>Where Did You Submit It? </span> 
+                                  {video?.submit_place? video.submit_place: 'Our Instagram, Facebook and youTube'}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="panel-box-info-wrap column-2">
+                              <div className="panel-box-info-wrap-col m-0">
+                                <p>
+                                  <span>
+                                    Did You Sign A Licensing Agreement For This
+                                    Video With Another Company/Page?
+                                  </span>
+                                  <mark className="stripe-btn-danger">
+                                  {video?.aggrement_with_another_company? video.aggrement_with_another_company: 'aggrement_with_another_company'}
+                                  </mark>
+                                </p>
+                              </div>
+                              <div className="panel-box-info-wrap-col m-0">
+                                <p>
+                                  <span>Name of the company? </span> Company
+                                  Name
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="panel-box-info panel-box-info-xxs-spacing">
+                          <div className="line-header">
+                            <h5>
+                              <span>Submission Information</span>
+                            </h5>
+                          </div>
+                          <div className="column-wrap">
+                            <div className="panel-box-info-wrap column-4">
+                              <div className="panel-box-info-wrap-col mb-md-0 mb-3">
+                                <p>
+                                  <span>User IP address : </span> 12356asdsd
+                                </p>
+                              </div>
+                              <div className="panel-box-info-wrap-col mb-md-0 mb-3">
+                                <p>
+                                  <span>Country : </span> United States
+                                </p>
+                              </div>
+                              <div className="panel-box-info-wrap-col m-0">
+                                <p>
+                                  <span>Submission date :</span> August 23rd,
+                                  2021 at 11:15:34 PM UTC
+                                </p>
+                              </div>
+                              <div className="panel-box-info-wrap-col m-0">
+                                <p>
+                                  <span>Terms of Submission :</span> Agreed |
+                                  Exclusive License
+                                </p>
+                              </div>
+                            </div>
+                            <div className="panel-box-info-wrap column-4">
+                              <div className="panel-box-info-wrap-col mb-md-0 mb-3">
+                                <p>
+                                  <span>Terms of Service :</span>Agreed
+                                </p>
+                              </div>
+                              <div className="panel-box-info-wrap-col mb-md-0 mb-3">
+                                <p>
+                                  <span>Revenue Share: </span> 50% or 60%
+                                </p>
+                              </div>
+                              <div className="panel-box-info-wrap-col m-0">
+                                <p>
+                                  <span>VSID : </span> 17171
+                                </p>
+                              </div>
+                              <div className="panel-box-info-wrap-col m-0"></div>
+                            </div>
+                            <div className="panel-box-info-wrap column-1">
+                              <div className="panel-box-info-wrap-col-strip">
+                                <div className="stript-info">
+                                  <span>
+                                    *Heads-up! We Have received one or more
+                                    submissions from this user
+                                  </span>
+                                  <a href="#"> VSID:15645,</a>
+                                  <a href="#">VSID:54689,</a>
+                                  <a href="#">VSID:15486</a>
+                                  <span>*</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="panel-box-info panel-box-info-xxs-spacing csts">
+                          <div className="line-header">
+                            <h5>
+                              <span>Submission Status</span>
+                            </h5>
+                          </div>
+                          <div className="column-wrap">
+                            <div className="panel-box-info-wrap column-4 p-0">
+                              <div className="panel-box-info-wrap-col mb-md-0 mb-3">
+                                <p>
+                                  <span>Video Status : </span>{" "}
+                                  <mark className="stripe-btn-success">
+                                    Approved
+                                  </mark>
+                                </p>
+                              </div>
+                              <div className="panel-box-info-wrap-col mb-md-0 mb-3">
+                                <p>
+                                  <span>Acquired By : </span> Name of
+                                  Partner/Member
+                                </p>
+                              </div>
+                              <div className="panel-box-info-wrap-col m-0">
+                                <p>
+                                  <span>approved or rejected By :</span> Manager
+                                  Name 22.03.2021 @10:55AM
+                                </p>
+                              </div>
+                              <div className="panel-box-info-wrap-col m-0">
+                                <p>
+                                  <span>Confirmed or declined By :</span> Name
+                                  of the Quality Team Agent 22.03.2021 @10:55AM{" "}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="panel-box-info panel-box-info-xxs-spacing csts">
+                          <div className="line-header">
+                            <h5>
+                              <span>Submission Status</span>
+                            </h5>
+                          </div>
+                          <div className="column-wrap">
+                            <div className="panel-box-info-wrap column-4 p-0">
+                              <div className="panel-box-info-wrap-col mb-md-0 mb-3">
+                                <p>
+                                  <span>Video Status : </span>{" "}
+                                  <mark className="stripe-btn-danger">
+                                    Rejected
+                                  </mark>
+                                </p>
+                              </div>
+                              <div className="panel-box-info-wrap-col mb-md-0 mb-3">
+                                <p>
+                                  <span>Acquired By : </span> Name of
+                                  Partner/Member
+                                </p>
+                              </div>
+                              <div className="panel-box-info-wrap-col m-0">
+                                <p>
+                                  <span>approved or rejected By :</span> Manager
+                                  Name 22.03.2021 @10:55AM
+                                </p>
+                              </div>
+                              <div className="panel-box-info-wrap-col m-0">
+                                <p>
+                                  <span>Confirmed or declined By :</span> Name
+                                  of the Quality Team Agent 22.03.2021 @10:55AM{" "}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="panel-box-info panel-box-info-xxs-spacing empty-data-panel">
+                          <div className="line-header">
+                            <h5>
+                              <span>Notes</span>
+                            </h5>
+                          </div>
+                          <div>
+                            <p>No Notes Available!</p>
+                          </div>
+                        </div>
+                        <div className="panel-box-info panel-box-info-xxs-spacing theaming-green">
+                          <div className="line-header">
+                            <h5>
+                              <span>Notes</span>
+                            </h5>
+                          </div>
+                          <div className="form-panel">
+                            <ul
+                              className="tab_nav_list"
+                              data-tab-target="tabgroup2"
+                            >
+                              <li>
+                                <a href="#" className="active">
+                                  Editor
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#">Quality Team</a>
+                              </li>
+                              <li>
+                                <a href="#">Manager</a>
+                              </li>
+                            </ul>
+                            <div className="notes_tab" data-tab-parent="tabgroup2">
+                              <div className="tab_panel active">
+                                <div className="form-info">
+                                  <p>
+                                    Lorem Ipsum is simply dummy text of the
+                                    printing and typesetting industry. Lorem
+                                    Ipsum has been the industry's standard dummy
+                                    text ever since the 1500s, when an unknown
+                                    printer took a galley of type and scrambled
+                                    it to make a type specimen book. It has
+                                    survived not only five centuries, Lorem
+                                    Ipsum is simply dummy text of the printing
+                                    and typesetting industry. Lorem Ipsum has
+                                    been the industry's standard dummy .
+                                  </p>
+                                </div>
+                                <div className="form-btn-wrap">
+                                  <button
+                                    type="button"
+                                    className="btn-outline btn-outline-blue"
+                                  >
+                                    Acknowledged
+                                  </button>
+                                  <button
+                                    type="button"
+                                    className="btn-outline btn-outline-blue"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#messageNote"
+                                  >
+                                    Reply Now
+                                  </button>
+                                </div>
+                              </div>
+                              <div className="tab_panel">
+                                <div className="form-info">
+                                  <p>
+                                    Dummy text of the printing and typesetting
+                                    industry. Lorem Ipsum has been the
+                                    industry's standard dummy text ever since
+                                    the 1500s, when an unknown printer took a
+                                    galley of type and scrambled it to make a
+                                    type specimen book. It has survived not only
+                                    five centuries, Lorem Ipsum is simply dummy
+                                    text of the printing and typesetting
+                                    industry. Lorem Ipsum has been the
+                                    industry's standard dummy .
+                                  </p>
+                                </div>
+                                <div className="form-btn-wrap">
+                                  <button
+                                    type="button"
+                                    className="btn-outline btn-outline-blue"
+                                  >
+                                    Acknowledged
+                                  </button>
+                                  <button
+                                    type="button"
+                                    className="btn-outline btn-outline-blue"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#messageNote"
+                                  >
+                                    Reply Now
+                                  </button>
+                                </div>
+                              </div>
+                              <div className="tab_panel">
+                                <div className="form-info">
+                                  <p>
+                                    Lorem Ipsum has been the industry's standard
+                                    dummy text ever since the 1500s, when an
+                                    unknown printer took a galley of type and
+                                    scrambled it to make a type specimen book.
+                                    It has survived not only five centuries,
+                                    Lorem Ipsum is simply dummy text of the
+                                    printing and typesetting industry. Lorem
+                                    Ipsum has been the industry's standard dummy
+                                    .
+                                  </p>
+                                </div>
+                                <div className="form-btn-wrap">
+                                  <button
+                                    type="button"
+                                    className="btn-outline btn-outline-blue"
+                                  >
+                                    Acknowledged
+                                  </button>
+                                  <button
+                                    type="button"
+                                    className="btn-outline btn-outline-blue"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#messageNote"
+                                  >
+                                    Reply Now
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="message-note">
+                          <div className="row">
+                            <div
+                              className="col-md-6 col-6 message-note-left inline_popup data-goto"
+                              data-pop-block="admin_note"
+                            >
+                              <a
+                                href="#"
+                                className="btn-outline btn-outline-blue"
+                                data-btn="admin_note"
+                              >
+                                Leave a Note for Super Admin
+                              </a>
+                              <div
+                                className="super_admin_note"
+                                data-modal="admin_note"
+                              >
+                                <div className="panel-box-info panel-box-info-xs-spacing mt-0">
+                                  <div className="line-header">
+                                    <h5>
+                                      <span>Leave a Note for Super Admin</span>
+                                    </h5>
+                                  </div>
+                                  <form>
+                                    <div className="form-field">
+                                      <textarea
+                                        placeholder="Type the Note here..............."
+                                        data-text="admin_note"
+                                      ></textarea>
+                                    </div>
+                                    <div className="message-note-btn">
+                                      <button
+                                        type="button"
+                                        className="btn-outline btn-outline-blue"
+                                      >
+                                        Send
+                                      </button>
+                                      <button
+                                        type="button"
+                                        className="btn-outline btn-outline-red"
+                                        data-cancel="admin_note"
+                                      >
+                                        Cancel
+                                      </button>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              className="col-md-6 col-6 message-note-right inline_popup data-goto"
+                              data-pop-block="leave_note"
+                            >
+                              <a
+                                href="#"
+                                className="btn-outline btn-outline-red"
+                                data-btn="leave_note"
+                              >
+                                Leave a Note for Manager
+                              </a>
+                              <div
+                                className="super_admin_note"
+                                data-modal="leave_note"
+                              >
+                                <div className="panel-box-info panel-box-info-xs-spacing mt-0">
+                                  <div className="line-header">
+                                    <h5>
+                                      <span>Leave a Note for Manager</span>
+                                    </h5>
+                                  </div>
+                                  <form>
+                                    <div className="form-field">
+                                      <textarea
+                                        placeholder="Type the Note here..............."
+                                        data-text="leave_note"
+                                      ></textarea>
+                                    </div>
+                                    <div className="message-note-btn">
+                                      <button
+                                        type="button"
+                                        className="btn-outline btn-outline-blue"
+                                      >
+                                        Send
+                                      </button>
+                                      <button
+                                        type="button"
+                                        className="btn-outline btn-outline-red"
+                                        data-cancel="leave_note"
+                                      >
+                                        Cancel
+                                      </button>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+      </Modal.Body>
+    </Modal></>
+  );
 };
 
 export default VideoModal;

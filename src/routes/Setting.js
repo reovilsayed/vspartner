@@ -2,7 +2,7 @@ import userEvent from "@testing-library/user-event";
 import useFetch from "../hooks/useFetch";
 import React, { useEffect, useState } from "react";
 import { useAuthHeader, useAuthUser } from "react-auth-kit";
-import getImageURL from "../lib/queryClient";
+import getImageURL, { getDateTime } from "../lib/queryClient";
 import requests from "../services/httpService";
 
 function Setting() {
@@ -31,7 +31,6 @@ function Setting() {
       resetFormData(user);
     }
   };
-
 
   const [formData, setFormData] = useState({
     name: user?.name ? user.name : "",
@@ -128,10 +127,8 @@ function Setting() {
                       <div className="prf_lft">
                         <div className="prf_box">
                           <div className="prf" data-profile-image>
-                            <img
-                              src={getImageURL(user?.avater ? user.avater : "")}
-                              alt=""
-                            />
+                            {/* <img src={getImageURL(user.avater)} alt="" /> */}
+                            <img src="/images/sender.png" alt="user-image" />
                             <span className="prf_pic_change">
                               <input type="file" accept="image/*" />
                               <svg
@@ -163,7 +160,10 @@ function Setting() {
                             </p>
                             <p>
                               <img src="images/pr_cal.png" alt="" />
-                              joined {user?.joined_at ? user.joined_at : ""}
+                              joined{" "}
+                              {user?.joined_at
+                                ? getDateTime(user.joined_at).date
+                                : ""}
                             </p>
                           </div>
                         </div>
@@ -1315,10 +1315,16 @@ function Setting() {
                                   disabled
                                 >
                                   <option
-                                    value={formData.country}
+                                    value={
+                                      formData?.country
+                                        ? formData.country
+                                        : "None"
+                                    }
                                     data-class="af"
                                   >
-                                    {formData.country}
+                                    {formData?.country
+                                      ? formData.country
+                                      : "None"}
                                   </option>
                                 </select>
                               )}
