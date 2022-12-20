@@ -40,6 +40,7 @@ function App() {
   return (
     <div className="App">
       <VideoContext.Provider value={{ videoDetails, setVideoDetails, toggle }}>
+        <Toaster />
         <Routes>
           <Route
             path="/"
