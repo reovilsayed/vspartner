@@ -3,10 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/nice-select2.css";
 import "./App.css";
 import "./Override.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import DefaultLayout from "./components/layouts/DefaultLayout";
 import DetailsLayout from "./components/layouts/DetailsLayout";
-import VideoDetailsModal from "./components/videos/VideoDetailsModal";
 
 import Home from "./routes/Home";
 import MyEearning from "./routes/MyEearning";
@@ -37,6 +36,7 @@ function App() {
     }
     setModal(!modal);
   };
+
   return (
     <div className="App">
       <VideoContext.Provider value={{ videoDetails, setVideoDetails, toggle }}>
@@ -114,7 +114,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
-        <VideoModal show={modal} toggle={toggle} videoDetails={videoDetails} />
+        {modal && <VideoModal show={modal} toggle={toggle} videoDetails={videoDetails} />}
         {/* {modal && <VideoDetailsModal toggle={toggle} videoDetails={videoDetails} />} */}
       </VideoContext.Provider>
     </div>
