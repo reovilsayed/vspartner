@@ -2,7 +2,7 @@ import userEvent from "@testing-library/user-event";
 import useFetch from "../hooks/useFetch";
 import React, { useEffect, useState } from "react";
 import { useAuthHeader, useAuthUser } from "react-auth-kit";
-import getImageURL, { getDateTime } from "../lib/queryClient";
+import getImageURL, { getDateTime, notify } from "../lib/queryClient";
 import requests from "../services/httpService";
 
 function Setting() {
@@ -26,7 +26,13 @@ function Setting() {
   const baseURL = process.env.REACT_APP_API_BASE;
   const updateProfile = (formData) => {
     if (formData) {
-      requests.post(`update-profile`, formData, { token: authHeader() });
+      requests.post(`update-profile`, formData, { token: authHeader() }).then((res) => {
+        if (res) {
+          notify(res.message);
+        } else {
+          notify(res.message, true);
+        }
+      });
       refetch();
       resetFormData(user);
     }
