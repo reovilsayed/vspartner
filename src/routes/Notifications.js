@@ -262,12 +262,13 @@ function Notifications() {
                     {notificationTypes?.map((type) => (
                       <div className="form_input_check">
                         <label key={type.id}>
-                          {type.name}
                           <input
                             type="checkbox"
                             checked={filters[type.id]}
                             onClick={() => toggleCheck(type.id)}
                           />
+                          <span>
+                          {type.name}</span>
                         </label>
                       </div>
                     ))}
