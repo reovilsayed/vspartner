@@ -8,6 +8,12 @@ import axios from "axios";
 
 function Login() {
   const baseURL = process.env.REACT_APP_API_BASE;
+  const [showPassword, setShowPassword] = useState(false);
+  const handleShowPassword = () => {
+    setShowPassword(currShow => {
+      return !currShow;
+    });
+  }
   const [creds, setCreds] = useState({
     email: "",
     password: "",
@@ -96,18 +102,19 @@ function Login() {
                         >
                           <h6>Password</h6>
                           <input
-                            type="password"
-                            placeholder="*********"
+                            type={showPassword? 'text': 'password'}
+                            placeholder="********"
                             id="myInput"
                             onChange={(e) => {
                               e.preventDefault();
                               setCreds({ ...creds, password: e.target.value });
                             }}
                           />
-                          <a
-                            href="Javascript:void(0);"
-                            className="toggle_open_eye"
-                          ></a>
+                          <span
+                          onClick={handleShowPassword}
+                          style={{cursor: "pointer"}}
+                            className={`toggle_open_eye ${showPassword? 'active': ''}`}
+                          ></span>
                         </div>
                       </div>
 
