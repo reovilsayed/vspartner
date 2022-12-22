@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthHeader, useAuthUser } from "react-auth-kit";
 import getImageURL, { getDateTime, notify } from "../lib/queryClient";
 import requests from "../services/httpService";
+import { Link } from "react-router-dom";
 
 function Setting() {
   const authHeader = useAuthHeader();
@@ -1474,9 +1475,9 @@ function Setting() {
                     Please register on Tipalti using the button Below to Receive
                     Payments From ViralSnare
                   </p>
-                  <a href="login.html" className="reg_btn_part">
+                  <Link to={"/login"} className="reg_btn_part">
                     Register
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="dashboard_rt_fltd">
@@ -1488,9 +1489,9 @@ function Setting() {
                     Please login on Tipalti using the button Below to Receive
                     Payments From ViralSnare
                   </p>
-                  <a href="login.html" className="reg_btn_part">
+                  <Link to={"/login"} className="reg_btn_part">
                     Login
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
