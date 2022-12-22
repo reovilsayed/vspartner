@@ -16,23 +16,18 @@ const Videos = () => {
   const [fromDate, setfromDate] = useState('');
   const [endDate, setendDate] = useState('');
   const [popup, setPopup] = useState(false);
-  const [picker, setPicker] = useState(flatpickr("#calender_range", {
+  const picker = flatpickr("#calender_range", {
     mode: "range",
     altInput: true,
     altFormat: "j F, Y",
     dateFormat: "Y/m/d",
     inline: true,
     defaultDate: [fromDate, endDate]
-  }));
-  const clearPickerRange = () => {
-    setPicker(flatpickr("#calender_range", {
-      mode: "range",
-      altInput: true,
-      altFormat: "j F, Y",
-      dateFormat: "Y/m/d",
-      inline: true,
-      defaultDate: [fromDate, endDate]
-    }));
+  });
+
+  const clearDatePicker = () => {
+    picker.clear(); setPopup(!popup);
+    dateInput.current.value = '';
   }
 
   const filterByDate = (value) => {
@@ -152,7 +147,7 @@ const Videos = () => {
                   <input type="text" className="d-none" id="calender_range" />
                   <div className="range_btn">
                     <div className="range_btn_col">
-                      <button className="btn-outline btn-outline-red" onClick={() => clearPickerRange()} id="range_clear">Clear</button>
+                      <button className="btn-outline btn-outline-red" onClick={clearDatePicker} id="range_clear">Clear</button>
                     </div>
                     <div className="range_btn_col">
                       {/* <button className="btn-outline btn-outline-blue fill" id="apply_range" onClick={() => filterByDate(picker.input.value)} >Apply</button> */}
