@@ -133,9 +133,9 @@ function Notifications() {
                             </h5>
                           </div>
                           <ul className="notify_list">
-                            {[0, 0, 0, 0, 0].map((notification) => {
+                            {[0, 0, 0, 0, 0].map((notification, index) => {
                               return (
-                                <li>
+                                <li key={index}>
                                   <div className="nof_ico">
                                     <i className="skeleton">
                                       <img src="images/rocket.svg" alt="" />
@@ -245,13 +245,13 @@ function Notifications() {
                       <input
                         type="text"
                         placeholder="Search Here......"
-                        name
+                        name="true"
                         // value={search}
                         onChange={(e) => setSearch(e.target.value)}
                       />
                       <span
                         className="search_btn"
-                        name
+                        name="true"
                         onClick={() => setSearch(search)}
                       >
                         <img src="images/search.svg" alt="" />
@@ -259,8 +259,8 @@ function Notifications() {
                     </div>
                   </div>
                   <div className="filter_noti_list">
-                    {notificationTypes?.map((type) => (
-                      <div className="form_input_check">
+                    {notificationTypes?.map((type, index) => (
+                      <div key={index} className="form_input_check">
                         <label key={type.id}>
                           <input
                             type="checkbox"

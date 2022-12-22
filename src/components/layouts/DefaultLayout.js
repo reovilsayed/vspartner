@@ -37,7 +37,7 @@ function DefaultLayout({ children }) {
     {},
     { token: authHeader() }
   );
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState('');
   const navigate = useNavigate();
   const handleSearch = () => {
     const value = search;

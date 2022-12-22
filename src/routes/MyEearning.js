@@ -29,8 +29,6 @@ function MyEearning() {
     refetchGraphData();
   }, [earningCountIsLoading, graphDataIsLoading]);
 
-console.log(earningByMonths);
-
   return (
     <>
       <div className="dashboard_content dashboard_content_earning">

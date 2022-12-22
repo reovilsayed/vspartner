@@ -35,9 +35,8 @@ function DefaultLayout({ children }) {
     {},
     { token: authHeader() }
   );
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState('');
   const navigate = useNavigate();
-  console.log(search);
   const handleSearch = () => {
     const value = search;
     setSearch("");
@@ -58,7 +57,7 @@ function DefaultLayout({ children }) {
             <Link
               to={`/my-messages`}
               className="logo"
-              style={{ opacity: "0", "pointer-events": "none" }}
+              style={{ opacity: "0", pointerEvents: "none" }}
             >
               <img src="images/logo.png" alt="" />
             </Link>
