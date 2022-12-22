@@ -57,7 +57,7 @@ function Login() {
       });
   };
   return (
-    <div classNameName="auth_body">
+    <div className="auth_body">
       <div className="wrapper_scroll_cmn">
         <div className="login_pages_contents">
           <img src="images/auth-page-bg.png" className="auth-page-bg" alt="" />
@@ -132,7 +132,7 @@ function Login() {
                             <div className="custom_checked_remmbr">
                               <div className="form_input_check">
                                 <label>
-                                  <input type="checkbox" checked={rememberSession} value={'true'} onClick={handleRememberSession} />
+                                  <input type="checkbox" defaultChecked={rememberSession} value={'true'} onClick={handleRememberSession} />
                                   <span>Remember session?</span>
                                 </label>
                               </div>
