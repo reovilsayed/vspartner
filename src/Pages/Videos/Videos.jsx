@@ -142,7 +142,7 @@ const Videos = () => {
                   <input type="text" className="d-none" id="calender_range" />
                   <div className="range_btn">
                     <div className="range_btn_col">
-                      <button className="btn-outline btn-outline-red" onClick={() => picker.clear()} id="range_clear">Clear</button>
+                      <button className="btn-outline btn-outline-red" onClick={() => picker.clear} id="range_clear">Clear</button>
                     </div>
                     <div className="range_btn_col">
                       {/* <button className="btn-outline btn-outline-blue fill" id="apply_range" onClick={() => filterByDate(picker.input.value)} >Apply</button> */}
