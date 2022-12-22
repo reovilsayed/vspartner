@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../App.css";
 import { useSignIn } from "react-auth-kit";
 import { useState } from "react";
@@ -7,8 +7,12 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { notify } from "../lib/queryClient";
 import { toast } from "react-hot-toast";
+import {useAuthHeader} from "react-auth-kit";
 
 function Login() {
+  const authHeader = useAuthHeader();
+  const signIn = useSignIn();
+  const navigate = useNavigate();
   const baseURL = process.env.REACT_APP_API_BASE;
   const [showPassword, setShowPassword] = useState(false);
   const [rememberSession, setRememberSession] = useState(false);
@@ -28,8 +32,6 @@ function Login() {
     device_name: "test",
     role_id: "3",
   });
-  const signIn = useSignIn();
-  const navigate = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault();
     axios
@@ -56,6 +58,11 @@ function Login() {
         notify(message, true);
       });
   };
+  useEffect(() => {
+    if (authHeader()) {
+      navigate('/');
+    }
+  })
   return (
     <div className="auth_body">
       <div className="wrapper_scroll_cmn">
