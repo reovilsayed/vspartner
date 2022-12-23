@@ -402,9 +402,9 @@ function Chat() {
                       </span>
                     </div>
                     <div className="modal-body-message-lists-wrap">
-                      {data?.messages?.map((message) => {
+                      {data?.messages?.map((message, index) => {
                         return (
-                          <div>
+                          <div key={index}>
                             <div
                               className={
                                 auth()?.id === message?.sender?.id

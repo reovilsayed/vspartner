@@ -93,9 +93,9 @@ function MyEearning() {
             </div>
             <div className="earning_download_lists">
               {
-                !earningByMonthsIsLoading ? earningByMonths.reports.map((d) => {
+                !earningByMonthsIsLoading ? earningByMonths.reports.map((d, index) => {
                   return (
-                    <div className="earning_download_lists_col">
+                    <div key={index} className="earning_download_lists_col">
                       <div className="earning_download_lists_col_box">
                         <div className="earning_download_month">
                           <p>{d.date}</p>
