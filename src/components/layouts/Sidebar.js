@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, Location, useLocation } from 'react-router-dom'
 import { useAuthHeader, useAuthUser, useSignOut } from 'react-auth-kit';
 import requests from '../../services/httpService';
+import prefetchOnMouseHover from '../../lib/prefetchOnMouseHover';
 
 function Sidebar(props) {
     const baseURL = process.env.REACT_APP_API_BASE;
@@ -32,7 +33,9 @@ function Sidebar(props) {
                                 </Link>
                             </li>
                             <li className={isCurrentRoute('/my-videos')}>
-                                <Link to={'/my-videos'}>
+                                <Link to={'/my-videos'} onMouseOver={() => {
+                                    prefetchOnMouseHover('videos', `${baseURL}/videos/12?page=1`, '', authHeader());
+                                }}>
                                     <i>
                                         <img src="images/nav2.png" alt="" />
                                         <img src="images/nav2_hov.png" alt="" />
@@ -41,7 +44,7 @@ function Sidebar(props) {
                                 </Link>
                             </li>
                             <li className={isCurrentRoute('/my-earnings')}>
-                                <Link to={'/my-earnings'}>
+                                <Link to={'/my-earnings'} >
                                     <i>
                                         <img src="images/nav3.png" alt="" />
                                         <img src="images/nav3_hov.png" alt="" />
@@ -49,7 +52,9 @@ function Sidebar(props) {
                                     <span>My Earnings</span>
                                 </Link>
                             </li>
-                            <li className={isCurrentRoute('/my-messages')}>
+                            <li className={isCurrentRoute('/my-messages')} onMouseOver={() => {
+                                    prefetchOnMouseHover('inquiries', `${baseURL}/inquiry`, '', authHeader());
+                                }}>
                                 <Link to={'/my-messages'}>
                                     <i>
                                         <img src="images/nav4.png" alt="" />
