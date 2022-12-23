@@ -23,6 +23,7 @@ import MyMessages from "./routes/MyMessages";
 import VideoModal from "./components/videos/VideoModal";
 import ForgotPassword from "./routes/ForgotPassword";
 import Chat from "./routes/Chat";
+import routes from "./routes";
 
 export const VideoContext = createContext();
 
@@ -42,80 +43,61 @@ function App() {
       <VideoContext.Provider value={{ videoDetails, setVideoDetails, toggle }}>
         <Toaster />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <RequireAuth loginPath="/login">
-                <DefaultLayout>
-                  <Home />
-                </DefaultLayout>
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/my-videos"
-            element={
-              <RequireAuth loginPath="/login">
-                <DefaultLayout>
-                  <Videos />
-                </DefaultLayout>
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/my-earnings"
-            element={
-              <RequireAuth loginPath="/login">
-                <DefaultLayout>
-                  <MyEearning />
-                </DefaultLayout>
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/my-messages"
-            element={
-              <RequireAuth loginPath="/login">
-                <DefaultLayout>
-                  <MyMessages />
-                </DefaultLayout>
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/notification"
-            element={
-              <RequireAuth loginPath="/login">
-                <DefaultLayout>
-                  <Notifications />
-                </DefaultLayout>
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/setting"
-            element={
-              <RequireAuth loginPath="/login">
-                <DefaultLayout>
-                  <Setting />
-                </DefaultLayout>
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/chat-details/:id"
-            element={
-              <RequireAuth loginPath="/login">
-                <DetailsLayout>
-                  <Chat />
-                </DetailsLayout>
-              </RequireAuth>
-            }
-          />
-          <Route path="/login" element={<Login />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
+          {routes.map((route, index) => {
+            return (
+              <Route
+                key={index}
+                path={route.path ? route.path : "/"}
+                element={
+                  route.protected ? (
+                    <RequireAuth loginPath="/login">
+                      {route.layout === "default" ? (
+                        <DefaultLayout>
+                          <Suspense fallback={<div>Loading...</div>}>
+                            <route.component />
+                          </Suspense>
+                        </DefaultLayout>
+                      ) : route.layout === "detail" ? (
+                        <DetailsLayout>
+                          <Suspense fallback={<div>Loading...</div>}>
+                            <route.component />
+                          </Suspense>
+                        </DetailsLayout>
+                      ) : (
+                        <Suspense fallback={<div>Loading...</div>}>
+                          <route.component />
+                        </Suspense>
+                      )}
+                    </RequireAuth>
+                  ) : route.layout === "default" ? (
+                    <DefaultLayout>
+                      <Suspense fallback={<div>Loading...</div>}>
+                        <route.component />
+                      </Suspense>
+                    </DefaultLayout>
+                  ) : route.layout === "detail" ? (
+                    <DetailsLayout>
+                      <Suspense fallback={<div>Loading...</div>}>
+                        <route.component />
+                      </Suspense>
+                    </DetailsLayout>
+                  ) : (
+                    <Suspense fallback={<div>Loading...</div>}>
+                      <route.component />
+                    </Suspense>
+                  )
+                }
+              />
+            );
+          })}
         </Routes>
-        {modal && <VideoModal show={modal} toggle={toggle} videoDetails={videoDetails} />}
+        {modal && (
+          <VideoModal
+            show={modal}
+            toggle={toggle}
+            videoDetails={videoDetails}
+          />
+        )}
         {/* {modal && <VideoDetailsModal toggle={toggle} videoDetails={videoDetails} />} */}
       </VideoContext.Provider>
     </div>
