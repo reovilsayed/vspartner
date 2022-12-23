@@ -60,6 +60,7 @@ function Login() {
   };
   useEffect(() => {
     if (authHeader()) {
+      notify('You are already logged in', true);
       navigate('/');
     }
   })
