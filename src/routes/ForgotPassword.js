@@ -1,6 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useAuthHeader } from 'react-auth-kit';
+import { useNavigate } from 'react-router-dom';
+import { notify } from '../lib/queryClient';
 
 function ForgotPassword() {
+    const authHeader = useAuthHeader();
+    const navigate = useNavigate();
+    useEffect(() => {
+      if (authHeader()) {
+        notify('You are already logged in', true);
+        navigate('/');
+      }
+    })
   return (
     <div className="auth_body">
          <div className="wrapper_scroll_cmn hidden">
