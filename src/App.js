@@ -49,7 +49,6 @@ function App() {
                 key={index}
                 path={route.path ? route.path : "/"}
                 element={
-                  route.protected ? (
                     <RequireAuth loginPath="/login">
                       {route.layout === "default" ? (
                         <DefaultLayout>
@@ -57,39 +56,21 @@ function App() {
                             <route.component />
                           </Suspense>
                         </DefaultLayout>
-                      ) : route.layout === "detail" ? (
+                      ): (
                         <DetailsLayout>
                           <Suspense fallback={<div>Loading...</div>}>
                             <route.component />
                           </Suspense>
                         </DetailsLayout>
-                      ) : (
-                        <Suspense fallback={<div>Loading...</div>}>
-                          <route.component />
-                        </Suspense>
-                      )}
+                      ) 
+                      }
                     </RequireAuth>
-                  ) : route.layout === "default" ? (
-                    <DefaultLayout>
-                      <Suspense fallback={<div>Loading...</div>}>
-                        <route.component />
-                      </Suspense>
-                    </DefaultLayout>
-                  ) : route.layout === "detail" ? (
-                    <DetailsLayout>
-                      <Suspense fallback={<div>Loading...</div>}>
-                        <route.component />
-                      </Suspense>
-                    </DetailsLayout>
-                  ) : (
-                    <Suspense fallback={<div>Loading...</div>}>
-                      <route.component />
-                    </Suspense>
-                  )
                 }
               />
             );
           })}
+          <Route path="/login" element={<Login />}/>
+          <Route path="/forgot-password" element={<ForgotPassword />}/>
         </Routes>
         {modal && (
           <VideoModal
