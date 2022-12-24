@@ -8,18 +8,6 @@ const routes = [
         protected: true,
     },
     {
-        path: '/login',
-        component: React.lazy(() => import('./routes/Login')),
-        layout: 'none',
-        protected: false,
-    },
-    {
-        path: '/forgot-password',
-        component: React.lazy(() => import('./routes/ForgotPassword')),
-        layout: 'none',
-        protected: false,
-    },
-    {
         path: '/my-videos',
         component: React.lazy(() => import('./Pages/Videos/Videos')),
         layout: 'default',
