@@ -25,11 +25,6 @@ const Videos = () => {
     defaultDate: [fromDate, endDate]
   });
 
-  const clearDatePicker = () => {
-    picker.clear(); setPopup(!popup);
-    dateInput.current.value = '';
-  }
-
   const filterByDate = (value) => {
 
     dateInput.current.value = value;
@@ -78,6 +73,14 @@ const Videos = () => {
       pagePrefetchKey: ["videos", status, fromDate, endDate, search, currentPage + 1],
     }
   );
+  const clearDatePicker = () => {
+    picker.clear();
+    setfromDate('');
+    setendDate('');
+    dateInput.current.value = '';
+    refetch();
+    setPopup(!popup);
+  }
   useEffect(() => {
     if (searchParams.get('search')) {
       setSearch(searchParams.get('search'));
@@ -110,7 +113,7 @@ const Videos = () => {
                       setCurrentPage(1);
                     }}
                     id="nav_tab_selecton_appr"
-                    className={status == STATUS.Approved ? "active" : ""}
+                    className={status === STATUS.Approved ? "active" : ""}
                   >
                     Approved
                   </a>
@@ -122,7 +125,7 @@ const Videos = () => {
                       setCurrentPage(1);
                     }}
                     id="nav_tab_selecton_rej"
-                    className={status == STATUS.Rejected ? "active" : ""}
+                    className={status === STATUS.Rejected ? "active" : ""}
                   >
                     Rejected
                   </a>
