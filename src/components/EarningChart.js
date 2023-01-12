@@ -19,8 +19,6 @@ function EarningChart({byYear = false}) {
       isLoading: earningByYearsIsLoading,
       isSuccess: earningByYearsSuccess,
   } = useFetch(["earning-report-by-year"], `/graph-earning-year/2022`);
-  console.log(earningByMonths);
-  console.log(earningByYears);
   const formatGraphData = (data, byYear = false) => {
       if (!data) return {
         revenues: [1, 1, 1, 1],
