@@ -77,7 +77,7 @@ function Home() {
                                     className="chart chart0"
                                     style={{ minHeight: "240px" }}
                                 >
-                                    <EarningChart />
+                                    <EarningChart byYear={!(earningRange === earningRanges[0])} />
                                 </div>
                             </div>
                         </div>
