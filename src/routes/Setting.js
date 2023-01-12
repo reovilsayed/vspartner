@@ -38,6 +38,29 @@ function Setting() {
       resetFormData(user);
     }
   };
+  const [passwordData, setPasswordData] = useState({
+    old_password: "",
+    password: "",
+  });
+  const updatePassword= (passwordData) => {
+    if (passwordData) {
+      requests.post(`change-password`, passwordData, { token: authHeader() }).then((res) => {
+        if (res) {
+          notify(res.message);
+        } else {
+          notify(res.message, true);
+        }
+      });
+      refetch();
+      setPasswordData(curr => {
+        return {
+          old_password: "",
+          password: "",
+        }
+      });
+    }
+  };
+  console.log(passwordData);
 
   const [formData, setFormData] = useState({
     name: user?.name ? user.name : "",
@@ -45,7 +68,6 @@ function Setting() {
     email: user?.email ? user.email : "",
     phone: user?.phone ? user.phone : "",
     country: user?.country ? user.country : "",
-    password: user?.password ? user.password : "",
   });
 
   const resetFormData = (user) => {
@@ -55,7 +77,6 @@ function Setting() {
       email: user?.email ? user.email : "",
       phone: user?.phone ? user.phone : "",
       country: user?.country ? user.country : "",
-      password: user?.password ? user.password : "",
     };
     setFormData(tmp);
   };
@@ -91,7 +112,7 @@ function Setting() {
   function handalPassField(e) {
     e.preventDefault();
     if (passField) {
-      updateProfile(formData);
+      updatePassword(passwordData);
     }
     setpassField(!passField);
   }
@@ -112,10 +133,6 @@ function Setting() {
   const setCountryData = (e) => {
     e.preventDefault();
     setFormData({ ...formData, country: e.target.value });
-  };
-  const setPasswordData = (e) => {
-    e.preventDefault();
-    setFormData({ ...formData, password: e.target.value });
   };
   useEffect(() => {
     resetFormData(user);
@@ -1390,13 +1407,34 @@ function Setting() {
                             <div className="label">Password</div>
                             <div className="input">
                               {passField ? (
+                                <div>
                                 <input
-                                  type="password"
+                                  type={passwordData?.old_password? 'password': 'text'}
+                                  value={passwordData?.old_password? passwordData.old_password: 'Old Password'}
                                   onChange={(e) => {
-                                    setPasswordData(e);
+                                    setPasswordData(curr => {
+                                      return {
+                                        ...curr,
+                                        old_password: e.target.value,
+                                      }
+                                    });
                                   }}
                                   className=" data-input"
                                 />
+                                <input
+                                  type={passwordData?.password? 'password': 'text'}
+                                  value={passwordData?.password? passwordData.password: 'New Password'}
+                                  onChange={(e) => {
+                                    setPasswordData(curr => {
+                                      return {
+                                        ...curr,
+                                        password: e.target.value,
+                                      }
+                                    });
+                                  }}
+                                  className=" data-input"
+                                />
+                                </div>
                               ) : (
                                 <input
                                   type="password"
