@@ -129,3 +129,13 @@ export const getTitle = (date) => {
     return format(new Date(date), "dd.MM.yyyy");
   }
 };
+
+export const formatMonth = (month) => {
+  const thisMonths = [
+    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+  ];
+  if (month > 11) {
+    month = month - 11;
+  }
+  return thisMonths[month];
+}
