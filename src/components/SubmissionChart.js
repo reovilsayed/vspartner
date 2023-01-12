@@ -4,13 +4,13 @@ import ReactApexChart from 'react-apexcharts'
 function SubmissionChart() {
     const [state,setState]=useState({
         series: [{
-            name: 'Net Profit',
+            name: 'Approved',
             data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
           }, {
-            name: 'Revenue',
+            name: 'Rejected',
             data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
           }, {
-            name: 'Free Cash Flow',
+            name: 'Pending',
             data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
           }],
           options: {
