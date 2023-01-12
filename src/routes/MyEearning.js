@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import EarningChart from "../components/EarningChart";
 import useBroadcast from "../hooks/useBroadcast";
 import useFetch from "../hooks/useFetch";
-import { formatMonth } from "../lib/queryClient";
+import {
+    formatMonth,
+    getEarningSummary,
+    getEarningSummaryMonth,
+    getEarningSummaryYear,
+} from "../lib/queryClient";
 
 function MyEearning() {
     const currYear = new Date().getFullYear();
@@ -19,30 +24,45 @@ function MyEearning() {
         isLoading: graphDataIsLoading,
     } = useFetch(["graph"], `/graph/2021/7`);
 
-    useEffect(() => {
-        refetchEarningCount();
-        refetchGraphData();
-    }, [earningCountIsLoading, graphDataIsLoading]);
+    const {
+        data: earningSummaryByMonth,
+        refetch: refetchEarningSummaryByMonth,
+        isLoading: earningSummaryByMonthIsLoading,
+    } = useFetch(
+        ["earning-summary-by-month"],
+        `/earning-summary-by-month/2022`
+    );
+
+    const {
+        data: earningSummaryByYear,
+        refetch: refetchEarningSummaryByYear,
+        isLoading: earningSummaryByYearIsLoading,
+    } = useFetch(["earning-summary-by-year"], `/earning-summary-by-year`);
 
     const graphRanges = ["This Month", "This Year"];
     const earningRanges = ["This Month", "This Year"];
     const [graphRange, setGraphRange] = useState(graphRanges[0]);
     const [earningRange, setEarningRange] = useState(earningRanges[0]);
-    const thisYears = Array.from(Array(currYear - 2000), (_, i) => i + 2001);
-    const thisMonths = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-    ];
+
+    const [earningSummaryMonthData, setEarningSummaryMonthData] = useState(
+        getEarningSummaryMonth()
+    );
+    const [earningSummaryYearData, setEarningSummaryYearData] = useState(
+        getEarningSummaryYear()
+    );
+    useEffect(() => {
+        refetchEarningCount();
+        refetchGraphData();
+        setEarningSummaryMonthData(
+            getEarningSummaryMonth(earningSummaryByMonth)
+        );
+        setEarningSummaryYearData(getEarningSummaryYear(earningSummaryByYear));
+    }, [
+        earningCountIsLoading,
+        graphDataIsLoading,
+        earningSummaryByMonthIsLoading,
+        earningSummaryByYearIsLoading,
+    ]);
 
     return (
         <>
@@ -61,8 +81,6 @@ function MyEearning() {
                                             <select
                                                 className="selectize"
                                                 onChange={(e) => {
-                                                  console.log(
-                                                    e.target.value);
                                                     setGraphRange(
                                                         e.target.value
                                                     );
@@ -92,7 +110,10 @@ function MyEearning() {
                                 </div>
                                 <div className="dash_body p-0 mb-0">
                                     <div id="chart0" className="chart chart0">
-                                        <EarningChart byYear={!(graphRange === graphRanges[0])}
+                                        <EarningChart
+                                            byYear={
+                                                !(graphRange === graphRanges[0])
+                                            }
                                         />
                                     </div>
                                     <div className="column_earning">
@@ -167,41 +188,99 @@ function MyEearning() {
                             </select>
                         </div>
                         <div className="earning_download_lists">
-                            {/* {
-                !earningByMonthsIsLoading ? earningByMonths.reports.map((d, index) => {
-                  return (
-                    <div key={index} className="earning_download_lists_col">
-                      <div className="earning_download_lists_col_box">
-                        <div className="earning_download_month">
-                          <p>{d.date}</p>
-                        </div>
-                        <div className="earning_download_controller">
-                          <p className="earning_download_price">${d.total}</p>
-                          <button type="button" className="earning_download_btn">
-                            <img src="images/earning-download-icon.svg" alt="" />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )
-
-                }) : 'Loading...'
-              } */}
-
                             {earningRange === earningRanges[1]
-                                ? thisYears.map((year, index) => {
+                                ? earningSummaryYearData
+                                    ? earningSummaryYearData.map(
+                                          (data, index) => {
+                                              return (
+                                                  <div
+                                                      key={index}
+                                                      className="earning_download_lists_col"
+                                                  >
+                                                      <div
+                                                          className="earning_download_lists_col_box"
+                                                          style={{
+                                                              backgroundColor:
+                                                                  data.available
+                                                                      ? "#FBFBFB"
+                                                                      : "#D9D9D9",
+                                                          }}
+                                                      >
+                                                          <div className="earning_download_month">
+                                                              <p
+                                                                  style={{
+                                                                      color: data.available
+                                                                          ? "#525050"
+                                                                          : "#595959",
+                                                                  }}
+                                                              >
+                                                                  {data.date}
+                                                              </p>
+                                                          </div>
+                                                          <div className="earning_download_controller">
+                                                              <p
+                                                                  className="earning_download_price"
+                                                                  style={{
+                                                                      color: data.available
+                                                                          ? "#000"
+                                                                          : "#595959",
+                                                                  }}
+                                                              >
+                                                                  ${data.total}
+                                                              </p>
+                                                              <button
+                                                                  type="button"
+                                                                  className="earning_download_btn"
+                                                              >
+                                                                  <img
+                                                                      src="images/earning-download-icon.svg"
+                                                                      alt=""
+                                                                  />
+                                                              </button>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              );
+                                          }
+                                      )
+                                    : ""
+                                : earningSummaryMonthData
+                                ? earningSummaryMonthData.map((data, index) => {
                                       return (
                                           <div
                                               key={index}
                                               className="earning_download_lists_col"
                                           >
-                                              <div className="earning_download_lists_col_box">
+                                              <div
+                                                  className="earning_download_lists_col_box"
+                                                  style={{
+                                                      backgroundColor:
+                                                          data.available
+                                                              ? "#FBFBFB"
+                                                              : "#D9D9D9",
+                                                  }}
+                                              >
                                                   <div className="earning_download_month">
-                                                      <p>{year}</p>
+                                                      <p
+                                                          style={{
+                                                              color: data.available
+                                                                  ? "#525050"
+                                                                  : "#595959",
+                                                          }}
+                                                      >
+                                                          {data.date}
+                                                      </p>
                                                   </div>
                                                   <div className="earning_download_controller">
-                                                      <p className="earning_download_price">
-                                                          ${"0"}
+                                                      <p
+                                                          className="earning_download_price"
+                                                          style={{
+                                                              color: data.available
+                                                                  ? "#000"
+                                                                  : "#595959",
+                                                          }}
+                                                      >
+                                                          ${data.total}
                                                       </p>
                                                       <button
                                                           type="button"
@@ -217,34 +296,7 @@ function MyEearning() {
                                           </div>
                                       );
                                   })
-                                : thisMonths.map((month, index) => {
-                                      return (
-                                          <div
-                                              key={index}
-                                              className="earning_download_lists_col"
-                                          >
-                                              <div className="earning_download_lists_col_box">
-                                                  <div className="earning_download_month">
-                                                      <p>{month}</p>
-                                                  </div>
-                                                  <div className="earning_download_controller">
-                                                      <p className="earning_download_price">
-                                                          ${"0"}
-                                                      </p>
-                                                      <button
-                                                          type="button"
-                                                          className="earning_download_btn"
-                                                      >
-                                                          <img
-                                                              src="images/earning-download-icon.svg"
-                                                              alt=""
-                                                          />
-                                                      </button>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      );
-                                  })}
+                                : ""}
                         </div>
                         <div className="earning_download_lists_account">
                             <div className="earning_download_lists_account_line">
