@@ -9,13 +9,12 @@ function Home() {
     const currYear = new Date().getFullYear();
     const currMonth = new Date().getMonth();
     const { data: earningCount, refetch: refetchEarningCount } = useFetch(
-        ["earning_counts"],
-        `/earning-count`
+        ["earning_count"],
+        `/total-earning-count/${2022}/${2}`
     );
-    //const { data: graphData,refetch: refetchGraphData } = useFetch(['graph'], `/graph/${currYear}/${currMonth}`);
-    const { data: graphData, refetch: refetchGraphData } = useFetch(
-        ["graph"],
-        `/graph/${currYear}/2`
+    const { data: submissionCount, refetch: refetchSubmissionCount } = useFetch(
+        ["video_count"],
+        `/video-count/${2021}/${7}/${1}`
     );
     const earningRanges = ["This Month", "This Year"];
     const submissionRanges = [
@@ -77,7 +76,11 @@ function Home() {
                                     className="chart chart0"
                                     style={{ minHeight: "240px" }}
                                 >
-                                    <EarningChart byYear={!(earningRange === earningRanges[0])} />
+                                    <EarningChart
+                                        byYear={
+                                            !(earningRange === earningRanges[0])
+                                        }
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -121,8 +124,12 @@ function Home() {
                                     <h3>My Earnings</h3>
                                     <label>
                                         $
-                                        {earningCount?.total_earning
-                                            ? earningCount.total_earning
+                                        {earningRange === earningRanges[0]
+                                            ? earningCount?.month_total
+                                                ? earningCount.month_total
+                                                : "0"
+                                            : earningCount?.year_total
+                                            ? earningCount.year_total
                                             : "0"}
                                     </label>
                                 </div>
@@ -132,10 +139,16 @@ function Home() {
                                     </i>
                                     <h3>Approved Submissions</h3>
                                     <label>
-                                        {graphData
-                                            ? graphData[0]?.accepted
-                                                ? graphData[0]?.accepted
+                                        {earningRange === earningRanges[0]
+                                            ? submissionCount?.month_total
+                                                  ?.accepted
+                                                ? submissionCount.month_total
+                                                      .accepted
                                                 : "0"
+                                            : submissionCount?.year_total
+                                                  ?.accepted
+                                            ? submissionCount.year_total
+                                                  .accepted
                                             : "0"}
                                     </label>
                                 </div>
@@ -234,9 +247,32 @@ function Home() {
                                     </i>
                                     <h3>Approved Submissions</h3>
                                     <label>
-                                        {graphData
-                                            ? graphData[0]?.accepted
-                                                ? graphData[0].accepted
+                                        {submissionRange === submissionRanges[0]
+                                            ? submissionCount?.month_total
+                                                  ?.accepted
+                                                ? submissionCount.month_total
+                                                      .accepted
+                                                : "0"
+                                            : submissionRange ===
+                                              submissionRanges[1]
+                                            ? submissionCount?.month_total
+                                                  ?.accepted
+                                                ? submissionCount.month_total
+                                                      .accepted
+                                                : "0"
+                                            : submissionRange ===
+                                              submissionRanges[2]
+                                            ? submissionCount?.last_month_total
+                                                  ?.accepted
+                                                ? submissionCount
+                                                      .last_month_total.accepted
+                                                : "0"
+                                            : submissionRange ===
+                                              submissionRanges[3]
+                                            ? submissionCount?.year_total
+                                                  ?.accepted
+                                                ? submissionCount.year_total
+                                                      .accepted
                                                 : "0"
                                             : "0"}
                                     </label>
@@ -247,9 +283,32 @@ function Home() {
                                     </i>
                                     <h3>Rejected Submissions</h3>
                                     <label>
-                                        {graphData
-                                            ? graphData[0]?.rejected
-                                                ? graphData[0].rejected
+                                        {submissionRange === submissionRanges[0]
+                                            ? submissionCount?.month_total
+                                                  ?.rejected
+                                                ? submissionCount.month_total
+                                                      .rejected
+                                                : "0"
+                                            : submissionRange ===
+                                              submissionRanges[1]
+                                            ? submissionCount?.month_total
+                                                  ?.rejected
+                                                ? submissionCount.month_total
+                                                      .rejected
+                                                : "0"
+                                            : submissionRange ===
+                                              submissionRanges[2]
+                                            ? submissionCount?.last_month_total
+                                                  ?.rejected
+                                                ? submissionCount
+                                                      .last_month_total.rejected
+                                                : "0"
+                                            : submissionRange ===
+                                              submissionRanges[3]
+                                            ? submissionCount?.year_total
+                                                  ?.rejected
+                                                ? submissionCount.year_total
+                                                      .rejected
                                                 : "0"
                                             : "0"}
                                     </label>
@@ -260,9 +319,32 @@ function Home() {
                                     </i>
                                     <h3>Pending Submissions</h3>
                                     <label>
-                                        {graphData
-                                            ? graphData[0]?.pending
-                                                ? graphData[0].pending
+                                        {submissionRange === submissionRanges[0]
+                                            ? submissionCount?.month_total
+                                                  ?.pending
+                                                ? submissionCount.month_total
+                                                      .pending
+                                                : "0"
+                                            : submissionRange ===
+                                              submissionRanges[1]
+                                            ? submissionCount?.month_total
+                                                  ?.pending
+                                                ? submissionCount.month_total
+                                                      .pending
+                                                : "0"
+                                            : submissionRange ===
+                                              submissionRanges[2]
+                                            ? submissionCount?.last_month_total
+                                                  ?.pending
+                                                ? submissionCount
+                                                      .last_month_total.pending
+                                                : "0"
+                                            : submissionRange ===
+                                              submissionRanges[3]
+                                            ? submissionCount?.year_total
+                                                  ?.pending
+                                                ? submissionCount.year_total
+                                                      .pending
                                                 : "0"
                                             : "0"}
                                     </label>

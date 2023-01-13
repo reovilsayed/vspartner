@@ -12,17 +12,17 @@ import {
 function MyEearning() {
     const currYear = new Date().getFullYear();
     const currMonth = new Date().getMonth();
+
     const {
         data: earningCount,
         refetch: refetchEarningCount,
         isLoading: earningCountIsLoading,
-        isSuccess,
-    } = useFetch(["earning_counts"], `/earning-count`);
+    } = useFetch(["earning_count"], `/total-earning-count/${2022}/${2}`);
     const {
-        data: graphData,
-        refetch: refetchGraphData,
-        isLoading: graphDataIsLoading,
-    } = useFetch(["graph"], `/graph/2021/7`);
+        data: submissionCount,
+        refetch: refetchSubmissionCount,
+        isLoading: submissionCountIsLoading,
+    } = useFetch(["video_count"], `/video-count/${2021}/${7}/${1}`);
 
     const {
         data: earningSummaryByMonth,
@@ -52,14 +52,14 @@ function MyEearning() {
     );
     useEffect(() => {
         refetchEarningCount();
-        refetchGraphData();
+        refetchSubmissionCount();
         setEarningSummaryMonthData(
             getEarningSummaryMonth(earningSummaryByMonth)
         );
         setEarningSummaryYearData(getEarningSummaryYear(earningSummaryByYear));
     }, [
         earningCountIsLoading,
-        graphDataIsLoading,
+        submissionCountIsLoading,
         earningSummaryByMonthIsLoading,
         earningSummaryByYearIsLoading,
     ]);
@@ -128,8 +128,13 @@ function MyEearning() {
                                                 <h3>My Earnings</h3>
                                                 <label>
                                                     $
-                                                    {earningCount?.total_earning
-                                                        ? earningCount.total_earning
+                                                    {graphRange ===
+                                                    graphRanges[0]
+                                                        ? earningCount?.month_total
+                                                            ? earningCount.month_total
+                                                            : "0"
+                                                        : earningCount?.year_total
+                                                        ? earningCount.year_total
                                                         : "0"}
                                                 </label>
                                             </div>
@@ -142,11 +147,21 @@ function MyEearning() {
                                                 </i>
                                                 <h3>Approved Submissions</h3>
                                                 <label>
-                                                    {graphData
-                                                        ? graphData[0]?.accepted
-                                                            ? graphData[0]
+                                                    {graphRange ===
+                                                    graphRanges[0]
+                                                        ? submissionCount
+                                                              ?.month_total
+                                                              ?.accepted
+                                                            ? submissionCount
+                                                                  .month_total
                                                                   .accepted
                                                             : "0"
+                                                        : submissionCount
+                                                              ?.year_total
+                                                              ?.accepted
+                                                        ? submissionCount
+                                                              .year_total
+                                                              .accepted
                                                         : "0"}
                                                 </label>
                                             </div>
@@ -188,63 +203,7 @@ function MyEearning() {
                             </select>
                         </div>
                         <div className="earning_download_lists">
-                            {earningRange === earningRanges[1]
-                                ? earningSummaryYearData
-                                    ? earningSummaryYearData.map(
-                                          (data, index) => {
-                                              return (
-                                                  <div
-                                                      key={index}
-                                                      className="earning_download_lists_col"
-                                                  >
-                                                      <div
-                                                          className="earning_download_lists_col_box"
-                                                          style={{
-                                                              backgroundColor:
-                                                                  data.available
-                                                                      ? "#FBFBFB"
-                                                                      : "#D9D9D9",
-                                                          }}
-                                                      >
-                                                          <div className="earning_download_month">
-                                                              <p
-                                                                  style={{
-                                                                      color: data.available
-                                                                          ? "#525050"
-                                                                          : "#595959",
-                                                                  }}
-                                                              >
-                                                                  {data.date}
-                                                              </p>
-                                                          </div>
-                                                          <div className="earning_download_controller">
-                                                              <p
-                                                                  className="earning_download_price"
-                                                                  style={{
-                                                                      color: data.available
-                                                                          ? "#000"
-                                                                          : "#595959",
-                                                                  }}
-                                                              >
-                                                                  ${data.total}
-                                                              </p>
-                                                              <button
-                                                                  type="button"
-                                                                  className="earning_download_btn"
-                                                              >
-                                                                  <img
-                                                                      src="images/earning-download-icon.svg"
-                                                                      alt=""
-                                                                  />
-                                                              </button>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              );
-                                          }
-                                      )
-                                    : ""
-                                : earningSummaryMonthData
+                            {earningSummaryMonthData
                                 ? earningSummaryMonthData.map((data, index) => {
                                       return (
                                           <div
