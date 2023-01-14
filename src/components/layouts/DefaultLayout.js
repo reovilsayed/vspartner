@@ -14,9 +14,13 @@ function DefaultLayout({ children }) {
     setNotification(!notification);
   }
   const [icon, setIcon] = useState(false);
+  const [hamburgerMenuOpen, setHamburgerMenuOpen] = useState(false);
   function handaleIcon(e) {
     e.preventDefault();
     setIcon(!icon);
+    setHamburgerMenuOpen(curr => {
+      return !curr;
+    })
   }
  const [searchIcon, setSearchIcon]=useState(false)
  function handaleSearchIcon(e) {
@@ -53,9 +57,9 @@ function DefaultLayout({ children }) {
   } = useFetch(["notifications"], `/notifications?page=1`);
   return (
     <>
-      <div className="dashboard_header">
+      <div className={`dashboard_header ${hamburgerMenuOpen? 'mobile_dashboard_backdrop': ''}`}>
         <div className="fluid_container">
-          <div className="header_row">
+          <div className={`header_row ${hamburgerMenuOpen? 'mobile_header_row': ''}`}>
             <a href="#" onClick={handaleIcon}>
 
 
@@ -69,9 +73,9 @@ function DefaultLayout({ children }) {
 
             </a>
 
-            <a href="#" className="logo">
+            <Link to={'/'} className="logo">
               <img src="images/logo.png" alt="" />
-            </a>
+            </Link>
 
             <div className="search_panel">
               <span
