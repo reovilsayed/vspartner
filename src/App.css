@@ -708,6 +708,11 @@ select::-ms-expand {
     padding: 33px 0px 18px;
 }
 
+.mobile_dashboard_backdrop {
+    height: 100% !important;
+    background-color: rgba(0, 0, 0, .4);
+}
+
 .logo {
     max-width: 132px;
     display: inline-block;
@@ -902,6 +907,15 @@ select::-ms-expand {
     align-items: center;
     justify-content: flex-start;
     width: 100%;
+}
+
+.mobile_header_row {
+    padding: 22px 12px !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    display: flex !important;
+    align-items: center !important;
 }
 
 .float_header_right {
