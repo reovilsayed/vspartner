@@ -50,6 +50,18 @@ function MyEearning() {
     const [earningSummaryYearData, setEarningSummaryYearData] = useState(
         getEarningSummaryYear()
     );
+    const [dropdownsOpen, setDropDownsOpen] = useState({
+        earningDrop: false,
+        graphDrop: false,
+    });
+    const handleDropdown = (dropIndex = 0) => {
+        setDropDownsOpen((curr) => {
+            if (dropIndex === 0) {
+                return { ...curr, earningDrop: !curr.earningDrop };
+            }
+            return { ...curr, graphDrop: !curr.graphDrop };
+        });
+    };
     useEffect(() => {
         refetchEarningCount();
         refetchSubmissionCount();
@@ -78,7 +90,7 @@ function MyEearning() {
                                             <i></i>Revenue
                                         </label>
                                         <div className="select_wrapper dsh_op">
-                                            <select
+                                            {/* <select
                                                 className="selectize"
                                                 onChange={(e) => {
                                                     setGraphRange(
@@ -104,7 +116,50 @@ function MyEearning() {
                                                         );
                                                     }
                                                 )}
-                                            </select>
+                                            </select> */}
+                                        <div
+                                            className={`nice-select selectize ${
+                                                dropdownsOpen?.graphDrop
+                                                    ? "open"
+                                                    : ""
+                                            }`}
+                                            tabIndex={0}
+                                        >
+                                            <span
+                                                className="current"
+                                                onClick={() => handleDropdown(1)}
+                                            >
+                                                {graphRange}
+                                            </span>
+                                            <div className="nice-select-dropdown">
+                                                <ul className="list">
+                                                    {graphRanges.map(
+                                                        (item, index) => {
+                                                            return item !==
+                                                                graphRange ? (
+                                                                <li
+                                                                    data-value="This month"
+                                                                    key={index}
+                                                                    className="option selected null focus"
+                                                                    onClick={(
+                                                                        e
+                                                                    ) => {
+                                                                        setGraphRange(
+                                                                            item
+                                                                        );
+                                                                        handleDropdown(1);
+                                                                    }}
+                                                                >
+                                                                    {item}
+                                                                </li>
+                                                            ) : (
+                                                                ""
+                                                            );
+                                                        }
+                                                    )}
+                                                </ul>
+                                            </div>
+                                        </div>
                                         </div>
                                     </div>
                                 </div>
@@ -179,7 +234,7 @@ function MyEearning() {
                             </h5>
                         </div>
                         <div className="select_wrapper dsh_op">
-                            <select
+                            {/* <select
                                 className="selectize"
                                 onChange={(e) => {
                                     setEarningRange(e.target.value);
@@ -200,7 +255,50 @@ function MyEearning() {
                                         </option>
                                     );
                                 })}
-                            </select>
+                            </select> */}
+                                        <div
+                                            className={`nice-select selectize ${
+                                                dropdownsOpen?.earningDrop
+                                                    ? "open"
+                                                    : ""
+                                            }`}
+                                            tabIndex={0}
+                                        >
+                                            <span
+                                                className="current"
+                                                onClick={() => handleDropdown()}
+                                            >
+                                                {earningRange}
+                                            </span>
+                                            <div className="nice-select-dropdown">
+                                                <ul className="list">
+                                                    {earningRanges.map(
+                                                        (item, index) => {
+                                                            return item !==
+                                                                earningRange ? (
+                                                                <li
+                                                                    data-value="This month"
+                                                                    key={index}
+                                                                    className="option selected null focus"
+                                                                    onClick={(
+                                                                        e
+                                                                    ) => {
+                                                                        setEarningRange(
+                                                                            item
+                                                                        );
+                                                                        handleDropdown();
+                                                                    }}
+                                                                >
+                                                                    {item}
+                                                                </li>
+                                                            ) : (
+                                                                ""
+                                                            );
+                                                        }
+                                                    )}
+                                                </ul>
+                                            </div>
+                                        </div>
                         </div>
                         <div className="earning_download_lists">
                             {earningSummaryMonthData
