@@ -508,7 +508,8 @@ function Setting() {
                                 <div>
                                 <input
                                   type={passwordData?.old_password? 'password': 'text'}
-                                  value={passwordData?.old_password? passwordData.old_password: 'Old Password'}
+                                  value={passwordData?.old_password? passwordData.old_password: ''}
+                                  placeholder='Old Password'
                                   onChange={(e) => {
                                     setPasswordData(curr => {
                                       return {
@@ -521,7 +522,8 @@ function Setting() {
                                 />
                                 <input
                                   type={passwordData?.password? 'password': 'text'}
-                                  value={passwordData?.password? passwordData.password: 'New Password'}
+                                  value={passwordData?.password? passwordData.password: ''}
+                                  placeholder='New Password'
                                   onChange={(e) => {
                                     setPasswordData(curr => {
                                       return {
