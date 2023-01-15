@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import VideoPlayer from "../components/videos/VideoPlayer";
 import useBroadcast from "../hooks/useBroadcast";
 import useFetch from "../hooks/useFetch";
-import getImageURL, { styledDateTime, todayDateTime } from "../lib/queryClient";
+import getImageURL, { plainDateTime, styledDateTime, todayDateTime } from "../lib/queryClient";
 import requests from "../services/httpService";
 
 function Chat() {
@@ -284,7 +284,7 @@ function Chat() {
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
-                              <span>Name Of The Company?</span> Company Name
+                              <span>Name Of The Company?</span> {data?.inquery?.video?.company_name? data?.inquery?.video?.company_name: 'N/A'}
                             </p>
                           </div>
                         </div>
@@ -297,18 +297,25 @@ function Chat() {
                         <div className="panel-box-info-wrap column-3 border-b-0 pb-0">
                           <div className="panel-box-info-wrap-col">
                             <p>
-                              <span>User IP Address </span> 12356asdsd
+                              <span>User IP Address </span> {data?.inquery?.video?.video_meta
+                                                            ?.ip_address
+                                                            ? data?.inquery?.video?.video_meta
+                                                                  ?.ip_address
+                                                            : "N/A"}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
-                              <span>Country </span> United States
+                              <span>Country </span> {data?.inquery?.video?.country
+                                                            ? data?.inquery?.video.country
+                                                            : "N/A"}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
-                              <span>Submission Date </span> August 23rd, 2021 At
-                              11:15:34 PM UTC
+                              <span>Submission Date </span> {plainDateTime(
+                                                            data?.inquery?.video?.created_at
+                                                        )}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
@@ -324,12 +331,17 @@ function Chat() {
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
-                              <span>Revenue Share </span> 50% Or 60%
+                              <span>Revenue Share </span> {data?.inquery?.video?.user
+                                                            ?.revenue_share
+                                                            ? data?.inquery?.video?.user
+                                                                  ?.revenue_share +
+                                                              "%"
+                                                            : "N/A"}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
-                              <span>VSID </span> 17171
+                              <span>VSID </span>  {data?.inquery?.video?.id}
                             </p>
                           </div>
                         </div>
@@ -342,27 +354,65 @@ function Chat() {
                         <div className="panel-box-info-wrap column-2_2 border-b-0 pb-0">
                           <div className="panel-box-info-wrap-col">
                             <p>
-                              <span>Video Status </span>{" "}
-                              <mark className="stripe-btn-danger">
-                                Rejected
-                              </mark>
+                            {data?.inquery?.video?.status == 1 ? (
+                                                            <>
+                                                                <span>
+                                                                    Video Status
+                                                                    :{" "}
+                                                                </span>{" "}
+                                                                <mark className="stripe-btn-success">
+                                                                    Approved
+                                                                </mark>
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                <span>
+                                                                    Video Status
+                                                                    :{" "}
+                                                                </span>{" "}
+                                                                <mark className="stripe-btn-danger">
+                                                                    Rejected
+                                                                </mark>
+                                                            </>
+                                                        )}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
-                              <span>Acquired By </span> Name Of Partner/Member
+                              <span>Acquired By </span>{' '}
+                                                        {data?.inquery?.video?.user?.name}{" "}
+                                                        {data?.inquery?.video?.user?.last_name}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
-                              <span>Approved Or Rejected By </span> Manager Name
-                              22.03.2021 @10:55AM
+                              <span>Approved Or Rejected By </span>{' '}
+                                                        {data?.inquery?.video?.manager?.name}{" "}
+                                                        {
+                                                            data?.inquery?.video?.manager
+                                                                ?.last_name
+                                                        }{" "}
+                                                        {plainDateTime(
+                                                            data?.inquery?.video?.video_meta
+                                                                ?.manager_updated_at
+                                                        )}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
-                              <span>Confirmed Or Declined By </span> Name Of The
-                              Quality Team Agent 22.03.2021 @10:55AM
+                              <span>Confirmed Or Declined By </span>{" "}
+                                                        {
+                                                            data?.inquery?.video?.quality_team
+                                                                ?.name
+                                                        }{" "}
+                                                        {
+                                                            data?.inquery?.video?.quality_team
+                                                                ?.last_name
+                                                        }{" "}
+                                                        {plainDateTime(
+                                                            data?.inquery?.video?.video_meta
+                                                                ?.quality_team_updated_at
+                                                        )}
                             </p>
                           </div>
                         </div>
