@@ -1829,6 +1829,7 @@ select::-ms-expand {
     -ms-border-radius: 6px;
     -o-border-radius: 6px;
     max-width: 100px;
+    cursor: pointer;
 }
 
 .video_inline_img img {
@@ -1941,6 +1942,7 @@ select::-ms-expand {
     border-top-right-radius: 10px;
     width: 100%;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .grid_imgs label {
