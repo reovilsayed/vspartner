@@ -41,7 +41,6 @@ const Videos = () => {
   const {isListView, setIsListView, handleListView} = useContext(VideoLayoutContext);
   const [status, setStatus] = useState(null);
   const [search, setSearch] = useState();
-  console.log(isListView);
 
   const [searchParams] = useSearchParams();
   const [calendarExtended, setCalendarExtended] = useState(false);
