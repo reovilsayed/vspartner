@@ -1932,6 +1932,8 @@ select::-ms-expand {
 
 .grid_imgs {
     position: relative;
+    height: 200px;
+    overflow: hidden;
 }
 
 .grid_imgs img {

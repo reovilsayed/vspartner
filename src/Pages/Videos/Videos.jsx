@@ -65,6 +65,7 @@ const Videos = () => {
       pagePrefetchKey: ["videos", status, fromDate, endDate, search, currentPage + 1],
     }
   );
+  console.log(status, fromDate, endDate, search, currentPage);
   const clearDatePicker = () => {
     picker.clear();
     setfromDate('');
