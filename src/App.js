@@ -17,6 +17,7 @@ import ForgotPassword from "./Pages/ForgotPassword";
 import routes from "./routes";
 
 export const VideoContext = createContext();
+export const VideoLayoutContext = createContext();
 
 function App() {
   const [modal, setModal] = useState(false);
@@ -28,10 +29,18 @@ function App() {
     }
     setModal(!modal);
   };
+  
+  const [isListView, setIsListView] = useState(true);
+  const handleListView = () => {
+    setIsListView(curr => {
+      return !curr;
+    })
+  }
 
   return (
     <div className="App">
       <VideoContext.Provider value={{ videoDetails, setVideoDetails, toggle }}>
+        <VideoLayoutContext.Provider value={{isListView, setIsListView, handleListView}}>
         <Toaster />
         <Routes>
           {routes.map((route, index) => {
@@ -71,6 +80,7 @@ function App() {
           />
         )}
         {/* {modal && <VideoDetailsModal toggle={toggle} videoDetails={videoDetails} />} */}
+        </VideoLayoutContext.Provider>
       </VideoContext.Provider>
     </div>
   );
