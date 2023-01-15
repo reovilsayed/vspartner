@@ -3,7 +3,7 @@ import Grid from "./Components/Grid";
 import List from "./Components/List";
 import Pagination from "../../components/Pagination";
 import useFetch from "../../hooks/useFetch";
-import { VideoContext } from "../../App";
+import { VideoContext, VideoLayoutContext } from "../../App";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.css";
 import { useSearchParams } from "react-router-dom";
@@ -38,9 +38,10 @@ const Videos = () => {
     Rejected: 2,
   };
   const [currentPage, setCurrentPage] = useState(1);
-  const [isListView, setIsListView] = useState(true);
+  const {isListView, setIsListView, handleListView} = useContext(VideoLayoutContext);
   const [status, setStatus] = useState(null);
   const [search, setSearch] = useState();
+  console.log(isListView);
 
   const [searchParams] = useSearchParams();
   const [calendarExtended, setCalendarExtended] = useState(false);
@@ -65,7 +66,6 @@ const Videos = () => {
       pagePrefetchKey: ["videos", status, fromDate, endDate, search, currentPage + 1],
     }
   );
-  console.log(status, fromDate, endDate, search, currentPage);
   const clearDatePicker = () => {
     picker.clear();
     setfromDate('');
@@ -214,6 +214,7 @@ const Videos = () => {
             videos={data?.data}
             isLoading={isLoading}
             active={isListView ? false : true}
+            toggle={toggle}
           />
 
           <div className="pagination_panel">
