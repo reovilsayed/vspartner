@@ -2,7 +2,7 @@ import React from 'react';
 import GridSkeleton from '../../../components/Skleton/GridSkeleton';
 import getImageURL, { plainDateTime } from '../../../lib/queryClient';
 
-const Grid = ({ videos, isLoading, active }) => {
+const Grid = ({ videos, isLoading, active, toggle }) => {
     return (
         <div className={`view_box grid_view_box grid_view_box_selection ${active?'active_view':''}`}>
             <div className="all_tab_panel" data-tab-parent="tabgroup1">
@@ -15,7 +15,10 @@ const Grid = ({ videos, isLoading, active }) => {
                                         <div className="grid_item" key={video.id}>
                                             <div className="grid_item_inner">
                                                 <figure className="grid_imgs ">
-                                                    <img src={getImageURL(video.thumbnail)} alt={video.title} />
+                                                    <img src={getImageURL(video.thumbnail)} alt={video.title}
+                                                            onClick={() => {
+                                                                toggle(video);
+                                                            }} />
                                                     <label className="">{video.id}</label>
                                                 </figure>
                                                 <div className="grid_content">
@@ -60,6 +63,9 @@ const Grid = ({ videos, isLoading, active }) => {
                                                         className="view_btns "
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#video_modal"
+                                                        onClick={() => {
+                                                            toggle(video);
+                                                        }}
                                                     >
                                                         View Details
                                                         <svg

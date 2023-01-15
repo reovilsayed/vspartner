@@ -34,6 +34,9 @@ const List = ({ videos, isLoading, active, toggle }) => {
                                                         <img
                                                             src={getImageURL(video.thumbnail)}
                                                             alt={video.title}
+                                                            onClick={() => {
+                                                                toggle(video);
+                                                            }}
                                                         />
                                                     </span>
                                                 </td>
