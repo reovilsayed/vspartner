@@ -3,6 +3,7 @@ import { useAuthUser } from "react-auth-kit";
 import { useAuthHeader } from "react-auth-kit";
 import { useParams } from "react-router-dom";
 import VideoPlayer from "../components/videos/VideoPlayer";
+import useBroadcast from "../hooks/useBroadcast";
 import useFetch from "../hooks/useFetch";
 import getImageURL, { styledDateTime, todayDateTime } from "../lib/queryClient";
 import requests from "../services/httpService";
@@ -18,6 +19,12 @@ function Chat() {
     inquery_id: id,
     message: "",
   });
+  useBroadcast("video", refetch);
+  useBroadcast("message", refetch, [
+    ".MessageCreated",
+    ".MessageUpdated",
+    ".MessageDeleted",
+  ]);
   const sendMessage = (e) => {
     e.preventDefault();
     if (!messageData.message) {
