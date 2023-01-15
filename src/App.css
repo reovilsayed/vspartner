@@ -4814,6 +4814,10 @@ select::-ms-expand {
     animation-duration: 25s;
 }
 
+.apexcharts-legend-marker {
+    border-radius: 50% !important;
+}
+
 @keyframes animate {
 
     0%{
