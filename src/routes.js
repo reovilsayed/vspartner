@@ -3,7 +3,7 @@ import React from "react";
 const routes = [
     {
         path: '/',
-        component: React.lazy(() => import('./routes/Home')),
+        component: React.lazy(() => import('./Pages/Home')),
         layout: 'default',
         protected: true,
     },
@@ -15,31 +15,31 @@ const routes = [
     },
     {
         path: '/my-earnings',
-        component: React.lazy(() => import('./routes/MyEearning')),
+        component: React.lazy(() => import('./Pages/MyEearning')),
         layout: 'default',
         protected: true,
     },
     {
         path: '/my-messages',
-        component: React.lazy(() => import('./routes/MyMessages')),
+        component: React.lazy(() => import('./Pages/MyMessages')),
         layout: 'default',
         protected: true,
     },
     {
         path: '/notification',
-        component: React.lazy(() => import('./routes/Notifications')),
+        component: React.lazy(() => import('./Pages/Notifications')),
         layout: 'default',
         protected: true,
     },
     {
         path: '/setting',
-        component: React.lazy(() => import('./routes/Setting')),
+        component: React.lazy(() => import('./Pages/Setting')),
         layout: 'default',
         protected: true,
     },
     {
         path: '/chat-details/:id',
-        component: React.lazy(() => import('./routes/Chat')),
+        component: React.lazy(() => import('./Pages/Chat')),
         layout: 'detail',
         protected: true,
     }

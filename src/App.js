@@ -7,22 +7,13 @@ import { Routes, Route } from "react-router-dom";
 import DefaultLayout from "./components/layouts/DefaultLayout";
 import DetailsLayout from "./components/layouts/DetailsLayout";
 
-import Home from "./routes/Home";
-import MyEearning from "./routes/MyEearning";
-
-import Notifications from "./routes/Notifications";
-import Setting from "./routes/Setting";
-import Login from "./routes/Login";
+import Login from "./Pages/Login";
 import { AuthProvider, RequireAuth } from "react-auth-kit";
 import React, { createContext, Suspense, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import "./App.css";
-import Videos from "./Pages/Videos/Videos";
-import Earnings from "./Pages/Earnings/Earnings";
-import MyMessages from "./routes/MyMessages";
 import VideoModal from "./components/videos/VideoModal";
-import ForgotPassword from "./routes/ForgotPassword";
-import Chat from "./routes/Chat";
+import ForgotPassword from "./Pages/ForgotPassword";
 import routes from "./routes";
 
 export const VideoContext = createContext();

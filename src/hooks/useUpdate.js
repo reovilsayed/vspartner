@@ -37,7 +37,6 @@ export const useUpdateStatus = (contentType = 'video') => {
 			notify();
 		},
 		onError: error => {
-			console.log({ error });
 			notify('Fails', true);
 		},
 	});

@@ -1,18 +1,14 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { useAuthUser } from "react-auth-kit";
 import Grid from "./Components/Grid";
 import List from "./Components/List";
 import Pagination from "../../components/Pagination";
 import useFetch from "../../hooks/useFetch";
 import { VideoContext } from "../../App";
-//import "flatpickr/dist/themes/material_green.css";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.css";
 import { useSearchParams } from "react-router-dom";
 
-
 const Videos = () => {
-
   const [fromDate, setfromDate] = useState('');
   const [endDate, setendDate] = useState('');
   const [popup, setPopup] = useState(false);
@@ -29,16 +25,12 @@ const Videos = () => {
 
     dateInput.current.value = value;
     const dates = value.split(" to ");
-    console.log(dates);
     setfromDate(dates[0]);
     setendDate(dates[1]);
 
     setPopup(false);
   }
 
-  const AUTH = useAuthUser();
-
-  const BASEURL = process.env.REACT_APP_API_BASE;
   const { videoDetails, setVideoDetails, toggle } = useContext(VideoContext);
   const STATUS = {
     All: null,

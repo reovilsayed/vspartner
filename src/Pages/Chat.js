@@ -33,7 +33,6 @@ function Chat() {
   const handleActive = (data) => {
     setActive(data);
   };
-  /* console.log(data); */
   return (
     <>
       <div className="dashboard_body dashboard_body_chat_detail">

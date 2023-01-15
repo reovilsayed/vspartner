@@ -51,7 +51,6 @@ const VideoModal = (props) => {
   const handleOnChange = (e) => {
     setEditableFields({ ...editableFields, [e.target.name]: e.target.value });
   };
-  console.log(video);
   return (
     <>
     <Modal fullscreen={true} show={props.show} onHide={() => props.toggle()}>
@@ -80,7 +79,7 @@ const VideoModal = (props) => {
                                 className="icon"
                                 alt=""
                               />
-                              Send Notification
+                              Send Notifications
                             </a>
                           </div>
                         </div>
