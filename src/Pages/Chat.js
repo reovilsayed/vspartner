@@ -113,19 +113,23 @@ function Chat() {
                           <div className="panel-box-info-wrap-col">
                             <p>
                               <span>Title Of The Video : </span>{" "}
-                              {data?.inquery?.video?.title}
+                              {data?.inquery?.video?.title? data?.inquery?.video?.title: 'N/A'}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
                               <span>Filming Date : </span>{" "}
-                              {data?.inquery?.video?.when_filmed}
+                              {data?.inquery?.video?.when_filmed? data?.inquery?.video?.when_filmed: 'N/A'}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
-                              <span>Filming Location : </span> 
-                              {data?.inquery?.video?.city}, {data?.inquery?.video?.state}, {data?.inquery?.video?.country}
+                              <span>Filming Location : </span>
+                              {
+                                (data?.inquery?.video?.city || data?.inquery?.video?.state || data?.inquery?.video?.country)?
+                                  `${data?.inquery?.video?.city}, ${data?.inquery?.video?.state}, ${data?.inquery?.video?.country}`:
+                                  'N/A'
+                              }
                             </p>
                           </div>
                         </div>
@@ -135,7 +139,7 @@ function Chat() {
                               <label>Story/Description:</label>
                               <div className="story-description-info-content scroller">
                                 <p>
-                                {data?.inquery?.video?.description}
+                                {data?.inquery?.video?.description? data?.inquery?.video?.description: 'N/A'}
                                 </p>
                               </div>
                             </div>
@@ -161,19 +165,19 @@ function Chat() {
                           <div className="panel-box-info-wrap-col">
                             <p>
                               <span>Phone Number </span>{" "}
-                              {data?.inquery?.video?.phone}
+                              {data?.inquery?.video?.phone? data?.inquery?.video?.phone: 'N/A'}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
                               <span>Date Of Birth </span>{" "}
-                              {data?.inquery?.video?.birthdate}
+                              {data?.inquery?.video?.birthdate? data?.inquery?.video?.birthdate: 'N/A'}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
                               <span>Client Email Address </span>{" "}
-                              {data?.inquery?.video?.email}
+                              {data?.inquery?.video?.email? data?.inquery?.video?.email: 'N/A'}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
@@ -185,7 +189,7 @@ function Chat() {
                           <div className="panel-box-info-wrap-col">
                             <p>
                               <span>Paypal Email Address </span>
-                              {data?.inquery?.video?.paypal_email? data?.inquery?.video?.paypal_email: 'None'}
+                              {data?.inquery?.video?.paypal_email? data?.inquery?.video?.paypal_email: 'N/A'}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
@@ -215,18 +219,18 @@ function Chat() {
                               <span>
                                 Are There People Appearing In The Video?
                               </span>{" "}
-                              <mark className="stripe-btn-danger">{data?.inquery?.video?.people_appearing}</mark>
+                              <mark className="stripe-btn-danger">{data?.inquery?.video?.people_appearing? data?.inquery?.video?.people_appearing: 'N/A'}</mark>
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
-                              <span>Who Are They? </span> {data?.inquery?.video?.people_appearing_list}
+                              <span>Who Are They? </span> {data?.inquery?.video?.people_appearing_list? data?.inquery?.video?.people_appearing_list: 'N/A'}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
                               <span>The Person Who Filmed This Video Is</span> 
-                              {data?.inquery?.video?.person_who_filmed}
+                              {data?.inquery?.video?.person_who_filmed? data?.inquery?.video?.person_who_filmed: 'N/A'}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col"></div>
@@ -236,7 +240,7 @@ function Chat() {
                                 Did Anyone Reach You About Using This Video?
                               </span>{" "}
                               <mark className="stripe-btn-danger">
-                              {data?.inquery?.video?.did_anyone_reach}
+                              {data?.inquery?.video?.did_anyone_reach? data?.inquery?.video?.did_anyone_reach: 'N/A'}
                               </mark>
                             </p>
                           </div>
@@ -246,7 +250,7 @@ function Chat() {
                                 Please Share With Us The Name Of The
                                 Company/Page{" "}
                               </span>{" "}
-                              {data?.inquery?.video?.share_reach_name}
+                              {data?.inquery?.video?.share_reach_name? data?.inquery?.video?.share_reach_name: 'N/A'}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
@@ -257,7 +261,7 @@ function Chat() {
                               </span>{" "}
                               <span className="tg grn">
                                 <mark className="stripe-btn-danger">
-                                {data?.inquery?.video?.submit_other_website}
+                                {data?.inquery?.video?.submit_other_website? data?.inquery?.video?.submit_other_website: 'N/A'}
                                 </mark>
                               </span>
                             </p>
@@ -265,7 +269,7 @@ function Chat() {
                           <div className="panel-box-info-wrap-col">
                             <p>
                               <span>Where Did You Submit It?</span>
-                              {data?.inquery?.video?.submit_place}
+                              {data?.inquery?.video?.submit_place? data?.inquery?.video?.submit_place: 'N/A'}
                             </p>
                           </div>
 
@@ -277,7 +281,7 @@ function Chat() {
                               </span>{" "}
                               <span className="tg grn">
                                 <mark className="stripe-btn-danger">
-                                {data?.inquery?.video?.aggrement_with_another_company}
+                                {data?.inquery?.video?.aggrement_with_another_company? data?.inquery?.video?.aggrement_with_another_company: 'N/A'}
                                 </mark>
                               </span>
                             </p>
@@ -313,9 +317,7 @@ function Chat() {
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
-                              <span>Submission Date </span> {plainDateTime(
-                                                            data?.inquery?.video?.created_at
-                                                        )}
+                              <span>Submission Date </span> {data?.inquery?.video?.created_at? plainDateTime(data?.inquery?.video?.created_at): 'N/A'}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
@@ -341,7 +343,7 @@ function Chat() {
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
-                              <span>VSID </span>  {data?.inquery?.video?.id}
+                              <span>VSID </span>  {data?.inquery?.video?.id? data?.inquery?.video?.id: 'N/A'}
                             </p>
                           </div>
                         </div>
@@ -380,8 +382,10 @@ function Chat() {
                           <div className="panel-box-info-wrap-col">
                             <p>
                               <span>Acquired By </span>{' '}
-                                                        {data?.inquery?.video?.user?.name}{" "}
-                                                        {data?.inquery?.video?.user?.last_name}
+                                                        {
+                                                          (data?.inquery?.video?.user?.name && data?.inquery?.video?.user?.last_name)?
+                                                          `${data?.inquery?.video?.user?.name} ${data?.inquery?.video?.user?.last_name}`: 'N/A'
+                                                        }
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
@@ -390,29 +394,41 @@ function Chat() {
                                                         {data?.inquery?.video?.manager?.name}{" "}
                                                         {
                                                             data?.inquery?.video?.manager
-                                                                ?.last_name
+                                                                ?.last_name? data?.inquery?.video?.manager
+                                                                ?.last_name: 'N/A'
                                                         }{" "}
-                                                        {plainDateTime(
+                                                        {
+                                                            data?.inquery?.video?.video_meta
+                                                                ?.manager_updated_at? plainDateTime(
                                                             data?.inquery?.video?.video_meta
                                                                 ?.manager_updated_at
-                                                        )}
+                                                        ): 'N/A'}
                             </p>
                           </div>
                           <div className="panel-box-info-wrap-col">
                             <p>
                               <span>Confirmed Or Declined By </span>{" "}
+                              {
+                                  (data?.inquery?.video?.quality_team
+                                      ?.name
+                              &&
+                                  data?.inquery?.video?.quality_team
+                                      ?.last_name
+                              )? `{
+                                data?.inquery?.video?.quality_team
+                                    ?.name
+                            } {
+                                data?.inquery?.video?.quality_team
+                                    ?.last_name
+                            }`: 'N/A'
+                              }
+                                                        {" "}
                                                         {
-                                                            data?.inquery?.video?.quality_team
-                                                                ?.name
-                                                        }{" "}
-                                                        {
-                                                            data?.inquery?.video?.quality_team
-                                                                ?.last_name
-                                                        }{" "}
-                                                        {plainDateTime(
+                                                            data?.inquery?.video?.video_meta
+                                                                ?.quality_team_updated_at? plainDateTime(
                                                             data?.inquery?.video?.video_meta
                                                                 ?.quality_team_updated_at
-                                                        )}
+                                                        ): 'N/A'}
                             </p>
                           </div>
                         </div>
