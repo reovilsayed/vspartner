@@ -354,9 +354,9 @@ function Home() {
                                                 : "0"
                                             : submissionRange ===
                                               submissionRanges[1]
-                                            ? submissionCount?.month_total
+                                            ? submissionCount?.week_total
                                                   ?.accepted
-                                                ? submissionCount.month_total
+                                                ? submissionCount.week_total
                                                       .accepted
                                                 : "0"
                                             : submissionRange ===
