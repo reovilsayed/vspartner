@@ -7,48 +7,43 @@ import {
     getEarningSummary,
     getEarningSummaryMonth,
     getEarningSummaryYear,
+    getEarningYearRanges,
 } from "../lib/queryClient";
 
 function MyEearning() {
     const currYear = new Date().getFullYear();
     const currMonth = new Date().getMonth();
+    const currDay = new Date().getDay();
+
+    const [queryYear, setQueryYear] = useState(currYear);
 
     const {
         data: earningCount,
         refetch: refetchEarningCount,
         isLoading: earningCountIsLoading,
-    } = useFetch(["earning_count"], `/total-earning-count/${2022}/${2}`);
+    } = useFetch(["earning_count"], `/total-earning-count/${currYear}/${currMonth}`);
     const {
         data: submissionCount,
         refetch: refetchSubmissionCount,
         isLoading: submissionCountIsLoading,
-    } = useFetch(["video_count"], `/video-count/${2021}/${7}/${1}`);
+    } = useFetch(["video_count"], `/video-count/${currYear}/${currMonth}/${currDay}`);
 
     const {
-        data: earningSummaryByMonth,
-        refetch: refetchEarningSummaryByMonth,
-        isLoading: earningSummaryByMonthIsLoading,
+        data: earningSummary,
+        refetch: refetchEarningSummary,
+        isLoading: earningSummaryIsLoading,
     } = useFetch(
-        ["earning-summary-by-month"],
-        `/earning-summary-by-month/2022`
+        ["earning-summary", queryYear],
+        `/earning-summary-by-month/${queryYear}`
     );
 
-    const {
-        data: earningSummaryByYear,
-        refetch: refetchEarningSummaryByYear,
-        isLoading: earningSummaryByYearIsLoading,
-    } = useFetch(["earning-summary-by-year"], `/earning-summary-by-year`);
-
     const graphRanges = ["This Month", "This Year"];
-    const earningRanges = ["This Month", "This Year"];
+    const earningRanges = getEarningYearRanges(currYear);
     const [graphRange, setGraphRange] = useState(graphRanges[0]);
     const [earningRange, setEarningRange] = useState(earningRanges[0]);
 
-    const [earningSummaryMonthData, setEarningSummaryMonthData] = useState(
-        getEarningSummaryMonth()
-    );
-    const [earningSummaryYearData, setEarningSummaryYearData] = useState(
-        getEarningSummaryYear()
+    const [earningSummaryData, setEarningSummaryData] = useState(
+        getEarningSummary()
     );
     const [dropdownsOpen, setDropDownsOpen] = useState({
         earningDrop: false,
@@ -65,15 +60,14 @@ function MyEearning() {
     useEffect(() => {
         refetchEarningCount();
         refetchSubmissionCount();
-        setEarningSummaryMonthData(
-            getEarningSummaryMonth(earningSummaryByMonth)
+        setEarningSummaryData(
+            getEarningSummary(earningSummary)
         );
-        setEarningSummaryYearData(getEarningSummaryYear(earningSummaryByYear));
+        /* setEarningSummaryYearData(getEarningSummaryYear(earningSummaryByYear)); */
     }, [
         earningCountIsLoading,
         submissionCountIsLoading,
-        earningSummaryByMonthIsLoading,
-        earningSummaryByYearIsLoading,
+        earningSummaryIsLoading
     ]);
 
     return (
@@ -286,6 +280,9 @@ function MyEearning() {
                                                                         setEarningRange(
                                                                             item
                                                                         );
+                                                                        setQueryYear(
+                                                                            item
+                                                                        )
                                                                         handleDropdown();
                                                                     }}
                                                                 >
@@ -301,8 +298,8 @@ function MyEearning() {
                                         </div>
                         </div>
                         <div className="earning_download_lists">
-                            {earningSummaryMonthData
-                                ? earningSummaryMonthData.map((data, index) => {
+                            {earningSummaryData
+                                ? earningSummaryData.map((data, index) => {
                                       return (
                                           <div
                                               key={index}
