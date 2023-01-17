@@ -21,7 +21,7 @@ function MyEearning() {
         data: earningCount,
         refetch: refetchEarningCount,
         isLoading: earningCountIsLoading,
-    } = useFetch(["earning_count"], `/total-earning-count/${currYear}/${currMonth}`);
+    } = useFetch(["earning_count", queryYear], `/total-earning-count/${queryYear}/${currMonth}`);
     const {
         data: submissionCount,
         refetch: refetchSubmissionCount,
@@ -355,7 +355,7 @@ function MyEearning() {
                         <div className="earning_download_lists_account">
                             <div className="earning_download_lists_account_line">
                                 <p>
-                                    Total<span>$75841</span>
+                                    Total<span>${earningCount?.year_total? earningCount.year_total: '0'}</span>
                                 </p>
                                 <a
                                     href="#"
