@@ -151,7 +151,7 @@ export const formatMonth = (month) => {
     return thisMonths[month];
 };
 
-export const getEarningSummaryMonth = (data = false) => {
+export const getEarningSummary = (data = false) => {
     let summary = [
         {
             date: "January",
@@ -226,23 +226,8 @@ export const getEarningSummaryMonth = (data = false) => {
     return summary;
 };
 
-export const getEarningSummaryYear = (data = false) => {
-  const currYear = new Date().getFullYear()
-  let summary = Array.from(Array(currYear - 2000), (_, i) => {
-    return {
-    date: `${i + 2001}`,
-    total: 0,
-    available: false,
-    }
-  });
-  if (!data) {return summary;}
-  data.map((item, index) => {
-    summary.forEach(element => {
-      if (item.date === element.date) {
-        element.total = item.total;
-        element.available = true;
-      }
-    });
-  })
-  return summary;
+export const getEarningYearRanges = (currYear, startYear = 2021) => {
+    const ranges = Array(currYear - startYear + 1).fill(1).map((item, i) => {
+        return i + 2021;
+    })
 }
