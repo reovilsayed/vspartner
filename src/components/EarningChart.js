@@ -15,8 +15,8 @@ function EarningChart() {
   } = useFetch(["earning-report"], `/graph-earning`);
   const formatGraphData = (data) => {
       if (!data) return {
-        revenues: [1, 1, 1, 1],
-        dates: [1, 1, 1, 1],
+        revenues: [0, 0, 0, 0],
+        dates: [0, 0, 0, 0],
       };
       let formattedData;
         formattedData = {

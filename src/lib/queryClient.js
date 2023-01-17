@@ -318,6 +318,5 @@ export const getEarningYearRanges = (currYear, startYear = 2021) => {
     const ranges = Array(currYear - startYear + 1).fill(1).map((item, i) => {
         return i + 2021;
     }).reverse();
-    console.log(ranges);
     return ranges;
 }

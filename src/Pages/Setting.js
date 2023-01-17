@@ -433,7 +433,7 @@ function Setting() {
                             <div className="label">Country</div>
                             <div className="input">
                             <div className={`nice-select selectize data-input ${!countriField? 'disabled': ''} ${countryDrop? 'open': ''}`} tabIndex={0}>
-                                <span className="current" onClick={handleCountryDrop}>{formData.country}</span>
+                                <span className="current" onClick={handleCountryDrop}>{formData.country?formData.country:'Countries'}</span>
                                 <div className="nice-select-dropdown">
                                   <ul className="list">
                                     {
