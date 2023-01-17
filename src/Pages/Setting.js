@@ -68,7 +68,6 @@ function Setting() {
       });
     }
   };
-  console.log(passwordData);
 
   const [formData, setFormData] = useState({
     name: user?.name ? user.name : "",
