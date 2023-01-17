@@ -16,9 +16,9 @@ function Setting() {
     isSuccess,
     isLoading,
   } = useFetch(["user-prof"], `/user`, {}, { token: authHeader() });
-  useEffect(() => {
+  /* useEffect(() => {
     refetch();
-  }, [user, isError, isSuccess, isLoading]);
+  }, [user, isError, isSuccess, isLoading]); */
 
   const [countryDrop, setCountryDrop] = useState(false);
   const handleCountryDrop = () => {
@@ -141,8 +141,9 @@ function Setting() {
     setFormData({ ...formData, country: value });
   };
   useEffect(() => {
+    refetch();
     resetFormData(user);
-  }, [user, isLoading, isSuccess]);
+  }, [user, isError, isSuccess, isLoading]);
   return (
     <>
       <div className="dashboard_content dashboard_content_setting">
