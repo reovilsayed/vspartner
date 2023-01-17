@@ -438,7 +438,7 @@ function Chat() {
                 </div>
 
                 <div className="right-panel">
-                  <div className="panel-box-info panel-box-info-xxs-spacing theaming-green mt-0">
+                  {/* <div className="panel-box-info panel-box-info-xxs-spacing theaming-green mt-0">
                     <div className="line-header">
                       <h5>
                         <span>Notes</span>
@@ -464,7 +464,7 @@ function Chat() {
                         survived not only five centuries, Lorem Ipsum is.
                       </p>
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="msg_list_sec panel-box-info">
                     <h4>Subject: Regarding our order...</h4>
@@ -512,7 +512,7 @@ function Chat() {
                           </div>
                         );
                       })}
-                      {/* <div className="message-body sender">
+                      <div className="message-body sender">
                                                 <div className="message-body-row">
                                                     <div className="chat-content">
                                                         <div className="chat-content-info">
@@ -547,7 +547,7 @@ function Chat() {
                                                 <div className="chat-deliver-time">
                                                     <p>12.07.2021<span>@12.55am</span></p>
                                                 </div>
-                                            </div> */}
+                                            </div>
                     </div>
                     <form onSubmit={sendMessage}>
                       <div className="chat-footer_inner">
