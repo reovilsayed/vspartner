@@ -226,6 +226,94 @@ export const getEarningSummary = (data = false) => {
     return summary;
 };
 
+export const getSubmissionChart = (data = false) => {
+    let chartData = [
+        {
+            date: "Jan",
+            accepted: 0,
+            rejected: 0,
+            pending: 0,
+        },
+        {
+            date: "Feb",
+            accepted: 0,
+            rejected: 0,
+            pending: 0,
+        },
+        {
+            date: "Mar",
+            accepted: 0,
+            rejected: 0,
+            pending: 0,
+        },
+        {
+            date: "Apr",
+            accepted: 0,
+            rejected: 0,
+            pending: 0,
+        },
+        {
+            date: "May",
+            accepted: 0,
+            rejected: 0,
+            pending: 0,
+        },
+        {
+            date: "Jun",
+            accepted: 0,
+            rejected: 0,
+            pending: 0,
+        },
+        {
+            date: "Jul",
+            accepted: 0,
+            rejected: 0,
+            pending: 0,
+        },
+        {
+            date: "Aug",
+            accepted: 0,
+            rejected: 0,
+            pending: 0,
+        },
+        {
+            date: "Sep",
+            accepted: 0,
+            rejected: 0,
+            pending: 0,
+        },
+        {
+            date: "Oct",
+            accepted: 0,
+            rejected: 0,
+            pending: 0,
+        },
+        {
+            date: "Nov",
+            accepted: 0,
+            rejected: 0,
+            pending: 0,
+        },
+        {
+            date: "Dec",
+            accepted: 0,
+            rejected: 0,
+            pending: 0,
+        },
+    ];
+    if (!data) {return chartData;}
+    data.map((item, index) => {
+      chartData.forEach(element => {
+        if (formatMonth(parseInt(item.date)) === element.date) {
+          element.accepted = item.accepted;
+          element.rejected = item.rejected;
+          element.pending = item.pending;
+        }
+      });
+    })
+    return chartData;
+};
+
 export const getEarningYearRanges = (currYear, startYear = 2021) => {
     const ranges = Array(currYear - startYear + 1).fill(1).map((item, i) => {
         return i + 2021;
