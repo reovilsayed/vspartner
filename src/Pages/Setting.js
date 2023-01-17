@@ -143,7 +143,6 @@ function Setting() {
   useEffect(() => {
     resetFormData(user);
   }, [user, isLoading, isSuccess]);
-
   return (
     <>
       <div className="dashboard_content dashboard_content_setting">

@@ -512,42 +512,6 @@ function Chat() {
                           </div>
                         );
                       })}
-                      <div className="message-body sender">
-                                                <div className="message-body-row">
-                                                    <div className="chat-content">
-                                                        <div className="chat-content-info">
-                                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                                industry. Lorem Ipsum has been the industry's standard
-                                                                dummy text ever since the 1500s, when an unknown printer took a
-                                                                galley.</p>
-                                                        </div>
-                                                    </div>
-                                                    <div className="chat-avatar">
-                                                        <img src="images/sender.png" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div className="chat-deliver-time">
-                                                    <p>12.07.2021<span>@12.55am</span></p>
-                                                </div>
-                                            </div>
-                                            <div className="message-body receiver">
-                                                <div className="message-body-row">
-                                                    <div className="chat-avatar">
-                                                        <img src="images/receiver.png" alt="" />
-                                                    </div>
-                                                    <div className="chat-content">
-                                                        <div className="chat-content-info">
-                                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                                industry. Lorem Ipsum has been the industry's standard
-                                                                dummy text ever since the 1500s, when an unknown printer took a
-                                                                galley of type and scrambled</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="chat-deliver-time">
-                                                    <p>12.07.2021<span>@12.55am</span></p>
-                                                </div>
-                                            </div>
                     </div>
                     <form onSubmit={sendMessage}>
                       <div className="chat-footer_inner">

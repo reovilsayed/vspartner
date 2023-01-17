@@ -184,25 +184,6 @@ function Home() {
                                             : "0"}
                                     </label>
                                 </div>
-                                <div className="vr_item grn">
-                                    <i>
-                                        <img src="images/chks.png" alt="" />
-                                    </i>
-                                    <h3>Approved Submissions</h3>
-                                    <label>
-                                        {earningRange === earningRanges[0]
-                                            ? submissionCount?.month_total
-                                                  ?.accepted
-                                                ? submissionCount.month_total
-                                                      .accepted
-                                                : "0"
-                                            : submissionCount?.year_total
-                                                  ?.accepted
-                                            ? submissionCount.year_total
-                                                  .accepted
-                                            : "0"}
-                                    </label>
-                                </div>
                             </div>
                         </div>
                     </div>
