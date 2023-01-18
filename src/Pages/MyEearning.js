@@ -23,6 +23,11 @@ function MyEearning() {
         isLoading: earningCountIsLoading,
     } = useFetch(["earning_count", queryYear], `/total-earning-count/${queryYear}/${currMonth}`);
     const {
+        data: earningCountCurrent,
+        refetch: refetchEarningCountCurrent,
+        isLoading: earningCountCurrentIsLoading,
+    } = useFetch(["earning_count_current"], `/total-earning-count/${currYear}/${currMonth}`);
+    const {
         data: submissionCount,
         refetch: refetchSubmissionCount,
         isLoading: submissionCountIsLoading,
@@ -118,10 +123,10 @@ function MyEearning() {
                                                     : ""
                                             }`}
                                             tabIndex={0}
+                                                onClick={() => handleDropdown(1)}
                                         >
                                             <span
                                                 className="current"
-                                                onClick={() => handleDropdown(1)}
                                             >
                                                 {graphRange}
                                             </span>
@@ -160,9 +165,6 @@ function MyEearning() {
                                 <div className="dash_body p-0 mb-0">
                                     <div id="chart0" className="chart chart0">
                                         <EarningChart
-                                            byYear={
-                                                !(graphRange === graphRanges[0])
-                                            }
                                         />
                                     </div>
                                     <div className="column_earning">
@@ -179,11 +181,11 @@ function MyEearning() {
                                                     $
                                                     {graphRange ===
                                                     graphRanges[0]
-                                                        ? earningCount?.month_total
-                                                            ? earningCount.month_total
+                                                        ? earningCountCurrent?.month_total
+                                                            ? earningCountCurrent.month_total
                                                             : "0"
-                                                        : earningCount?.year_total
-                                                        ? earningCount.year_total
+                                                        : earningCountCurrent?.year_total
+                                                        ? earningCountCurrent.year_total
                                                         : "0"}
                                                 </label>
                                             </div>
@@ -257,10 +259,10 @@ function MyEearning() {
                                                     : ""
                                             }`}
                                             tabIndex={0}
+                                                onClick={() => handleDropdown()}
                                         >
                                             <span
                                                 className="current"
-                                                onClick={() => handleDropdown()}
                                             >
                                                 {earningRange}
                                             </span>

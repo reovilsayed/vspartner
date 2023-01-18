@@ -50,13 +50,17 @@ function Setting() {
     old_password: "",
     password: "",
   });
-  const updatePassword= (passwordData) => {
+  const updatePassword = (passwordData) => {
     if (passwordData) {
       requests.post(`change-password`, passwordData, { token: authHeader() }).then((res) => {
         if (res) {
           notify(res.message);
         } else {
           notify(res.message, true);
+        }
+      }).catch(res => {
+        if (res) {
+          notify(res.response.data.message, true);
         }
       });
       refetch();
@@ -432,17 +436,17 @@ function Setting() {
                           <div className="prf_data_row" data-editable>
                             <div className="label">Country</div>
                             <div className="input">
-                            <div className={`nice-select selectize data-input ${!countriField? 'disabled': ''} ${countryDrop? 'open': ''}`} tabIndex={0}>
-                                <span className="current" onClick={handleCountryDrop}>{formData.country?formData.country:'Countries'}</span>
+                              <div className={`nice-select selectize data-input ${!countriField ? 'disabled' : ''} ${countryDrop ? 'open' : ''}`} tabIndex={0}>
+                                <span className="current" onClick={handleCountryDrop}>{formData.country ? formData.country : 'Countries'}</span>
                                 <div className="nice-select-dropdown">
                                   <ul className="list">
                                     {
                                       countries.map((country, index) => {
                                         return (
-                                          <li data-value={country} key={index} className="option null" onClick={() => {setCountryData(country); handleCountryDrop();}}>
+                                          <li data-value={country} key={index} className="option null" onClick={() => { setCountryData(country); handleCountryDrop(); }}>
                                             {country}
                                           </li>
-                                          );
+                                        );
                                       })
                                     }
                                   </ul>
@@ -505,34 +509,34 @@ function Setting() {
                             <div className="input">
                               {passField ? (
                                 <div>
-                                <input
-                                  type={passwordData?.old_password? 'password': 'text'}
-                                  value={passwordData?.old_password? passwordData.old_password: ''}
-                                  placeholder='Old Password'
-                                  onChange={(e) => {
-                                    setPasswordData(curr => {
-                                      return {
-                                        ...curr,
-                                        old_password: e.target.value,
-                                      }
-                                    });
-                                  }}
-                                  className=" data-input"
-                                />
-                                <input
-                                  type={passwordData?.password? 'password': 'text'}
-                                  value={passwordData?.password? passwordData.password: ''}
-                                  placeholder='New Password'
-                                  onChange={(e) => {
-                                    setPasswordData(curr => {
-                                      return {
-                                        ...curr,
-                                        password: e.target.value,
-                                      }
-                                    });
-                                  }}
-                                  className=" data-input"
-                                />
+                                  <input
+                                    type={passwordData?.old_password ? 'password' : 'text'}
+                                    value={passwordData?.old_password ? passwordData.old_password : ''}
+                                    placeholder='Old Password'
+                                    onChange={(e) => {
+                                      setPasswordData(curr => {
+                                        return {
+                                          ...curr,
+                                          old_password: e.target.value,
+                                        }
+                                      });
+                                    }}
+                                    className=" data-input"
+                                  />
+                                  <input
+                                    type={passwordData?.password ? 'password' : 'text'}
+                                    value={passwordData?.password ? passwordData.password : ''}
+                                    placeholder='New Password'
+                                    onChange={(e) => {
+                                      setPasswordData(curr => {
+                                        return {
+                                          ...curr,
+                                          password: e.target.value,
+                                        }
+                                      });
+                                    }}
+                                    className=" data-input"
+                                  />
                                 </div>
                               ) : (
                                 <input

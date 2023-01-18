@@ -128,10 +128,10 @@ function Home() {
                                                     : ""
                                             }`}
                                             tabIndex={0}
+                                                onClick={() => handleDropdown()}
                                         >
                                             <span
                                                 className="current"
-                                                onClick={() => handleDropdown()}
                                             >
                                                 {earningRange}
                                             </span>
@@ -206,12 +206,12 @@ function Home() {
                                                         : ""
                                                 }`}
                                                 tabIndex={0}
-                                            >
-                                                <span
-                                                    className="current"
                                                     onClick={() =>
                                                         handleDropdown(1)
                                                     }
+                                            >
+                                                <span
+                                                    className="current"
                                                 >
                                                     {submissionRange}
                                                 </span>
@@ -275,12 +275,12 @@ function Home() {
                                                         : ""
                                                 }`}
                                                 tabIndex={0}
-                                            >
-                                                <span
-                                                    className="current"
                                                     onClick={() =>
                                                         handleDropdown(1)
                                                     }
+                                            >
+                                                <span
+                                                    className="current"
                                                 >
                                                     {submissionRange}
                                                 </span>
