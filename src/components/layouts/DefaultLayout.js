@@ -5,6 +5,7 @@ import Sidebar from "./Sidebar";
 import useFetch from "../../hooks/useFetch";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineAlignLeft, AiOutlineClose } from "react-icons/ai";
+import useBroadcast from "../../hooks/useBroadcast";
 
 
 function DefaultLayout({ children }) {
@@ -35,6 +36,7 @@ function DefaultLayout({ children }) {
     data: notificationData,
     isLoading,
     isSuccess: notificationDataIsSuccess,
+    refetch:countRefetch
   } = useFetch(
     ["notification_count"],
     `/notification-count`,
@@ -55,6 +57,17 @@ function DefaultLayout({ children }) {
     refetch,
     isLoading: notificationsIsLoading,
   } = useFetch(["notifications"], `/notifications?page=1`);
+  useBroadcast("notification", refetch, [
+    ".NotificationCreated",
+    ".NotificationUpdated",
+    ".NotificationDeleted",
+  ]);
+  useBroadcast("notification", countRefetch, [
+    ".NotificationCreated",
+    ".NotificationUpdated",
+    ".NotificationDeleted",
+  ]);
+  
   return (
     <>
       <div className={`dashboard_header ${hamburgerMenuOpen? 'mobile_dashboard_backdrop': ''}`}>
@@ -157,7 +170,7 @@ function DefaultLayout({ children }) {
                               <i className="nof_ico">
                                 <img src="images/rocket.svg" alt="" />
                               </i>
-                              <p>{notification.title}</p>
+                              <p  dangerouslySetInnerHTML={{__html: notification.description}}></p>
                               {noteTypesId.includes(
                                 notification.notification_type_id
                               ) ? (

@@ -29,6 +29,7 @@ function Notifications() {
     {
       notification_type_id: filtersArray,
       search,
+      type:'unseen'
     },
     {
       pagePrefetchKey: ["notifications", filtersArray, currentPage + 1, search],
@@ -111,11 +112,11 @@ function Notifications() {
     const mes = requests.post(`notification-status-update`, {'notification_id': notification_id}, {token: authHeader()});
     refetch();
   }
-  useBroadcast("notification", refetch, [
-    ".NotificationCreated",
-    ".NotificationUpdated",
-    ".NotificationDeleted",
-  ]);
+  // useBroadcast("notification", refetch, [
+  //   ".NotificationCreated",
+  //   ".NotificationUpdated",
+  //   ".NotificationDeleted",
+  // ]);
   return (
     <>
       <div className="dashboard_content dashboard_content_notification">
@@ -185,7 +186,7 @@ function Notifications() {
                             <ul className="notify_list">
                               {groupedData?.[notificationGroup]?.map(
                                 (notification, index) => {
-                                  return (notification.seen === 0 && notification.status === 0)? (
+                                  return  (
                                     <li key={index}>
                                       <div className="nof_ico">
                                         <i className="">
@@ -216,7 +217,7 @@ function Notifications() {
                                         </div>
                                       </span>
                                     </li>
-                                  ): '';
+                                  );
                                 }
                               )}
                             </ul>
