@@ -4,6 +4,7 @@ import { getTime } from "date-fns/esm";
 import React, { useEffect, useState } from "react";
 import { useAuthHeader } from "react-auth-kit";
 import Pagination from "../components/Pagination";
+import useBroadcast from "../hooks/useBroadcast";
 import useFetch from "../hooks/useFetch";
 import getImageURL, { plainDateTime, plainTime } from "../lib/queryClient";
 import requests from "../services/httpService";
@@ -110,7 +111,11 @@ function Notifications() {
     const mes = requests.post(`notification-status-update`, {'notification_id': notification_id}, {token: authHeader()});
     refetch();
   }
-
+  useBroadcast("notification", refetch, [
+    ".NotificationCreated",
+    ".NotificationUpdated",
+    ".NotificationDeleted",
+  ]);
   return (
     <>
       <div className="dashboard_content dashboard_content_notification">
@@ -187,9 +192,7 @@ function Notifications() {
                                           <img src="images/rocket.svg" alt="" />
                                         </i>
                                       </div>
-                                      <p className="">
-                                        {notification.title}
-                                      </p>
+                                      <p  dangerouslySetInnerHTML={{__html: notification.description}}></p>
                                       {
                                         (noteTypesId.includes(notification.notification_type_id))? <a href="#" className="nof_inline_btn">Reply Now</a>: ''
                                       }

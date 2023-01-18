@@ -7,6 +7,7 @@ import { VideoContext, VideoLayoutContext } from "../../App";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.css";
 import { useSearchParams } from "react-router-dom";
+import useBroadcast from "../../hooks/useBroadcast";
 
 const Videos = () => {
   const [fromDate, setfromDate] = useState('');
@@ -53,7 +54,7 @@ const Videos = () => {
 
   const { data, refetch, isLoading } = useFetch(
     ["videos", status, fromDate, endDate, search, currentPage,],
-    `/videos/12?page=${currentPage}`,
+    `/videos/10?page=${currentPage}`,
     {
       status: status,
       search: search,
@@ -78,7 +79,7 @@ const Videos = () => {
       setSearch(searchParams.get('search'));
     }
   }, [searchParams, search]);
-
+  useBroadcast("video", refetch);
   return (
     <>
       <div className="dashboard_content">

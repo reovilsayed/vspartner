@@ -37,7 +37,7 @@ function VideoPlayer(props) {
       autoplay: false,
       preload: 'auto',
       controls: true,
-      poster: poster,
+      //poster: poster,
       sources: [
         {
           src: src,
@@ -86,7 +86,7 @@ function VideoPlayer(props) {
         }
       }}
       className="video-js vjs-theme-forest vjs-big-play-centered"
-      poster={poster}
+     
     ></video>
   );
 }
