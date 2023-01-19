@@ -154,7 +154,7 @@ const VideoModal = props => {
 											<div className='panel-box-info-wrap-col'>
 												<p>
 													<span>Client Name :</span>
-													{video?.first_name} {video?.user?.last_name ? video?.last_name}
+													{video?.first_name} { video?.last_name}
 												</p>
 											</div>
 											<div className='panel-box-info-wrap-col'>
