@@ -52,7 +52,7 @@ const Videos = () => {
   const dateInput = useRef(null)
 
 
-  const { data, refetch, isLoading } = useFetch(
+  const { data, refetch, isLoading, isSuccess } = useFetch(
     ["videos", status, fromDate, endDate, search, currentPage,],
     `/videos/10?page=${currentPage}`,
     {
@@ -74,11 +74,22 @@ const Videos = () => {
     refetch();
     setPopup(!popup);
   }
+
+  const [noVideo, setNoVideo] = useState(false);
+
   useEffect(() => {
     if (searchParams.get('search')) {
       setSearch(searchParams.get('search'));
     }
   }, [searchParams, search]);
+
+  useEffect(() => {
+    if (data === undefined || data.data === undefined) return;
+    if (data.data.length === 0) {
+      setNoVideo(true);
+    }
+  }, [isSuccess]);
+
   useBroadcast("video", refetch);
   return (
     <>
@@ -207,6 +218,7 @@ const Videos = () => {
             videos={data?.data}
             isLoading={isLoading}
             active={isListView ? true : false}
+            empty={noVideo}
             toggle={toggle}
           />
 
@@ -214,6 +226,7 @@ const Videos = () => {
             videos={data?.data}
             isLoading={isLoading}
             active={isListView ? false : true}
+            empty={noVideo}
             toggle={toggle}
           />
 
