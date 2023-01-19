@@ -2,13 +2,14 @@ import React from 'react';
 import GridSkeleton from '../../../components/Skleton/GridSkeleton';
 import getImageURL, { plainDateTime } from '../../../lib/queryClient';
 
-const Grid = ({ videos, isLoading, active, toggle }) => {
+const Grid = ({ videos, isLoading, empty, active, toggle }) => {
     return (
         <div className={`view_box grid_view_box grid_view_box_selection ${active?'active_view':''}`}>
             <div className="all_tab_panel" data-tab-parent="tabgroup1">
                 <div className="tab_panel active">
                     <div className="panel_inner">
-                        <div className="grid_row">
+                        {!empty?
+                        (<div className="grid_row">
                             {isLoading ? <GridSkeleton /> : (
                                 videos.map(video => {
                                     return (
@@ -89,7 +90,16 @@ const Grid = ({ videos, isLoading, active, toggle }) => {
 
                             )}
 
+                        </div>)
+                        : (<div className="no_data_found">
+                        <div className="iconwrap">
+                          <img src="images/video-search.png" />
                         </div>
+                        <h3>Oops!</h3>
+                        <p>No video found</p>
+                      </div>
+                      )
+                        }
                     </div>
                 </div>
 
