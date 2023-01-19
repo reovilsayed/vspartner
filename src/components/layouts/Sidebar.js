@@ -34,7 +34,7 @@ function Sidebar(props) {
                             </li>
                             <li className={isCurrentRoute('/my-videos')}>
                                 <Link to={'/my-videos'} onMouseOver={() => {
-                                    prefetchOnMouseHover(["videos", null, '', '', undefined, 1], `${baseURL}/videos/12?page=1`, '', authHeader());
+                                    prefetchOnMouseHover(["videos", null, '', '', undefined, 1], `${baseURL}/videos/10?page=1`, '', authHeader());
                                 }}>
                                     <i>
                                         <img src="images/nav2.png" alt="" />
