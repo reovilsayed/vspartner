@@ -49,7 +49,7 @@ export const getDateTime = (d) => {
     const time = new Intl.DateTimeFormat("en-US", {
         timeStyle: "short",
     }).format(today);
-    return { date, time: time.toLowerCase(), isSuccess: !!d };
+    return { date, time: time.toLocaleUpperCase(), isSuccess: !!d };
 };
 export const plainDateTime = (d) => {
     if (d) {
@@ -319,4 +319,10 @@ export const getEarningYearRanges = (currYear, startYear = 2021) => {
         return i + 2021;
     }).reverse();
     return ranges;
+}
+
+export const getAffermation = (ans = '') => {
+    if (!ans) return false;
+    if (ans.length < 3) return false;
+    return ans.slice(0, 3) === 'Yes';
 }
