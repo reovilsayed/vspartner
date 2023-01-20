@@ -5361,6 +5361,7 @@ select::-ms-expand {
     .nav_tab a {
         font-size: 13px;
         height: 48px;
+        cursor: pointer;
     }
 
     .view_control>span svg {
@@ -5445,7 +5446,7 @@ select::-ms-expand {
 
     .video_inline_img {
         max-width: 82px;
-        height: 90px;
+        height: 52.48px;
     }
 
     .pagination li>* {
