@@ -2111,22 +2111,11 @@ select::-ms-expand {
     width: 100%;
     margin-bottom: 24px;
 }
-.single-video-box .my-video-dimensions {
-    padding-bottom: 62%;
-}
 
 .single-video-box .video {
     width: 100%;
     border-radius: 7px;
     overflow: hidden;
-}
-
-.single-video-box .vjs-theme-fantasy .vjs-play-progress, .single-video-box .vjs-theme-fantasy .vjs-play-progress:before {
-    background-color: #e9253d;
-}
-
-.vjs-icon-placeholder {
-    color: #FFF !important;
 }
 
 .btn-outline {

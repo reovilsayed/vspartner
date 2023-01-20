@@ -225,17 +225,18 @@ function Notifications() {
                         ))
                       )}
                     </div>
+                  </ul>
+                </div>
+              </div>
                     {data?.total > 12 && (
+          <div className="pagination_panel">
                       <Pagination
                         perPage={12}
                         total={data?.total}
                         currentPage={currentPage}
                         onChange={(e) => setCurrentPage(e)}
-                      />
+                      /></div>
                     )}
-                  </ul>
-                </div>
-              </div>
             </div>
 
             <div className="notification_filter_sec">

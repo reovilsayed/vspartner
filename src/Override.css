@@ -1,6 +1,6 @@
 
-.vjs-default-skin .vjs-big-play-button {
-  /* background: url(./assets/images/video_play_icon.svg) center center no-repeat; */
+/* .vjs-default-skin .vjs-big-play-button {
+  background: url(./assets/images/video_play_icon.svg) center center no-repeat;
   width: 75px;
   height: 75px;
   top: 50%;
@@ -48,14 +48,13 @@ video.vjs-tech {
 video.video-js,
 video.vjs-tech {
   width: 100%;
-  /* min-height: 450px; */
+  min-height: 450px;
 }
 
 .vjs-fullscreen video.vjs-tech {
   min-height: 100% !important;
 }
 
-/* Fix the control bar due to us resetting the line-height on the video-js */
 .vjs-control-bar {
   line-height: 1;
 }
@@ -67,4 +66,16 @@ video.vjs-tech {
 .vjs-poster {
   background-size: contain;
   background-color: #000;
+} */
+
+.single-video-box .vjs-theme-fantasy .vjs-play-progress, .single-video-box .vjs-theme-fantasy .vjs-play-progress:before {
+  background-color: #e9253d;
+}
+
+.vjs-icon-placeholder {
+  color: #FFF !important;
+}
+
+.single-video-box .my-video-dimensions {
+  padding-bottom: 62%;
 }

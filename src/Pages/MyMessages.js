@@ -144,10 +144,28 @@ function MyMessages() {
                                                                       : ""}
                                                               </td>
                                                               <td>
-                                                                  <span className="tg grn">
-                                                                      {inquiry?.status
-                                                                          ? inquiry.status
-                                                                          : "Pending"}
+                                                                  <span className={`tg ${
+                                                                      inquiry?.status
+                                                                          ? inquiry.status ===
+                                                                            0
+                                                                              ? "grn"
+                                                                              : inquiry.status ===
+                                                                                1
+                                                                              ? "red"
+                                                                              : "grn"
+                                                                          : "grn"
+                                                                    }`}>
+                                                                    {
+                                                                      inquiry?.status
+                                                                          ? inquiry.status ===
+                                                                            0
+                                                                              ? "Pending"
+                                                                              : inquiry.status ===
+                                                                                1
+                                                                              ? "Closed"
+                                                                              : "Pending"
+                                                                          : "Pending"
+                                                                    }
                                                                   </span>
                                                               </td>
                                                               <td>
