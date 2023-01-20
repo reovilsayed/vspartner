@@ -15,6 +15,7 @@ function Login() {
   const navigate = useNavigate();
   const baseURL = process.env.REACT_APP_API_BASE;
   const [showPassword, setShowPassword] = useState(false);
+  const [revealPasswordBtn, setRevealPasswordBtn] = useState(false);
   const [rememberSession, setRememberSession] = useState(false);
   const handleRememberSession = () => {
     setRememberSession(currRem => {
@@ -102,7 +103,6 @@ function Login() {
                           <h6>Email Address</h6>
                           <input
                             type="email"
-                            placeholder="company@example.com"
                             onChange={(e) => {
                               e.preventDefault();
                               setCreds({ ...creds, email: e.target.value });
@@ -119,18 +119,24 @@ function Login() {
                           <h6>Password</h6>
                           <input
                             type={showPassword? 'text': 'password'}
-                            placeholder="********"
                             id="myInput"
                             onChange={(e) => {
                               e.preventDefault();
                               setCreds({ ...creds, password: e.target.value });
+                              if (e.target.value.length > 0) {
+                                setRevealPasswordBtn(true);
+                              } else {
+                                setRevealPasswordBtn(false);
+                              }
                             }}
                           />
+{revealPasswordBtn? (
                           <span
                           onClick={handleShowPassword}
                           style={{cursor: "pointer"}}
                             className={`toggle_open_eye ${showPassword? 'active': ''}`}
                           ></span>
+                          ): ''}
                         </div>
                       </div>
 
