@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/nice-select2.css";
 import "./App.css";
-import "./Override.css";
+// import "./Override.css";
 import { Routes, Route } from "react-router-dom";
 import DefaultLayout from "./components/layouts/DefaultLayout";
 import DetailsLayout from "./components/layouts/DetailsLayout";
