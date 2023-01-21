@@ -184,6 +184,11 @@ function Home() {
                                             : "0"}
                                     </label>
                                 </div>
+                                <div class="vr_item grn">
+                                            <i><img src="images/chks.png" alt=""/></i>
+                                            <h3>Approved Submissions</h3>
+                                            <label>150</label>
+                                        </div>
                             </div>
                         </div>
                     </div>

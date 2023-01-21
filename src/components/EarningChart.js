@@ -92,7 +92,7 @@ function EarningChart() {
 			data: [],
 		},
 	]);
-	const { data: earningGraph, refetch, isLoading, isSuccess } = useFetch(['earning-report'], `/graph-earning`);
+	const { data: earningGraph, refetch, isLoading, isSuccess } = useFetch(['graph-earning'], `/graph-earning`);
 	useEffect(() => {
     if(earningGraph){
       setSeries([
