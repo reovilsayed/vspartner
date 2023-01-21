@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import useFetch from '../hooks/useFetch';
-import { getSubmissionChart } from '../lib/queryClient';
 
 function SubmissionChart() {
 	const options = {
