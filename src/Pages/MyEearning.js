@@ -17,16 +17,18 @@ function MyEearning() {
 
     const [queryYear, setQueryYear] = useState(currYear);
 
-    const {
-        data: earningCount,
-        refetch: refetchEarningCount,
-        isLoading: earningCountIsLoading,
-    } = useFetch(["earning_count", queryYear], `/total-earning-count/${queryYear}/${currMonth}`);
-    const {
-        data: earningCountCurrent,
-        refetch: refetchEarningCountCurrent,
-        isLoading: earningCountCurrentIsLoading,
-    } = useFetch(["earning_count_current"], `/total-earning-count/${currYear}/${currMonth}`);
+    // const {
+    //     data: earningCount,
+    //     refetch: refetchEarningCount,
+    //     isLoading: earningCountIsLoading,
+    // } = useFetch(["earning_count", queryYear], `/total-earning-count/${queryYear}/${currMonth}`);
+    
+    const [earningTimeRange, setEarningTimeRange] = useState('this_month');
+    const { data: earningCount, refetch: refetchEarningCount, isLoading: earningCountIsLoading } = useFetch(
+        ["earning_count", earningTimeRange],
+        `/earning-count`,
+        {time_range: earningTimeRange}
+    );
     const {
         data: submissionCount,
         refetch: refetchSubmissionCount,
@@ -62,6 +64,12 @@ function MyEearning() {
             return { ...curr, graphDrop: !curr.graphDrop };
         });
     };
+    useEffect(() => {
+        setEarningTimeRange(curr => {
+            if (graphRange === 'This Month') return 'this_month';
+            return 'this_year';
+        })
+    }, [graphRange]);
     useEffect(() => {
         refetchEarningCount();
         refetchSubmissionCount();
@@ -179,14 +187,9 @@ function MyEearning() {
                                                 <h3>My Earnings</h3>
                                                 <label>
                                                     $
-                                                    {graphRange ===
-                                                    graphRanges[0]
-                                                        ? earningCountCurrent?.month_total
-                                                            ? earningCountCurrent.month_total
-                                                            : "0"
-                                                        : earningCountCurrent?.year_total
-                                                        ? earningCountCurrent.year_total
-                                                        : "0"}
+                                                    {
+                                                        earningCount?.earning? earningCount.earning: '0'
+                                                    }
                                                 </label>
                                             </div>
                                             <div className="vr_item grn">
@@ -198,22 +201,9 @@ function MyEearning() {
                                                 </i>
                                                 <h3>Approved Submissions</h3>
                                                 <label>
-                                                    {graphRange ===
-                                                    graphRanges[0]
-                                                        ? submissionCount
-                                                              ?.month_total
-                                                              ?.accepted
-                                                            ? submissionCount
-                                                                  .month_total
-                                                                  .accepted
-                                                            : "0"
-                                                        : submissionCount
-                                                              ?.year_total
-                                                              ?.accepted
-                                                        ? submissionCount
-                                                              .year_total
-                                                              .accepted
-                                                        : "0"}
+                                                    {
+                                                        earningCount?.videos? earningCount.videos: '0'
+                                                    }
                                                 </label>
                                             </div>
                                         </div>
