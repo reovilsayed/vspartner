@@ -17,24 +17,13 @@ function MyEearning() {
 
     const [queryYear, setQueryYear] = useState(currYear);
 
-    // const {
-    //     data: earningCount,
-    //     refetch: refetchEarningCount,
-    //     isLoading: earningCountIsLoading,
-    // } = useFetch(["earning_count", queryYear], `/total-earning-count/${queryYear}/${currMonth}`);
-    
     const [earningTimeRange, setEarningTimeRange] = useState('this_month');
     const { data: earningCount, refetch: refetchEarningCount, isLoading: earningCountIsLoading } = useFetch(
         ["earning_count", earningTimeRange],
         `/earning-count`,
         {time_range: earningTimeRange}
     );
-    const {
-        data: submissionCount,
-        refetch: refetchSubmissionCount,
-        isLoading: submissionCountIsLoading,
-    } = useFetch(["video_count"], `/video-count/${currYear}/${currMonth}/${currDay}`);
-
+    
     const {
         data: earningSummary,
         refetch: refetchEarningSummary,
@@ -50,7 +39,7 @@ function MyEearning() {
     const [earningRange, setEarningRange] = useState(earningRanges[0]);
 
     const [earningSummaryData, setEarningSummaryData] = useState(
-        getEarningSummary()
+        getEarningSummary().summary
     );
     const [dropdownsOpen, setDropDownsOpen] = useState({
         earningDrop: false,
@@ -72,14 +61,12 @@ function MyEearning() {
     }, [graphRange]);
     useEffect(() => {
         refetchEarningCount();
-        refetchSubmissionCount();
         setEarningSummaryData(
-            getEarningSummary(earningSummary)
+            getEarningSummary(earningSummary).summary
         );
         /* setEarningSummaryYearData(getEarningSummaryYear(earningSummaryByYear)); */
     }, [
         earningCountIsLoading,
-        submissionCountIsLoading,
         earningSummaryIsLoading
     ]);
 
@@ -347,7 +334,7 @@ function MyEearning() {
                         <div className="earning_download_lists_account">
                             <div className="earning_download_lists_account_line">
                                 <p>
-                                    Total<span>${earningCount?.year_total? earningCount.year_total: '0'}</span>
+                                    Total<span>${getEarningSummary(earningSummary).total}</span>
                                 </p>
                                 <a
                                     href="#"
