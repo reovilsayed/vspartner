@@ -80,29 +80,12 @@ video.vjs-tech {
   padding-bottom: 62%;
 }
 
-.view_ico_btn {
-  cursor: pointer;
-}
-
-.calender_range_value.dateSelector {
-  cursor: pointer;
-}
-
-.search_btn img {
-  cursor: pointer;
-}
-.srch_btn img {
-  cursor: pointer;
-}
-
-.btn-outline.btn-outline-blue {
-  cursor: pointer;
-}
-
-span.prf_pic_change, .prf_pic_change input, .prf_pic_change svg {
-  cursor: pointer;
-}
-
+.view_ico_btn,
+.calender_range_value.dateSelector,
+.search_btn img,
+.srch_btn img,
+.btn-outline.btn-outline-blue,
+span.prf_pic_change, .prf_pic_change input, .prf_pic_change svg,
 ul.nav_list li a {
   cursor: pointer;
 }
