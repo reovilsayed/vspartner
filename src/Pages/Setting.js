@@ -33,9 +33,9 @@ function Setting() {
   const [countriField, setcountriField] = useState(false);
   const [passField, setpassField] = useState(false);
   const baseURL = process.env.REACT_APP_API_BASE;
-  const updateProfile = (formData) => {
+  const updateProfile = async (formData) => {
     if (formData) {
-      requests.post(`update-profile`, formData, { token: authHeader() }).then((res) => {
+      await requests.post(`update-profile`, formData, { token: authHeader() }).then((res) => {
         if (res) {
           notify(res.message);
         } else {
@@ -50,9 +50,9 @@ function Setting() {
     old_password: "",
     password: "",
   });
-  const updatePassword = (passwordData) => {
+  const updatePassword = async (passwordData) => {
     if (passwordData) {
-      requests.post(`change-password`, passwordData, { token: authHeader() }).then((res) => {
+      await requests.post(`change-password`, passwordData, { token: authHeader() }).then((res) => {
         if (res) {
           notify(res.message);
         } else {
