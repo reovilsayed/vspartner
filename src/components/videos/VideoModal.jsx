@@ -281,10 +281,33 @@ const VideoModal = (props) => {
                                                     <span>
                                                         Payment Method :{" "}
                                                     </span>{" "}
-                                                    <img
-                                                        src="images/paypal.png"
-                                                        alt=""
-                                                    />
+                                                    {video?.payment_method ==
+                                                    "paypal-content" ? (
+                                                        <img
+                                                            src="images/payment/paypal.png"
+                                                            alt=""
+                                                        />
+                                                    ) : (
+                                                        ""
+                                                    )}
+                                                    {video?.payment_method ==
+                                                    "bank-transfer" ? (
+                                                        <img
+                                                            src="images/payment/bank.png"
+                                                            alt=""
+                                                        />
+                                                    ) : (
+                                                        ""
+                                                    )}
+                                                    {video?.payment_method ==
+                                                    "transfer-wisp-content" ? (
+                                                        <img
+                                                            src="images/payment/transferwise.png"
+                                                            alt=""
+                                                        />
+                                                    ) : (
+                                                        ""
+                                                    )}
                                                 </p>
                                             </div>
                                             <div className="panel-box-info-wrap-col">
