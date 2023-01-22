@@ -130,7 +130,7 @@ export const getTitle = (date) => {
     }
 };
 
-export const formatMonth = (month) => {
+export const formatMonth = (month, full = false) => {
     const thisMonths = [
         "Jan",
         "Feb",
@@ -145,89 +145,13 @@ export const formatMonth = (month) => {
         "Nov",
         "Dec",
     ];
+    const fullMonths = ["January","February","March","April","May","June","July","August","September","October","November","December",
+    ];
     if (month > 11) {
         month = month - 11;
     }
-    return thisMonths[month];
+    return full? fullMonths[month]: thisMonths[month];
 };
-
-export const getEarningSummary = (data = false) => {
-    let total = 0;
-    let summary = [
-        {
-            date: "January",
-            total: 0,
-            available: false,
-        },
-        {
-            date: "February",
-            total: 0,
-            available: false,
-        },
-        {
-            date: "March",
-            total: 0,
-            available: false,
-        },
-        {
-            date: "April",
-            total: 0,
-            available: false,
-        },
-        {
-            date: "May",
-            total: 0,
-            available: false,
-        },
-        {
-            date: "June",
-            total: 0,
-            available: false,
-        },
-        {
-            date: "July",
-            total: 0,
-            available: false,
-        },
-        {
-            date: "August",
-            total: 0,
-            available: false,
-        },
-        {
-            date: "September",
-            total: 0,
-            available: false,
-        },
-        {
-            date: "October",
-            total: 0,
-            available: false,
-        },
-        {
-            date: "November",
-            total: 0,
-            available: false,
-        },
-        {
-            date: "December",
-            total: 0,
-            available: false,
-        },
-    ];
-    if (!data) {return summary;}
-    data.map((item, index) => {
-        total += parseFloat(item.total);
-      summary.forEach(element => {
-        if (item.date === element.date) {
-          element.total = item.total;
-          element.available = true;
-        }
-      });
-    })
-    return {summary: summary, total: total};
-};
-
 export const getEarningYearRanges = (currYear, startYear = 2021) => {
     const ranges = Array(currYear - startYear + 1).fill(1).map((item, i) => {
         return i + 2021;
