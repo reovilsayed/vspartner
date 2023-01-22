@@ -197,7 +197,7 @@ function DefaultLayout({ children }) {
 
               <div className="admin_panel panel_inline">
                 <span>
-                  {user.name} {user.last_name}
+                  {user?.name? user.name: ''} {user?.last_name? user.last_name: ''}
                 </span>
                 <span className="nav_avatar">
                   <Link to={`/setting`}>
