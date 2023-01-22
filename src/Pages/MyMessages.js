@@ -38,12 +38,29 @@ function MyMessages() {
         if (inquiries.data.length === 0) {
             setNoMessages(true);
         }
-    }, [isSuccess]);
+    }, [isSuccess, isLoading]);
     return (
         <>
             <div className="dashboard_content dashboard_content_message">
                 <div className="dashboard_content_inner">
-                    {!noMessages ? (
+                    {noMessages ? (
+                        <div className="message_no_found">
+                            <p>
+                                Need some help with your transactions or got a
+                                question about your submission? Feel free to
+                                inquire now!
+                            </p>
+                            <span
+                                href="#"
+                                className="btn-outline btn-outline-blue"
+                                data-bs-toggle="modal"
+                                data-bs-target="#inq_modal"
+                                onClick={() => setModalOpen(true)}
+                            >
+                                Contact us
+                            </span>
+                        </div>
+                    ):  (
                         <>
                             <div className="top_welcome_box">
                                 <div className="lft_element">
@@ -202,22 +219,6 @@ function MyMessages() {
                                 </table>
                             </div>
                         </>
-                    ) : (
-                        <div class="message_no_found">
-                            <p>
-                                Need some help with your transactions or got a
-                                question about your submission? Feel free to
-                                inquire now!
-                            </p>
-                            <a
-                                href="#"
-                                class="btn-outline btn-outline-blue"
-                                data-bs-toggle="modal"
-                                data-bs-target="#inq_modal"
-                            >
-                                Contact us
-                            </a>
-                        </div>
                     )}
                 </div>
             </div>
