@@ -38,9 +38,6 @@ function MyEearning() {
     const [graphRange, setGraphRange] = useState(graphRanges[0]);
     const [earningRange, setEarningRange] = useState(earningRanges[0]);
 
-    const [earningSummaryData, setEarningSummaryData] = useState(
-        getEarningSummary().summary
-    );
     const [dropdownsOpen, setDropDownsOpen] = useState({
         earningDrop: false,
         graphDrop: false,
@@ -61,10 +58,6 @@ function MyEearning() {
     }, [graphRange]);
     useEffect(() => {
         refetchEarningCount();
-        setEarningSummaryData(
-            getEarningSummary(earningSummary).summary
-        );
-        /* setEarningSummaryYearData(getEarningSummaryYear(earningSummaryByYear)); */
     }, [
         earningCountIsLoading,
         earningSummaryIsLoading
@@ -277,8 +270,8 @@ function MyEearning() {
                                         </div>
                         </div>
                         <div className="earning_download_lists">
-                            {earningSummaryData
-                                ? earningSummaryData.map((data, index) => {
+                            {earningSummary?.earning
+                                ? Object.keys(earningSummary.earning).map((month, index) => {
                                       return (
                                           <div
                                               key={index}
@@ -288,7 +281,7 @@ function MyEearning() {
                                                   className="earning_download_lists_col_box"
                                                   style={{
                                                       backgroundColor:
-                                                          data.available
+                                                      earningSummary.earning[month] > 0
                                                               ? "#FBFBFB"
                                                               : "#D9D9D9",
                                                   }}
@@ -296,24 +289,24 @@ function MyEearning() {
                                                   <div className="earning_download_month">
                                                       <p
                                                           style={{
-                                                              color: data.available
+                                                              color: earningSummary.earning[month] > 0
                                                                   ? "#525050"
                                                                   : "#595959",
                                                           }}
                                                       >
-                                                          {data.date}
+                                                          {month}
                                                       </p>
                                                   </div>
                                                   <div className="earning_download_controller">
                                                       <p
                                                           className="earning_download_price"
                                                           style={{
-                                                              color: data.available
+                                                              color: earningSummary.earning[month] > 0
                                                                   ? "#000"
                                                                   : "#595959",
                                                           }}
                                                       >
-                                                          ${data.total}
+                                                          ${earningSummary.earning[month]}
                                                       </p>
                                                       <button
                                                           type="button"
@@ -334,7 +327,7 @@ function MyEearning() {
                         <div className="earning_download_lists_account">
                             <div className="earning_download_lists_account_line">
                                 <p>
-                                    Total<span>${getEarningSummary(earningSummary).total}</span>
+                                    Total<span>${earningSummary?.total? earningSummary?.total: 0}</span>
                                 </p>
                                 <a
                                     href="#"
