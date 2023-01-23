@@ -119,7 +119,7 @@ function MyEearning() {
                                                 {graphRange}
                                             </span>
                                             <div className="nice-select-dropdown">
-                                                <ul className="list">
+                                                <ul className="list" onClick={() => handleDropdown(1)}>
                                                     {graphRanges.map(
                                                         (item, index) => {
                                                             return item !==
@@ -237,7 +237,7 @@ function MyEearning() {
                                                 {earningRange}
                                             </span>
                                             <div className="nice-select-dropdown">
-                                                <ul className="list">
+                                                <ul className="list"onClick={() => handleDropdown()}>
                                                     {earningRanges.map(
                                                         (item, index) => {
                                                             return item !==

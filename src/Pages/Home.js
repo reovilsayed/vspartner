@@ -34,7 +34,7 @@ function Home() {
         earningDrop: false,
         submissionDrop: false,
     });
-    const handleDropdown = (dropIndex = 0) => {
+    const handleDropdown = (dropIndex) => {
         setDropDownsOpen((curr) => {
             if (dropIndex === 0) {
                 return { ...curr, earningDrop: !curr.earningDrop };
@@ -81,19 +81,20 @@ function Home() {
                                                 <span
                                                     className="current"
                                                     onClick={() =>
-                                                        handleDropdown()
+                                                        handleDropdown(0)
                                                     }
                                                 >
                                                     {earningRange}
                                                 </span>
                                                 <div className="nice-select-dropdown">
-                                                    <ul className="list">
+                                                    <ul className="list" onClick={() => {
+                                                                            handleDropdown(0);}}>
                                                         {earningRanges.map(
                                                             (item, index) => {
                                                                 return item !==
                                                                     earningRange ? (
                                                                     <li
-                                                                        data-value="This month"
+                                                                        data-value={item}
                                                                         key={
                                                                             index
                                                                         }
@@ -104,7 +105,7 @@ function Home() {
                                                                             setEarningRange(
                                                                                 item
                                                                             );
-                                                                            handleDropdown();
+                                                                            handleDropdown(0);
                                                                         }}
                                                                     >
                                                                         {item}
@@ -143,7 +144,7 @@ function Home() {
                                                     : ""
                                             }`}
                                             tabIndex={0}
-                                                onClick={() => handleDropdown()}
+                                                onClick={() => handleDropdown(0)}
                                         >
                                             <span
                                                 className="current"
@@ -151,7 +152,8 @@ function Home() {
                                                 {earningRange}
                                             </span>
                                             <div className="nice-select-dropdown">
-                                                <ul className="list">
+                                                <ul className="list" onClick={() => {
+                                                                            handleDropdown(0);}}>
                                                     {earningRanges.map(
                                                         (item, index) => {
                                                             return item !==
@@ -166,7 +168,7 @@ function Home() {
                                                                         setEarningRange(
                                                                             item
                                                                         );
-                                                                        handleDropdown();
+                                                                        handleDropdown(0);
                                                                     }}
                                                                 >
                                                                     {item}
@@ -239,7 +241,8 @@ function Home() {
                                                     {submissionRange}
                                                 </span>
                                                 <div className="nice-select-dropdown">
-                                                    <ul className="list">
+                                                    <ul className="list" onClick={() => {
+                                                                            handleDropdown(1);}}>
                                                         {submissionRanges.map(
                                                             (item, index) => {
                                                                 return item !==
@@ -308,7 +311,8 @@ function Home() {
                                                     {submissionRange}
                                                 </span>
                                                 <div className="nice-select-dropdown">
-                                                    <ul className="list">
+                                                    <ul className="list" onClick={() => {
+                                                                            handleDropdown(1);}}>
                                                         {submissionRanges.map(
                                                             (item, index) => {
                                                                 return item !==
