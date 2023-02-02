@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useAuthHeader } from "react-auth-kit";
 import { Link, useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie/cjs/Cookies";
 import { notify } from "../lib/queryClient";
 import requests from "../services/httpService";
 
 function RecoverPassword() {
     const authHeader = useAuthHeader();
     const navigate = useNavigate();
+    const cookies = new Cookies();
     const [formData, setFormData] = useState({
-        email: "",
+        email: '',
         reset_code: "",
         password: "",
     });
-    const handleEmailChange = (e) => {
-        e.preventDefault();
-        setFormData((curr) => {
-            return { ...formData, email: e.target.value };
-        });
-    };
     const handleResetCodeChange = (e) => {
         e.preventDefault();
         setFormData((curr) => {
@@ -37,13 +33,18 @@ function RecoverPassword() {
         });
     };
     const handleReset = async () => {
-        // console.log(formData);
+        let email = cookies.get('partner_email');
+        if (!email) {
+            notify('Please try again', true);
+            navigate('/forgot-password');
+        }
         if (formData) {
             await requests
-                .post(`reset-password`, { ...formData })
+                .post(`reset-password`, { ...formData, email: email })
                 .then((res) => {
                     if (res) {
                         notify(res.message);
+                        cookies.remove('partner_email')
                         navigate("/login");
                     } else {
                         notify(res.message, true);
@@ -56,6 +57,32 @@ function RecoverPassword() {
                         notify(res.message, true);
                     }
                 });
+        }
+    };
+    
+    const resendCode = async () => {
+        let email = cookies.get('partner_email');
+        if (email) {
+            await requests
+                .post(`send-reset-code`, {email: email})
+                .then((res) => {
+                    if (res) {
+                        notify(res.message);
+                        navigate('/recover-password');
+                    } else {
+                        notify(res.message, true);
+                    }
+                })
+                .catch((res) => {
+                    if (res) {
+                        notify('User not found. Please try different email', true);
+                    } else {
+                        notify('User not found. Please try different email', true);
+                    }
+                });
+        } else {
+            notify('Please try again', true);
+            navigate('/forgot-password');
         }
     };
     useEffect(() => {
@@ -107,18 +134,6 @@ function RecoverPassword() {
                                         <div className="row login_pages_contents_inr_form_row">
                                             <div className="col-lg-12 login_pages_contents_inr_form_col">
                                                 <div className="input_form_holderr password_hold">
-                                                    <h6>Email Address</h6>
-                                                    <input
-                                                        type="text"
-                                                        placeholder="Your email address"
-                                                        onChange={(e) =>
-                                                            handleEmailChange(e)
-                                                        }
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="col-lg-12 login_pages_contents_inr_form_col">
-                                                <div className="input_form_holderr password_hold">
                                                     <h6>OTP</h6>
                                                     <input
                                                         type="text"
@@ -158,6 +173,18 @@ function RecoverPassword() {
                                                     />
                                                 </div>
                                             </div>
+                      <div className="col-lg-12 login_pages_contents_inr_form_col">
+                        <div className="row remember_pass_row login_pages_contents_hdngg">
+                          <div className="col-6 remember_pass_col_in">
+                            <p>Didn't recieve an OTP</p>
+                            </div>
+                          <div className="col-6 remember_pass_col_in">
+                       
+                              <span className="cmn_anc_nn" onClick={resendCode}>Resend Code?</span>
+                         
+                          </div>
+                          </div>
+                          </div>
                                             <div className="col-lg-12 login_pages_contents_inr_form_col">
                                                 <span
                                                     className="form_submit"
