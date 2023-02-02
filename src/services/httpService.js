@@ -13,7 +13,7 @@ instance.interceptors.request.use(function (config) {
 		headers: {
 			Accept: 'application/json',
 			Authorization: config.token,
-			// 'Content-Type': 'multipart/form-data',
+			'Content-Type': 'multipart/form-data',
 		},
 	};
 });
