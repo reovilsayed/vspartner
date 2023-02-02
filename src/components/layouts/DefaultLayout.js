@@ -31,7 +31,9 @@ function DefaultLayout({ children }) {
 
   const authUser = useAuthUser();
   const authHeader = useAuthHeader();
-  const user = authUser();
+  const {
+    data: user,
+} = useFetch(["user-prof"], `/user`, {}, { token: authHeader() });
   const {
     data: notificationData,
     isLoading,
@@ -201,8 +203,8 @@ function DefaultLayout({ children }) {
                 </span>
                 <span className="nav_avatar">
                   <Link to={`/setting`}>
-                    {/* <img src={getImageURL(user.avater)} alt="" /> */}
-                    <img src="/images/sender.png" alt="user-image" />
+                    <img src={user?.avatar? getImageURL(user.avatar): "/images/sender.png"} alt="" />
+                    {/* <img src="/images/sender.png" alt="user-image" /> */}
                   </Link>
                 </span>
               </div>
