@@ -81,7 +81,6 @@ function Setting() {
         email: user?.email ? user.email : "",
         phone: user?.phone ? user.phone : "",
         country: user?.country ? user.country : "",
-        avatar: user?.avatar ? user.avatar : "",
     });
 
     const resetFormData = (user) => {
@@ -91,7 +90,6 @@ function Setting() {
             email: user?.email ? user.email : "",
             phone: user?.phone ? user.phone : "",
             country: user?.country ? user.country : "",
-            avatar: user?.avatar ? user.avatar : "",
         };
         setFormData(tmp);
     };
@@ -154,19 +152,14 @@ function Setting() {
     };
     const handleAvatar = (e) => {
         e.preventDefault();
-        setFormData(curr => {
-          return { ...curr, avatar: e.target.files[0] }
-        });
+        updateProfile({...formData, avatar: e.target.files[0]});
+        refetch();
+        console.log(user);
     };
-    useEffect(() => {
-      if (user === undefined || user.avatar === undefined || formData.avatar === undefined) return;
-      if (user.avatar === formData.avatar) return;
-        updateProfile(formData);
-        console.log(formData);
-    }, [formData.avatar]);
     useEffect(() => {
         refetch();
         resetFormData(user);
+        console.log('user', user);
     }, [user, isError, isSuccess, isLoading]);
     return (
         <>
