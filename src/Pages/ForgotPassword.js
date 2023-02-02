@@ -3,10 +3,12 @@ import { useAuthHeader } from "react-auth-kit";
 import { Link, useNavigate } from "react-router-dom";
 import { notify } from "../lib/queryClient";
 import requests from "../services/httpService";
+import Cookies from 'universal-cookie';
 
 function ForgotPassword() {
     const authHeader = useAuthHeader();
     const navigate = useNavigate();
+    const cookies = new Cookies();
     useEffect(() => {
         if (authHeader()) {
             notify("You are already logged in", true);
@@ -25,6 +27,7 @@ function ForgotPassword() {
                 .then((res) => {
                     if (res) {
                         notify(res.message);
+                        cookies.set('partner_email', email, {path: '/'});
                         navigate('/recover-password');
                     } else {
                         notify(res.message, true);
@@ -32,9 +35,9 @@ function ForgotPassword() {
                 })
                 .catch((res) => {
                     if (res) {
-                        notify(res.message, true);
+                        notify('User not found. Please try different email', true);
                     } else {
-                        notify(res.message, true);
+                        notify('User not found. Please try different email', true);
                     }
                 });
         }
