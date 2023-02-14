@@ -1,4 +1,3 @@
-
 /* .vjs-default-skin .vjs-big-play-button {
   background: url(./assets/images/video_play_icon.svg) center center no-repeat;
   width: 75px;
@@ -68,16 +67,17 @@ video.vjs-tech {
   background-color: #000;
 } */
 
-.single-video-box .vjs-theme-fantasy .vjs-play-progress, .single-video-box .vjs-theme-fantasy .vjs-play-progress:before {
-  background-color: #e9253d;
+.single-video-box .vjs-theme-fantasy .vjs-play-progress,
+.single-video-box .vjs-theme-fantasy .vjs-play-progress:before {
+    background-color: #e9253d;
 }
 
 .vjs-icon-placeholder {
-  color: #FFF !important;
+    color: #fff !important;
 }
 
 .single-video-box .my-video-dimensions {
-  height: 339.45px;
+    height: 339.45px;
 }
 
 .view_ico_btn,
@@ -87,7 +87,23 @@ video.vjs-tech {
 .search_btn img,
 .srch_btn img,
 .btn-outline.btn-outline-blue,
-span.prf_pic_change, .prf_pic_change input, .prf_pic_change svg,
+span.prf_pic_change,
+.prf_pic_change input,
+.prf_pic_change svg,
 ul.nav_list li a {
-  cursor: pointer;
+    cursor: pointer;
+}
+
+.loader-wrapper {
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.loader-wrapper img {
+    background: transparent;
 }
