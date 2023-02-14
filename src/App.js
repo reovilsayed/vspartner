@@ -16,6 +16,7 @@ import VideoModal from "./components/videos/VideoModal";
 import ForgotPassword from "./Pages/ForgotPassword";
 import routes from "./routes";
 import RecoverPassword from "./Pages/RecoverPassword";
+import { PreloaderProvider } from "./hooks/usePreloader";
 
 export const VideoContext = createContext();
 export const VideoLayoutContext = createContext();
@@ -46,63 +47,65 @@ function App() {
                 <VideoLayoutContext.Provider
                     value={{ isListView, setIsListView, handleListView }}
                 >
-                    <Toaster />
-                    <Routes>
-                        {routes.map((route, index) => {
-                            return (
-                                <Route
-                                    key={index}
-                                    path={route.path ? route.path : "/"}
-                                    element={
-                                        <RequireAuth loginPath="/login">
-                                            {route.layout === "default" ? (
-                                                <DefaultLayout>
-                                                    <Suspense
-                                                        fallback={
-                                                            <div>
-                                                                Loading...
-                                                            </div>
-                                                        }
-                                                    >
-                                                        <route.component />
-                                                    </Suspense>
-                                                </DefaultLayout>
-                                            ) : (
-                                                <DetailsLayout>
-                                                    <Suspense
-                                                        fallback={
-                                                            <div>
-                                                                Loading...
-                                                            </div>
-                                                        }
-                                                    >
-                                                        <route.component />
-                                                    </Suspense>
-                                                </DetailsLayout>
-                                            )}
-                                        </RequireAuth>
-                                    }
-                                />
-                            );
-                        })}
-                        <Route path="/login" element={<Login />} />
-                        <Route
-                            path="/forgot-password"
-                            element={<ForgotPassword />}
-                        />
-                        <Route
-                            path="/recover-password"
-                            element={<RecoverPassword />}
-                        />
-                    </Routes>
-                    {modal && (
-                        <VideoModal
-                            show={modal}
-                            toggle={toggle}
-                            videoDetails={videoDetails}
-                        />
-                    )}
-                    {/* {modal && <VideoDetailsModal toggle={toggle} videoDetails={videoDetails} />} */}
+                    <PreloaderProvider>
+                        <Toaster />
+                        <Routes>
+                            {routes.map((route, index) => {
+                                return (
+                                    <Route
+                                        key={index}
+                                        path={route.path ? route.path : "/"}
+                                        element={
+                                            <RequireAuth loginPath="/login">
+                                                {route.layout === "default" ? (
+                                                    <DefaultLayout>
+                                                        <Suspense
+                                                            fallback={
+                                                                <div>
+                                                                    Loading...
+                                                                </div>
+                                                            }
+                                                        >
+                                                            <route.component />
+                                                        </Suspense>
+                                                    </DefaultLayout>
+                                                ) : (
+                                                    <DetailsLayout>
+                                                        <Suspense
+                                                            fallback={
+                                                                <div>
+                                                                    Loading...
+                                                                </div>
+                                                            }
+                                                        >
+                                                            <route.component />
+                                                        </Suspense>
+                                                    </DetailsLayout>
+                                                )}
+                                            </RequireAuth>
+                                        }
+                                    />
+                                );
+                            })}
+                            <Route path="/login" element={<Login />} />
+                            <Route
+                                path="/forgot-password"
+                                element={<ForgotPassword />}
+                            />
+                            <Route
+                                path="/recover-password"
+                                element={<RecoverPassword />}
+                            />
+                        </Routes>
+                        {modal && (
+                            <VideoModal
+                                show={modal}
+                                toggle={toggle}
+                                videoDetails={videoDetails}
+                            />
+                        )}
+                        {/* {modal && <VideoDetailsModal toggle={toggle} videoDetails={videoDetails} />} */}
+                    </PreloaderProvider>
                 </VideoLayoutContext.Provider>
             </VideoContext.Provider>
         </div>
