@@ -221,14 +221,14 @@ const Videos = () => {
             empty={noVideo}
             toggle={toggle}
           />
-
+{/* 
           <Grid
             videos={data?.data}
             isLoading={isLoading}
             active={isListView ? false : true}
             empty={noVideo}
             toggle={toggle}
-          />
+          /> */}
 
           <div className="pagination_panel">
             {data?.total >= 12 && (

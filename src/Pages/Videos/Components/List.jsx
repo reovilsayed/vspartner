@@ -27,7 +27,7 @@ const List = ({ videos, isLoading, empty, active, toggle }) => {
                                     {isLoading ? (
                                         <RowSkeleton count={10} />
                                     ) : (
-                                        videos.map((video, index) => {
+                                        videos?.map((video, index) => {
                                             return (
                                                 <tr key={video.id}>
                                                     <td>
