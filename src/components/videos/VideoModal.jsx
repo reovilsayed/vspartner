@@ -89,7 +89,7 @@ const VideoModal = (props) => {
                                                     className="icon"
                                                     alt=""
                                                 />
-                                                Download Video
+                                                Download Videos
                                             </a>
                                             <a
                                                 className="btn-outline btn-outline-red"

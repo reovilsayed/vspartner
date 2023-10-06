@@ -31,7 +31,7 @@ function SubmissionChart() {
 			show: false,
 		},
 		xaxis: {
-			categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+			categories: ['January1', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 			tickAmount: 12,
 			labels: {
 				show: true,
